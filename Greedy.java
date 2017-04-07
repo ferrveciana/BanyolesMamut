@@ -10,7 +10,7 @@ Public void ferGreedy(Lloc inici) {
 
 	  Lloc actual=inici;
 
-	  While (!circuit.completa(desti) and Candidats.hiHaSeguent(actual)) {
+	  while (!circuit.completa(desti) and Candidats.hiHaSeguent(actual)) {
 
 		Lloc millorLloc=Candidats.mesPrometedor(actual);
 		Candidats.treure(millorLloc);
