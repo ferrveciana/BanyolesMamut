@@ -20,9 +20,9 @@ Public void ferGreedy(Lloc inici) {
 		actual=millorLloc;
   }
 	
-	If (circuit.completa(desti) and totsPuntsIntermitjosVisitats())
+	if (circuit.completa(desti) and totsPuntsIntermitjosVisitats())
 		  hiHaSolucio=true;
-	Else 
+	else 
 		  hiHaSolucio=false;
 }
 
