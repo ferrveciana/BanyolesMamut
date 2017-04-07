@@ -35,5 +35,5 @@ void anotar(Lloc millorLloc);
 boolean Completa(Lloc desti);
 
 Candidats:
-Boolean hiHaSeguent(actual); //retorna si el lloc actual al que estem té “veïns”
-Void treure(Lloc millorLloc);
+boolean hiHaSeguent(actual); //retorna si el lloc actual al que estem té “veïns”
+void treure(Lloc millorLloc);
