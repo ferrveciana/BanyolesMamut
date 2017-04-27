@@ -1,0 +1,111 @@
+package projecte;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author aula
+ */
+public class Entrada {
+    
+    public Entrada(Scanner nomFitxer) {
+        
+        nomFitxer.useLocale(Locale.US);
+        String codiOperacio;
+        
+        while (nomFitxer.hasNext()) {
+            codiOperacio = nomFitxer.nextLine();
+            
+            if (codiOperacio.equals("client"))
+                entradaClient(nomFitxer);
+            
+            else if (codiOperacio.equals("lloc"))
+                entradaLloc(nomFitxer);
+            
+            else if (codiOperacio.equals("allotjament"))
+                entradaAllotjament(nomFitxer);
+            
+            else if (codiOperacio.equals("lloc visitable"))
+                entradaVisitable(nomFitxer);
+            
+            else if (codiOperacio.equals("visita"))
+                entradaVisita(nomFitxer);
+            
+            else if (codiOperacio.equals("associar lloc"))
+                entradaAssociarLloc(nomFitxer);
+            
+            else if (codiOperacio.equals("associar transport"))
+                entradaAssociarTransport(nomFitxer);
+            
+            else if (codiOperacio.equals("transport directe"))
+                entradaTransportDirecte(nomFitxer);
+            
+            else if (codiOperacio.equals("transport indirecte"))
+                entradaTransportIndirecte(nomFitxer);
+            
+            else if (codiOperacio.equals("viatge"))
+                entradaViatge(nomFitxer);
+        }
+    }
+
+    private void entradaClient(Scanner nomFitxer) {
+
+        String nomClient = nomFitxer.nextLine();
+        String preferencia = nomFitxer.nextLine();
+        List<String> llistaPreferencies;
+        
+        while (!preferencia.equals("*")) {
+            llistaPreferencies.add(preferencia);
+            preferencia = nomFitxer.nextLine();
+        }
+        Client client = new Client(nomClient,llistaPreferencies);
+        llistaClients.add(client);
+    }
+
+    private void entradaLloc(Scanner nomFitxer) {
+
+    }
+
+    private void entradaAllotjament(Scanner nomFitxer) {
+
+    }
+
+    private void entradaVisitable(Scanner nomFitxer) {
+
+    }
+
+    private void entradaVisita(Scanner nomFitxer) {
+
+    }
+
+    private void entradaAssociarLloc(Scanner nomFitxer) {
+
+    }
+
+    private void entradaAssociarTransport(Scanner nomFitxer) {
+
+    }
+
+    private void entradaTransportDirecte(Scanner nomFitxer) {
+
+    }
+
+    private void entradaTransportIndirecte(Scanner nomFitxer) {
+           
+        
+    }
+
+    private void entradaViatge(Scanner nomFitxer) {
+
+    }
+    
+    private List<Client> llistaClients;
+}
