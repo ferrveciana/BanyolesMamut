@@ -18,6 +18,5 @@ public interface MitjaTransport {
     //Post: Retorna el temps que es tarda per viatjar
     public int obtenirTemps();
     
-    
         
 }
