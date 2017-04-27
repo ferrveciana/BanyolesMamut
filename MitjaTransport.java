@@ -1,9 +1,5 @@
 package prop;
 
-/**
- *
- * @author veci
- */
 public interface MitjaTransport {
     
     //Pre: lloc existeix

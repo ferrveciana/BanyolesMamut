@@ -33,7 +33,7 @@ public class Visitable implements Secundari{
 
   
     @Override
-    public Double obtenirPreu(){
+    public double obtenirPreu(){
         return preu;
     }
 
