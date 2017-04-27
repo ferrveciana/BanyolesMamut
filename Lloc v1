@@ -4,12 +4,13 @@ import java.util.TimeZone;
 public class Lloc {
     
     public final String nom;
-    private final int latitud;
-    private final int longitud;
+    private final double latitud;
+    private final double longitud;
     private final TimeZone franjaHoraria;
     private List<MitjaTransport> llistaTransports;
+    private List<Secundari> llistaSecundaris;
     
-    public Lloc(String _nom,int _latitud,int _longitud,TimeZone _franjaHoraria ){
+    public Lloc(String _nom,double _latitud,double _longitud,TimeZone _franjaHoraria ){
         nom=_nom;
         latitud=_latitud;
         longitud=_longitud; 
@@ -23,7 +24,7 @@ public class Lloc {
     public void afegirMitjaTransport(MitjaTransport transport){
         llistaTransports.add(transport);
     }
-    
+
     public void afegirSecundari(Secundari lloc_secundari){
         llistaSecundaris.add(lloc_secundari);
     }
