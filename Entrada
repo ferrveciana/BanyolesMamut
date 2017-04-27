@@ -131,6 +131,16 @@ public class Entrada {
     }
 
     private void entradaTransportDirecte(Scanner nomFitxer) {
+        
+        String origen = nomFitxer.nextLine(); 
+        String desti = nomFitxer.nextLine(); 
+        String mitja = nomFitxer.nextLine(); 
+        int durada = nomFitxer.nextLine(); 
+        double preu = nomFitxer.nextLine(); 
+
+        TransportDirecte tdirecte = new tdirecte(origen,desti,mitja,durada,preu);
+
+        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
 
     }
 
