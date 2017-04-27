@@ -69,7 +69,7 @@ public class Entrada {
             preferencia = nomFitxer.nextLine();
         }
         Client client = new Client(nomClient,llistaPreferencies);
-        llistaClients.add(client);
+        llistaClients.add(nomClient,client);
     }
 
     private void entradaLloc(Scanner nomFitxer) {
@@ -114,12 +114,29 @@ public class Entrada {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques);
+        List<String> llistaHoraris;
+        List<String> llistaExcepcions;
+        String horariRegular = nomFitxer.nextLine();
+        
+        //S'ha de refinar, entrada no tractada correctament!
+        while (!horariRegular.equals("*")) {
+            llistaHoraris.add(horariRegular);
+            String excepcio = nomFitxer.nextLine();
+            llistaExcepcions.add(excepcio);
+            horariRegular = nomFitxer.nextLine();
+        }
+        
+        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
         llistaVisitables.add(visitable);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
-
+        
+        String nomClient = nomFitxer.nextLine();
+        String llocVisitat = nomFitxer.nextLine();
+        String data = nomFitxer.nextLine();
+        
+        llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
     }
 
     private void entradaAssociarLloc(Scanner nomFitxer) {
@@ -131,16 +148,6 @@ public class Entrada {
     }
 
     private void entradaTransportDirecte(Scanner nomFitxer) {
-        
-        String origen = nomFitxer.nextLine(); 
-        String desti = nomFitxer.nextLine(); 
-        String mitja = nomFitxer.nextLine(); 
-        int durada = nomFitxer.nextLine(); 
-        double preu = nomFitxer.nextLine(); 
-
-        TransportDirecte tdirecte = new tdirecte(origen,desti,mitja,durada,preu);
-
-        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
 
     }
 
@@ -153,7 +160,7 @@ public class Entrada {
 
     }
     
-    private List<Client> llistaClients;
+    private Map<String,Client> llistaClients;
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
 }
