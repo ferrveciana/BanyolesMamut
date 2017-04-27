@@ -15,6 +15,8 @@ import java.util.Scanner;
  * @author aula
  */
 public class Entrada {
+
+    private Map<String,Lloc> llistaLlocs;
     
     public Entrada(Scanner nomFitxer) {
         
@@ -71,7 +73,13 @@ public class Entrada {
     }
 
     private void entradaLloc(Scanner nomFitxer) {
+    
+        String nomLloc = nomFitxer.nextLine(); 
+        double coordenades = nomFitxer.nextLine();
+        TimeZone franjaHoraria = nomFitxer.nextLine();
 
+        Lloc lloc = new Lloc(nomLloc,coordenades,franjaHoraria);
+        llistaLlocs.put(nomLloc,Lloc);
     }
 
     private void entradaAllotjament(Scanner nomFitxer) {
