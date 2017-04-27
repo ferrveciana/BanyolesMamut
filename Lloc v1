@@ -1,0 +1,27 @@
+import java.util.List;
+import java.util.TimeZone;
+
+public class Lloc {
+    
+    public final String nom;
+    private final int latitud;
+    private final int longitud;
+    private final TimeZone franjaHoraria;
+    private List<MitjaTransport> llistaTransports;
+    
+    public Lloc(String _nom,int _latitud,int _longitud,TimeZone _franjaHoraria ){
+        nom=_nom;
+        latitud=_latitud;
+        longitud=_longitud; 
+        franjaHoraria=_franjaHoraria;
+    }
+    
+    public List<MitjaTransport> obtenirTransports(){
+        return llistaTransports;
+    }
+    
+    public void afegirMitjaTransport(MitjaTransport transport){
+        llistaTransports.add(transport);
+    }
+    
+}
