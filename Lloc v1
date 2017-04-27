@@ -24,4 +24,8 @@ public class Lloc {
         llistaTransports.add(transport);
     }
     
+    public void afegirSecundari(Secundari lloc_secundari){
+        llistaSecundaris.add(lloc_secundari);
+    }
+    
 }
