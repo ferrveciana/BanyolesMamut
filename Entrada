@@ -97,11 +97,25 @@ public class Entrada {
             caracteristica = nomFitxer.nextLine();
         }
         Allotjament allotjament = new Allotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
-        llistaVisitables.add(allotjament);
+        llistaAllotjaments.add(allotjament);
     }
 
     private void entradaVisitable(Scanner nomFitxer) {
 
+        String nomLloc = nomFitxer.nextLine();
+        String coordenades = nomFitxer.nextLine();
+        String zonaHoraria = nomFitxer.nextLine();
+        String tempsVisitaRecomanat = nomFitxer.nextLine();
+        Double preu = nomFitxer.nextLine();
+        String caracteristica = nomFitxer.nextLine();
+        List<String> llistaCaracteristiques;
+        
+        while (!caracteristica.equals("*")) {
+            llistaCaracteristiques.add(caracteristica);
+            caracteristica = nomFitxer.nextLine();
+        }
+        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques);
+        llistaVisitables.add(visitable);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
@@ -131,4 +145,5 @@ public class Entrada {
     
     private List<Client> llistaClients;
     private List<Allotjament> llistaAllotjaments;
+    private List<Visitable> llistaVisitables;
 }
