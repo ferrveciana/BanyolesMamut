@@ -149,10 +149,47 @@ public class Entrada {
 
     private void entradaTransportDirecte(Scanner nomFitxer) {
 
+        String origen = nomFitxer.nextLine(); 
+        String desti = nomFitxer.nextLine(); 
+        String mitja = nomFitxer.nextLine(); 
+        int durada = nomFitxer.nextLine(); 
+        double preu = nomFitxer.nextLine(); 
+
+        TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
+
+        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
+
     }
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
-           
+
+        List<LocalDateTime> list_data_hora_sortida;
+        List<Integer> list_durada;
+        List<Float> list_preu;
+
+        String origen = nomFitxer.nextLine(); 
+        String desti = nomFitxer.nextLine(); 
+        String mitja = nomFitxer.nextLine(); 
+        int to = nomFitxer.nextLine(); 
+        int td = nomFitxer.nextLine(); 
+
+
+        LocalDateTime sortida= nomFitxer.nextLine(); 
+        while (sortida!="*"){
+            int durada = nomFitxer.nextLine(); 
+            float preu = nomFitxer.nextLine(); 
+
+            list_data_hora_sortida;.add(sortida);
+            list_durada.add(durada);
+            list_preu.add(preu);
+
+            sortida= nomFitxer.nextLine(); 
+        }
+
+        TransportIndirecte tindirecte = new TransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
+
+        llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
+
         
     }
 
