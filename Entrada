@@ -83,7 +83,10 @@ public class Entrada {
     }
 
     private void entradaAllotjament(Scanner nomFitxer) {
-
+    
+        String nomAllotjament = nomFitxer.nextLine();
+        string coordenades = nomFitxer.nextLine();
+        String zonaHoraria =
     }
 
     private void entradaVisitable(Scanner nomFitxer) {
