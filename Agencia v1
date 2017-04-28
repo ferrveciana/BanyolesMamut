@@ -1,0 +1,80 @@
+package projecte;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author aula
+ */
+public class Entrada {
+
+    public void crearClient(String nomClient, List<String> llistaPreferencies) {
+    
+        Client client = new Client(nomClient,llistaPreferencies);
+        llistaClients.add(client);
+    }
+    
+    public void crearLloc(String nomLloc, String coordenades, String franjaHoraria) {
+    
+        agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
+    }
+
+
+    public void crearAllotjament(String nomAllotjament, String coordenades, String zonaHoraria, String categoria, double preu, List<String> llistaCaracteristiques) {
+
+        Allotjament allotjament = new Allotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
+        llistaAllotjaments.add(allotjament);
+    }
+
+    public void crearVisitable(String nomLloc, String coordenades, String zonaHoraria, String tempsVisitaRecomanat, double preu, String caracteristica, List<String> llistaCaracteristiques, List<String> llistaHoraris, List<String> llistaExcepcions) {
+
+        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
+        llistaVisitables.add(visitable);
+    }
+
+    public void crearVisita(Scanner nomFitxer) {
+
+        llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
+    }
+
+    public void crearAssociarLloc(Scanner nomFitxer) {
+
+    }
+
+    public void crearAssociarTransport(Scanner nomFitxer) {
+
+    }
+
+    public void crearTransportDirecte(String origen, String desti, String mitja, String durada, double preu) {
+
+        TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
+        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
+
+    }
+
+    public void crearTransportIndirecte(Scanner nomFitxer) {
+
+        TransportIndirecte tindirecte = new TransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
+        llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
+
+        
+    }
+
+    public void crearViatge(Scanner nomFitxer) {
+
+    } 
+    
+    private Agencia agencia;
+    private Map<String,Lloc> llistaLlocs;
+    private Map<String,Client> llistaClients;
+    private List<Allotjament> llistaAllotjaments;
+    private List<Visitable> llistaVisitables;
+}
