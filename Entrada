@@ -131,6 +131,7 @@ public class Entrada {
     }
 
     private void entradaVisita(Scanner nomFitxer) {
+        //Falta throw <Client no trobat> / <lloc no trobat>
         
         String nomClient = nomFitxer.nextLine();
         String llocVisitat = nomFitxer.nextLine();
