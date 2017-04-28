@@ -8,6 +8,7 @@ public class Lloc {
     private final TimeZone franjaHoraria;
     private List<TransportDirecte> llistaTransportsDirectes;
     private List<TransportIndirecte> llistaTransportsIndirectes;
+    private List<MitjaTransport> llistaMitjansTransport;//revisar
     private List<Secundari> llistaSecundaris;
     
     public Lloc(String _nom,String _coordenades,TimeZone _franjaHoraria ){
