@@ -73,8 +73,8 @@ public class Entrada {
     } 
     
     private Agencia agencia;
-    private Map<String,Lloc> llistaLlocs;
     private Map<String,Client> llistaClients;
+    private Map<String,Lloc> llistaLlocs;
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
 }
