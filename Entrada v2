@@ -16,13 +16,11 @@ import java.util.Scanner;
  */
 public class Entrada {
 
-    private Map<String,Lloc> llistaLlocs;
-    
     public Entrada(Scanner nomFitxer) {
         
         nomFitxer.useLocale(Locale.US);
         String codiOperacio;
-        
+
         while (nomFitxer.hasNext()) {
             codiOperacio = nomFitxer.nextLine();
             
@@ -68,8 +66,7 @@ public class Entrada {
             llistaPreferencies.add(preferencia);
             preferencia = nomFitxer.nextLine();
         }
-        Client client = new Client(nomClient,llistaPreferencies);
-        llistaClients.add(nomClient,client);
+        agencia.crearClient(nomClient,llistaPreferencies);
     }
 
     private void entradaLloc(Scanner nomFitxer) {
@@ -78,8 +75,7 @@ public class Entrada {
         double coordenades = nomFitxer.nextLine();
         TimeZone franjaHoraria = nomFitxer.nextLine();
 
-        Lloc lloc = new Lloc(nomLloc,coordenades,franjaHoraria);
-        llistaLlocs.put(nomLloc,Lloc);
+        agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
     }
 
     private void entradaAllotjament(Scanner nomFitxer) {
@@ -96,8 +92,7 @@ public class Entrada {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        Allotjament allotjament = new Allotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
-        llistaAllotjaments.add(allotjament);
+        agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
     }
 
     private void entradaVisitable(Scanner nomFitxer) {
@@ -126,8 +121,7 @@ public class Entrada {
             horariRegular = nomFitxer.nextLine();
         }
         
-        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
-        llistaVisitables.add(visitable);
+        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
@@ -137,7 +131,7 @@ public class Entrada {
         String llocVisitat = nomFitxer.nextLine();
         String data = nomFitxer.nextLine();
         
-        llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
+        agencia.crearVisita(nomClient,llocVisitat,data);
     }
 
     private void entradaAssociarLloc(Scanner nomFitxer) {
@@ -156,10 +150,7 @@ public class Entrada {
         int durada = nomFitxer.nextLine(); 
         double preu = nomFitxer.nextLine(); 
 
-        TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
-
-        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
-
+        agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
     }
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
@@ -187,18 +178,13 @@ public class Entrada {
             sortida= nomFitxer.nextLine(); 
         }
 
-        TransportIndirecte tindirecte = new TransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
-
-        llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
-
-        
+        agencia.crearTransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
     }
 
     private void entradaViatge(Scanner nomFitxer) {
 
-    }
+    } 
     
-    private Map<String,Client> llistaClients;
-    private List<Allotjament> llistaAllotjaments;
-    private List<Visitable> llistaVisitables;
+    private Agencia agencia;
 }
+
