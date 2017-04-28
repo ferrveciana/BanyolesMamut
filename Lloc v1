@@ -32,4 +32,8 @@ public class Lloc {
         llistaSecundaris.add(lloc_secundari);
     }
     
+    public boolean esDePas(){
+        return(llistaSecundaris.isEmpty())
+    }
+    
 }
