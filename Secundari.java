@@ -11,5 +11,7 @@ public interface Secundari {
     //Pre: ---
     //Post: Retorna el preu de visitable, si es gratuit retorna 0      
     public double obtenirPreu();
-
+    
+    public List<TransportIndirecte> obtenirTransportsIndirectes();
+    
 }
