@@ -9,6 +9,7 @@ public class Horari {
     private int diaFin;
     private LocalTime horaIni;
     private LocalTime horaFi;
+    private List<diaExcepcio> DiaExcepcional;
     
     
     public Horari(String _horari){
