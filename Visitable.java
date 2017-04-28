@@ -13,6 +13,7 @@ public class Visitable implements Secundari{
     private final double preu;
     private final List<String> caracteristiques;
     private final List<Horari> horariVisites;
+    private SortedMap<String,> excepcions; 
     
     public Visitable(String _nom, double _coordX, double _coordY, TimeZone _zonaHoraria, int _tempsVisita, double _preu, List<String> _caract, List<Horari> _horariVisites){
         nom=_nom;
