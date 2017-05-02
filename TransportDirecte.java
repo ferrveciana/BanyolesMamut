@@ -1,7 +1,7 @@
 package prop;
 
 
-public class TransportDirecte implements MitjaTransport {
+public class TransportDirecte{
     private final String origen;
     private final String desti;
     private final String mitja;
@@ -15,20 +15,29 @@ public class TransportDirecte implements MitjaTransport {
         durada=_durada;
         preu=_preu;
     }
-  
-    @Override
-    public String obtenirDesti(){
-        return desti;
-    }
     
-    @Override
+    /**
+     * @pre --
+     * @return retorna el preu de l'objecte actual
+     */
     public double obtenirPreu(){
         return preu;
     }
     
-    @Override
-    public int obtenirTemps(){
+    /**
+     * @pre --
+     * @return retorna el temps en minuts del trajecte
+     */
+    public int obtenirDurada(){
         return durada;
     }
     
+    /**
+     * @pre --
+     * @return retorna el desti del transport
+     */
+    public String obtenirDesti(){
+        return desti;
+    }
+
 }

@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ *
+ * @author FV
+ */
 public class Hub {
     private final String origen;
     private final String desti;
@@ -23,8 +27,10 @@ public class Hub {
     }
     
     /**
-     *@pre:
-     *@post:
+     * @param data
+     * @param transports
+     * @pre: data existent
+     * @post: ha afegit un dia amb tots els seus transports al map
      */
     public void afegirHoraris(LocalDate data,List<TransportIndirecte> transports){
         horaris.put(data,transports);

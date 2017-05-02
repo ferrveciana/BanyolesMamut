@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class TransportIndirecte{
-    private List<LocalTime> horaris;
+    private final List<LocalTime> horaris;
     private final List<Integer> durada;
     private final List<Float> preu;
     
