@@ -7,24 +7,19 @@ import java.util.TimeZone;
  *
  * @author narcisbustins
  */
-public abstract class PuntInteres implements Lloc {
+public abstract class PuntInteres extends Lloc {
     
-     private final String nom;
-     private final String coordenada;
-     private final TimeZone zonaHoraria;
+    
      private final double preu;
      private final List<String> caracteristiques;
      private List<TransportDirecte> llistaTransportsDirectes;
 
-    
-     PuntInteres(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract){
-        nom=_nom;
-        coordenada=_coordenada;
-        zonaHoraria=_zonaHoraria;
-        preu = _preu;
+    public PuntInteres(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract) {
+        super(_nom, _coordenada, _zonaHoraria);
+         preu = _preu;
         caracteristiques=_caract;
-     }
-     
+    }
+
     //Pre: ---
     //Post: Retorna cert si conte caracteristica altrament fals                                                                                           
     public boolean conteCaracteristica(String caracteristica){
@@ -60,3 +55,4 @@ public abstract class PuntInteres implements Lloc {
     //Post: Retorna el tipus de punt d'interes del que es parla
     public abstract String tipus();
 }
+
