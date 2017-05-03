@@ -49,16 +49,16 @@ public class Entrada {
     }
 
 
-    public void crearAllotjament(String nomAllotjament, String coordenades, String zonaHoraria, String categoria, double preu, List<String> llistaCaracteristiques) {
-
-        Allotjament allotjament = new Allotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
-        llistaAllotjaments.add(allotjament);
+    public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,int _categoria) {
+        
+        Allotjament nouAllotjament = new Allotjament(_nom,_coordenada,_zonaHoraria,_preu,_caract,_categoria);
+        llistaPInteres.put(_nom,nouAllotjament);
     }
 
-    public void crearVisitable(String nomLloc, String coordenades, String zonaHoraria, String tempsVisitaRecomanat, double preu, String caracteristica, List<String> llistaCaracteristiques, List<String> llistaHoraris, List<String> llistaExcepcions) {
-
-        Visitable visitable = new Visitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
-        llistaVisitables.add(visitable);
+    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,List<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
+        
+        Visitable nouVisitable = new Visitable(_nom,_coordenada,_zonaHoraria,_preu, _caract,_horariVisites, _tempsVisita,_excepcions);
+        llistaPInteres.put(_nom,nouVisitable);
     }
 
     public void crearVisita(Scanner nomFitxer) {
