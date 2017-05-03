@@ -66,8 +66,17 @@ public class Entrada {
         llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
     }
 
-    public void crearAssociarLloc(Scanner nomFitxer) {
-
+    public void associarPiLloc(String secundari,String primari) {
+        
+        Lloc _lloc = llistaLlocs.get(primari);
+        PuntInteres pi = llistaPInteres.get(secundari);
+        if (_lloc instanceof Ciutat){
+            ((Ciutat) _lloc).afegirPuntInteres(pi);
+        }
+        else{
+           Ciutat _ciutat = _lloc.ferCiutat(pi);
+           llistaLlocs.put(primari,_ciutat);
+        }
     }
 
     public void crearAssociarTransport(Scanner nomFitxer) {
