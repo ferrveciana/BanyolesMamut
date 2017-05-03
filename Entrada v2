@@ -155,9 +155,7 @@ public class Entrada {
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
 
-        List<LocalTime> llistaHorari;
-        List<Integer> llistaDurada;
-        List<Float> llistaPreu;
+        list<TransportIndirecte> llistaTransportIndirecte;
 
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
@@ -167,7 +165,7 @@ public class Entrada {
         String data = nomFitxer.nextLine(); 
         
         String delimitadors= "[ :-]+";
-        map<data,TransportIndirecte> transportsIndirectes;
+        HashMap<data,list> transportsIndirectes;
        
         while (sortida!="*"){
             
