@@ -35,6 +35,12 @@ public class Entrada {
         String[] paraulesSeparades = data.split(delimitadors);
         return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
     }
+   
+    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }
 
     public void crearClient(String nomClient, List<String> llistaPreferencies) {
     
@@ -91,9 +97,10 @@ public class Entrada {
 
     }
 
-    public void crearTransportIndirecte(Scanner nomFitxer) {
+    public void crearTransportIndirecte(String origen, String desti, String mitja, String tempsFinsOrigen, String tempsFinsDesti, HashMap<String,List<TransportIndirecte>> transportIndirecte) {
 
-        TransportIndirecte tindirecte = new TransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
+       
+        Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
         llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
 
         
@@ -105,3 +112,396 @@ public class Entrada {
     
   
 }
+    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }
