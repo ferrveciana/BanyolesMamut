@@ -17,13 +17,13 @@ public class TransportIndirecte{
         preu= new ArrayList();
     }
     
-    public int passarInt(String hora){
+    private int passarInt(String hora){
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = hora.split(delimitadors);
         return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
     }
     
-    public LocalTime passarHora(String hora){
+    private LocalTime passarHora(String hora){
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = hora.split(delimitadors);
         return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
