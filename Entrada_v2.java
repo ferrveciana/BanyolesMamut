@@ -152,6 +152,18 @@ public class Entrada {
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
     }
+    
+    /**
+     *
+     * @param data
+     * @pre l'string data es una data valida
+     * @return retorna la data obtinguda a partir de l'string 'data' en format LocalDate
+     */
+    private LocalDate passarData(String data){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = data.split(delimitadors);
+        return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
+    }
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
 
@@ -169,7 +181,7 @@ public class Entrada {
         
         String delimitadors= "[ :-]+";
         
-        HashMap<data,list> transportIndirecte;
+        HashMap<LocalDate,list<TransportIndirecte>> transportIndirecte;
         list<TransportIndirecte> llistaTransportIndirecte;
         
         TransportIndirecte nouTransport = new TransportIndirecte();
