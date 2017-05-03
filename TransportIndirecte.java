@@ -14,5 +14,16 @@ public class TransportIndirecte{
         durada=_durada;
         preu=_preu;
     }
-
+    
+    public void afegirHorari(LocalTime h){
+        horaris.add(h);
+    }
+    
+    public void afegirDurada(int temps){
+        durada.add(temps);
+    }
+    
+    public void afegirPreu(float _pr){
+        preu.add(_pr);
+    }
 }
