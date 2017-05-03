@@ -79,7 +79,7 @@ public class Entrada {
         llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
     }
 
-    public void associarPiLloc(String secundari,String primari) {
+    public void crearAssociarLloc(String secundari,String primari) {
         
         Lloc _lloc = llistaLlocs.get(primari);
         PuntInteres pi = llistaPInteres.get(secundari);
