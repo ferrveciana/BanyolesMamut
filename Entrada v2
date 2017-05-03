@@ -121,7 +121,7 @@ public class Entrada {
             horariRegular = nomFitxer.nextLine();
         }
         
-        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,caracteristica,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
+        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
@@ -155,35 +155,51 @@ public class Entrada {
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
 
-        list<TransportIndirecte> llistaTransportIndirecte;
-
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
         String tempsFinsOrigen = nomFitxer.nextLine(); 
         String tempsFinsDesti = nomFitxer.nextLine(); 
+        
         String data = nomFitxer.nextLine(); 
+        String dataTransport = data;
+        String horari;
+        String durada; 
+        String preu;
         
         String delimitadors= "[ :-]+";
-        HashMap<data,list> transportsIndirectes;
-       
-        while (sortida!="*"){
+        
+        HashMap<data,list> transportIndirecte;
+        list<TransportIndirecte> llistaTransportIndirecte;
+        
+        TransportIndirecte nouTransport = new TransportIndirecte();
+        
+        while (data.equals("*")){
+
+            String[] paraulesSeparades = horari.split(delimitadors);
+            horari = nomFitxer.nextLine();
             
-            String[] paraulesSeparades = data.split(delimitadors);
-            if (paraulesSeparades[1] > 24) {
-                transportsIndirectes.afegir(llistaHorari,llistaDurada,llistaPreu);
+            while (Integer.parseInt(paraulesSeparades[0]) > 24) or horari.equals("*")) {
+
+                durada = nomFitxer.nextLine();
+                preu = nomFitxer.nextLine(); 
+                
+                llistaTransportIndirecte.afegir(horari,durada,preu);
+                
+                horari = nomFitxer.nextLine();
             }
-            int durada = nomFitxer.nextLine(); 
-            float preu = nomFitxer.nextLine(); 
-
-            list_data_hora_sortida;.add(sortida);
-            list_durada.add(durada);
-            list_preu.add(preu);
-
-            sortida= nomFitxer.nextLine(); 
+            
+            mapaTransportsIndirecte.put(dataTransport,llistaTransportIndirecte);
+            llistaTransportIndirecte.clear();
+            nouTransport = new TransportIndirecte();
+            
+            if (horari.equals("*"))
+                break;    
+            else 
+                dataTransport = horari;
         }
 
-        agencia.crearTransportIndirecte(origen,desti,mitja,to,to,list_data_hora_sortida, list_durada, list_preu);
+        agencia.crearTransportIndirecte(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
     }
 
     private void entradaViatge(Scanner nomFitxer) {
