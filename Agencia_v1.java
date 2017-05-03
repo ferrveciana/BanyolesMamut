@@ -15,10 +15,11 @@ import java.util.Scanner;
  * @author aula
  */
 public class Entrada {
-
+   
+    private HashMap<String,Lloc> llistaLlocs;  
+    private HashMap<String,PuntInteres> llistaPInteres;
    
     private Map<String,Client> llistaClients;
-    private HashMap<String,Lloc> llistaLlocs;
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
 
