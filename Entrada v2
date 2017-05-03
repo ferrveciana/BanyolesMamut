@@ -155,19 +155,26 @@ public class Entrada {
 
     private void entradaTransportIndirecte(Scanner nomFitxer) {
 
-        List<LocalDateTime> list_data_hora_sortida;
-        List<Integer> list_durada;
-        List<Float> list_preu;
+        List<LocalTime> llistaHorari;
+        List<Integer> llistaDurada;
+        List<Float> llistaPreu;
 
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
-        int to = nomFitxer.nextLine(); 
-        int td = nomFitxer.nextLine(); 
-
-
-        LocalDateTime sortida= nomFitxer.nextLine(); 
+        String tempsFinsOrigen = nomFitxer.nextLine(); 
+        String tempsFinsDesti = nomFitxer.nextLine(); 
+        String data = nomFitxer.nextLine(); 
+        
+        String delimitadors= "[ :-]+";
+        map<data,TransportIndirecte> transportsIndirectes;
+       
         while (sortida!="*"){
+            
+            String[] paraulesSeparades = data.split(delimitadors);
+            if (paraulesSeparades[1] > 24) {
+                transportsIndirectes.afegir(llistaHorari,llistaDurada,llistaPreu);
+            }
             int durada = nomFitxer.nextLine(); 
             float preu = nomFitxer.nextLine(); 
 
