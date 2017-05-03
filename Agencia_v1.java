@@ -92,10 +92,11 @@ public class Entrada {
         }
     }
 
-    public void crearAssociarTransport(String lloc, String mitjaTransport, String durada, double preu) {
-
-       int tempsDurada = passarTemps(durada);
-       Lloc _lloc      
+    public void crearAssociarTransport(String _lloc,TransportUrba nomurba,String durada,double preu) {
+         
+       TransportUrba turba = new TransportUrba(nomurba,durada,preu);
+       Ciutat _ciutat = (Ciutat) (llistaLlocs.get(_lloc));
+       _ciutat.afegirTransport(turba); 
     }
 
     public void crearTransportDirecte(String origen, String desti, String mitja, String durada, double preu) {
