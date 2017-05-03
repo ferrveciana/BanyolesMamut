@@ -174,7 +174,7 @@ public class Entrada {
         String tempsFinsDesti = nomFitxer.nextLine(); 
         
         String data = nomFitxer.nextLine(); 
-        String dataTransport = data;
+        String dataTransport = passarData(data);
         String horari;
         String durada; 
         String preu;
@@ -209,7 +209,7 @@ public class Entrada {
             if (horari.equals("*"))
                 break;    
             else 
-                dataTransport = horari;
+                dataTransport = passarData(horari);
         }
 
         agencia.crearTransportIndirecte(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
