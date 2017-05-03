@@ -42,7 +42,7 @@ public class Entrada {
      * @pre l'string hora es una hora valida
      * @return retorna els minuts 
      */
-    private int passarInt(String hora){
+    private int passarTemps(String hora){
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = hora.split(delimitadors);
         return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
@@ -92,8 +92,10 @@ public class Entrada {
         }
     }
 
-    public void crearAssociarTransport(Scanner nomFitxer) {
+    public void crearAssociarTransport(String origen, String desti, String mitjaTransport, String durada, double preu) {
 
+       int tempsDurada = passarTemps(durada);
+       Lloc _lloc      
     }
 
     public void crearTransportDirecte(String origen, String desti, String mitja, String durada, double preu) {
