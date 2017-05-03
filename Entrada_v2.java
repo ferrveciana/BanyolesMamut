@@ -92,7 +92,7 @@ public class Entrada {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,categoria,preu,llistaCaracteristiques);
+        agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,preu,llistaCaracteristiques,categoria);
     }
 
     private void entradaVisitable(Scanner nomFitxer) {
@@ -121,7 +121,7 @@ public class Entrada {
             horariRegular = nomFitxer.nextLine();
         }
         
-        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,tempsVisitaRecomanat,preu,llistaCaracteristiques,llistaHoraris,llistaExcepcions);
+        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,preu,llistaCaracteristiques,llistaHoraris,tempsVisitaRecomanat,llistaExcepcions);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
