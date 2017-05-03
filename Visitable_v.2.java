@@ -26,10 +26,7 @@ public class Visitable extends PuntInteres {
     
     @Override
     public String tipus() {
-        String _tipus="Visitable";
-        if (horariVisites.isEmpty()) _tipus="Pas";
-       
-        return _tipus;
+        return "Visitable";
     }
     
 }
