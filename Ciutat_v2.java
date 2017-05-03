@@ -11,6 +11,8 @@ public class Ciutat extends Lloc {
     
    private List<TransportUrba> llistaUrbans;
    private List<PuntInteres> llistaPinteres;
+   private List<Hub> llistaHubs;
+
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
@@ -26,6 +28,10 @@ public class Ciutat extends Lloc {
     
     public void afegirPuntInteres(PuntInteres _pinteres){
         llistaPinteres.add(_pinteres);
+    }
+    
+    public void afegirHub(Hub _hub){
+        llistaHubs.add(_hub);
     }
     
 }
