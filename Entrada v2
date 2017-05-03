@@ -147,7 +147,7 @@ public class Entrada {
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
-        int durada = nomFitxer.nextLine(); 
+        String durada = nomFitxer.nextLine(); 
         double preu = nomFitxer.nextLine(); 
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
@@ -184,7 +184,8 @@ public class Entrada {
                 durada = nomFitxer.nextLine();
                 preu = nomFitxer.nextLine(); 
                 
-                llistaTransportIndirecte.afegir(horari,durada,preu);
+                nouTransport.afegir(horari,durada,preu);
+                llistaTransportIndirecte.add(nouTransport);
                 
                 horari = nomFitxer.nextLine();
             }
