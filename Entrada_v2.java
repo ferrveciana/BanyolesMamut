@@ -84,7 +84,10 @@ public class Entrada {
         string coordenades = nomFitxer.nextLine();
         String zonaHoraria = nomFitxer.nextLine();
         String categoria = nomFitxer.nextLine();
-        Double preu = nomFitxer.nextLine();
+        
+        String _preu = nomFitxer.nextLine();
+        double preu = double.parseDouble(_preu);
+        
         String caracteristica = nomFitxer.nextLine();
         List<String> llistaCaracteristiques;
         
@@ -93,6 +96,7 @@ public class Entrada {
             caracteristica = nomFitxer.nextLine();
         }
         agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,preu,llistaCaracteristiques,categoria);
+        nomFitxer.nextLine(); //Llegeix "*"
     }
 
     private void entradaVisitable(Scanner nomFitxer) {
@@ -101,7 +105,10 @@ public class Entrada {
         String coordenades = nomFitxer.nextLine();
         String zonaHoraria = nomFitxer.nextLine();
         String tempsVisitaRecomanat = nomFitxer.nextLine();
-        Double preu = nomFitxer.nextLine();
+        
+        String _preu = nomFitxer.nextLine();
+        double preu = double.parseDouble(_preu);
+        
         String caracteristica = nomFitxer.nextLine();
         List<String> llistaCaracteristiques;
         
@@ -125,21 +132,36 @@ public class Entrada {
     }
 
     private void entradaVisita(Scanner nomFitxer) {
-        //Falta throw <Client no trobat> / <lloc no trobat>
         
         String nomClient = nomFitxer.nextLine();
         String llocVisitat = nomFitxer.nextLine();
         String data = nomFitxer.nextLine();
         
         agencia.crearVisita(nomClient,llocVisitat,data);
+        nomFitxer.nextLine(); //Llegeix "*"
     }
 
     private void entradaAssociarLloc(Scanner nomFitxer) {
-
+        
+        String llocSecundari = nomFitxer.nextLine();
+        String llocPrimari = nomFitxer.nextLine();
+        
+        agencia.crearAssociarLloc(secundari,primari);
+        nomFitxer.nextLine(); //Llegeix "*"
     }
 
     private void entradaAssociarTransport(Scanner nomFitxer) {
 
+        String origen = nomFitxer.nextLine();
+        String desti = nomFitxer.nextLine();
+        String mitjaTransport = nomFitxer.nextLine();
+        String durada = nomFitxer.nextLine();
+        
+        String _preu = nextLine();
+        double preu = double.parseDouble(_preu);
+        
+        agencia.crearAssociarTransport(origen,desti,mitjaTransport,durada,preu);
+        nomFitxer.nextLine(); //Llegeix "*"
     }
 
     private void entradaTransportDirecte(Scanner nomFitxer) {
@@ -148,9 +170,11 @@ public class Entrada {
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
         String durada = nomFitxer.nextLine(); 
-        double preu = nomFitxer.nextLine(); 
+        String _preu = nextLine();
+        double preu = double.parseDouble(_preu);
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
+        nomFitxer.nextLine(); //Llegeix "*"
     }
     
     /**
