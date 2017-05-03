@@ -16,6 +16,12 @@ import java.util.Scanner;
  */
 public class Entrada {
 
+   
+    private Map<String,Client> llistaClients;
+    private HashMap<String,Lloc> llistaLlocs;
+    private List<Allotjament> llistaAllotjaments;
+    private List<Visitable> llistaVisitables;
+
     public void crearClient(String nomClient, List<String> llistaPreferencies) {
     
         Client client = new Client(nomClient,llistaPreferencies);
@@ -23,8 +29,10 @@ public class Entrada {
     }
     
     public void crearLloc(String nomLloc, String coordenades, String franjaHoraria) {
-    
-        agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
+        
+       Lloc nouLloc = new Lloc(nomLloc,coordenades,franjaHoraria);
+       llistaLlocs.put(nomLloc,nouLloc);
+        
     }
 
 
@@ -72,9 +80,5 @@ public class Entrada {
 
     } 
     
-    private Agencia agencia;
-    private Map<String,Client> llistaClients;
-    private Map<String,Lloc> llistaLlocs;
-    private List<Allotjament> llistaAllotjaments;
-    private List<Visitable> llistaVisitables;
+  
 }
