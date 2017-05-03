@@ -152,15 +152,14 @@ public class Entrada {
 
     private void entradaAssociarTransport(Scanner nomFitxer) {
 
-        String origen = nomFitxer.nextLine();
-        String desti = nomFitxer.nextLine();
+        String lloc = nomFitxer.nextLine();
         String mitjaTransport = nomFitxer.nextLine();
         String durada = nomFitxer.nextLine();
         
         String _preu = nextLine();
         double preu = double.parseDouble(_preu);
         
-        agencia.crearAssociarTransport(origen,desti,mitjaTransport,durada,preu);
+        agencia.crearAssociarTransport(lloc,mitjaTransport,durada,preu);
         nomFitxer.nextLine(); //Llegeix "*"
     }
 
