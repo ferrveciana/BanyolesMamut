@@ -22,6 +22,19 @@ public class Entrada {
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
 
+    
+     /**
+     *
+     * @param data
+     * @pre l'string data es una data valida
+     * @return retorna la data obtinguda a partir de l'string 'data' en format LocalDate
+     */
+    public LocalDate passarData(String data){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = data.split(delimitadors);
+        return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
+    }
+
     public void crearClient(String nomClient, List<String> llistaPreferencies) {
     
         Client client = new Client(nomClient,llistaPreferencies);
