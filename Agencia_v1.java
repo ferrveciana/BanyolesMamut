@@ -92,7 +92,7 @@ public class Entrada {
         }
     }
 
-    public void crearAssociarTransport(String origen, String desti, String mitjaTransport, String durada, double preu) {
+    public void crearAssociarTransport(String lloc, String mitjaTransport, String durada, double preu) {
 
        int tempsDurada = passarTemps(durada);
        Lloc _lloc      
