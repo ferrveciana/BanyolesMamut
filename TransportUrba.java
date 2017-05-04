@@ -6,9 +6,11 @@ public class TransportUrba {
     private final int durada;
     private final float preu;
     
-    public TransportUrba(String _lloc, String _mitja, int _durada, float _preu){
+    public TransportUrba(String _mitja, int _durada, float _preu){
         mitja=_mitja;
         durada=_durada;
         preu=_preu;
     }
+    
+    
 }
