@@ -116,19 +116,29 @@ public class Entrada {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        List<String> llistaHoraris;
-        List<String> llistaExcepcions;
-        String horariRegular = nomFitxer.nextLine();
+        ArrayList<String> llistaHoraris;
+        HashMap<String,DuesHores> llistaExcepcions;
         
-        //S'ha de refinar, entrada no tractada correctament!
+        String horariRegular = nomFitxer.nextLine();
+        String excepcio = horariRegular;
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = excepcio.split(delimitadors);
+        
+        
         while (!horariRegular.equals("*")) {
-            llistaHoraris.add(horariRegular);
+            if(paraulesSeparades[2].length()>2){ //no es excepcio
+                llistaHoraris.add(horariRegular);
+            }
+            else{ //excepcio
+                DuesHores dH(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
+                llistaExcepcions.put(paraulesSeparades[0]+" "+paraulesSeparades[1],dH);
+            }
             String excepcio = nomFitxer.nextLine();
             llistaExcepcions.add(excepcio);
             horariRegular = nomFitxer.nextLine();
         }
         
-        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,preu,llistaCaracteristiques,llistaHoraris,tempsVisitaRecomanat,llistaExcepcions);
+        agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,preu,llistaCaracteristiques,tempsVisitaRecomanat, llistaHoraris, llistaExcepcions);
     }
 
     private void entradaVisita(Scanner nomFitxer) {
