@@ -30,6 +30,10 @@ public class Ciutat extends Lloc {
         llistaPinteres.add(_pinteres);
     }
     
+    public PuntInteres getPI(int i){
+        return llistaPinteres[i];
+    }
+    
     public void afegirHub(Hub _hub){
         llistaHubs.add(_hub);
     }
