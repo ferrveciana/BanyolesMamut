@@ -99,6 +99,22 @@ public class Entrada {
         nomFitxer.nextLine(); //Llegeix "*"
     }
 
+    private Horari string2Horari(String _horari){
+        Horari h = new Horari();
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = _horari.split(delimitadors);
+        
+        h.mesIni=paraulesSeparades[0];
+        h.diaIni= Integer.parseInt(paraulesSeparades[1]);
+        h.mesFin=paraulesSeparades[2];
+        h.diaFin=Integer.parseInt(paraulesSeparades[3]);
+        h.horaIni= LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5]));
+        h.horaFi= LocalTime.of(Integer.parseInt(paraulesSeparades[6]),Integer.parseInt(paraulesSeparades[7]));        
+        
+        return  h;
+    }
+    
+    
     private void entradaVisitable(Scanner nomFitxer) {
 
         String nomLloc = nomFitxer.nextLine();
@@ -116,25 +132,22 @@ public class Entrada {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        ArrayList<String> llistaHoraris;
+        ArrayList<Horari> llistaHoraris;
         HashMap<String,DuesHores> llistaExcepcions;
         
         String horariRegular = nomFitxer.nextLine();
-        String excepcio = horariRegular;
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = excepcio.split(delimitadors);
         
         
         while (!horariRegular.equals("*")) {
             if(paraulesSeparades[2].length()>2){ //no es excepcio
-                llistaHoraris.add(horariRegular);
+                llistaHoraris.add(string2Horari(horariRegular)); //passem la string a Horari i l'afegim a la llista
             }
             else{ //excepcio
-                DuesHores dH(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
+                DuesHores = dH(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
                 llistaExcepcions.put(paraulesSeparades[0]+" "+paraulesSeparades[1],dH);
             }
-            String excepcio = nomFitxer.nextLine();
-            llistaExcepcions.add(excepcio);
             horariRegular = nomFitxer.nextLine();
         }
         
