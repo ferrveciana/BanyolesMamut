@@ -15,6 +15,7 @@ public class Agencia {
     private HashMap<String,Client> llistaClients;
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
+    private List<Viatge> llistaViatges;
 
     
      /**
@@ -109,6 +110,8 @@ public class Agencia {
 
     public void crearViatge(Scanner nomFitxer) {
 
+        Viatge viatge = new Viatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
+        llistaViatges.add(viatge); //NO SE SI S'HA DE FER AIXI, REALMENT CAL GUARDAR UNA TAULA? FAREM MÉS D'UN VIATGE???? 
     } 
     
   
