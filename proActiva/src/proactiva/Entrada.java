@@ -5,9 +5,13 @@
  */
 package proactiva;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 
 public class Entrada {
@@ -56,7 +60,8 @@ public class Entrada {
 
         String nomClient = nomFitxer.nextLine();
         String preferencia = nomFitxer.nextLine();
-        List<String> llistaPreferencies;
+        ArrayList<String> llistaPreferencies;
+        llistaPreferencies = new ArrayList<>();
         
         while (!preferencia.equals("*")) {
             llistaPreferencies.add(preferencia);
@@ -68,24 +73,24 @@ public class Entrada {
     private void entradaLloc(Scanner nomFitxer) {
     
         String nomLloc = nomFitxer.nextLine(); 
-        double coordenades = nomFitxer.nextLine();
+        String coordenades = nomFitxer.nextLine();
         TimeZone franjaHoraria = nomFitxer.nextLine();
-
+        TimeZone
         agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
     }
 
     private void entradaAllotjament(Scanner nomFitxer) {
     
         String nomAllotjament = nomFitxer.nextLine();
-        string coordenades = nomFitxer.nextLine();
+        String coordenades = nomFitxer.nextLine();
         String zonaHoraria = nomFitxer.nextLine();
         String categoria = nomFitxer.nextLine();
         
         String _preu = nomFitxer.nextLine();
-        double preu = double.parseDouble(_preu);
+        float preu = Float.parseFloat(_preu);
         
         String caracteristica = nomFitxer.nextLine();
-        List<String> llistaCaracteristiques;
+        ArrayList<String> llistaCaracteristiques = new ArrayList<>();
         
         while (!caracteristica.equals("*")) {
             llistaCaracteristiques.add(caracteristica);
@@ -95,18 +100,10 @@ public class Entrada {
         nomFitxer.nextLine(); //Llegeix "*"
     }
 
-    private Horari string2Horari(String _horari) {
-        
-        Horari h = new Horari();
+    private Horari string2Horari(String _horari){
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = _horari.split(delimitadors);
-        
-        h.mesIni=paraulesSeparades[0];
-        h.diaIni= Integer.parseInt(paraulesSeparades[1]);
-        h.mesFin=paraulesSeparades[2];
-        h.diaFin=Integer.parseInt(paraulesSeparades[3]);
-        h.horaIni= LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5]));
-        h.horaFi= LocalTime.of(Integer.parseInt(paraulesSeparades[6]),Integer.parseInt(paraulesSeparades[7]));        
+        Horari h= new Horari(paraulesSeparades[0], Integer.parseInt(paraulesSeparades[1]), paraulesSeparades[2], Integer.parseInt(paraulesSeparades[3]), LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])), LocalTime.of(Integer.parseInt(paraulesSeparades[6]),Integer.parseInt(paraulesSeparades[7])));
         
         return  h;
     }
@@ -120,21 +117,21 @@ public class Entrada {
         String tempsVisitaRecomanat = nomFitxer.nextLine();
         
         String _preu = nomFitxer.nextLine();
-        double preu = double.parseDouble(_preu);
+        float preu = Float.parseFloat(_preu);
         
         String caracteristica = nomFitxer.nextLine();
-        List<String> llistaCaracteristiques;
+        ArrayList<String> llistaCaracteristiques= new ArrayList<>();
         
         while (!caracteristica.equals("*")) {
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
-        ArrayList<Horari> llistaHoraris;
-        HashMap<String,DuesHores> llistaExcepcions;
+        ArrayList<Horari> llistaHoraris = new ArrayList<>();
+        HashMap<String,DuesHores> llistaExcepcions = new HashMap<>();
         
         String horariRegular = nomFitxer.nextLine();
         String delimitadors= "[ :-]+";
-        String[] paraulesSeparades = excepcio.split(delimitadors);
+        String[] paraulesSeparades = horariRegular.split(delimitadors);
         
         
         while (!horariRegular.equals("*")) {
@@ -142,7 +139,7 @@ public class Entrada {
                 llistaHoraris.add(string2Horari(horariRegular)); //passem la string a Horari i l'afegim a la llista
             }
             else{ //excepcio
-                DuesHores = dH(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
+                DuesHores dH = new DuesHores(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
                 llistaExcepcions.put(paraulesSeparades[0]+" "+paraulesSeparades[1],dH);
             }
             horariRegular = nomFitxer.nextLine();
@@ -163,8 +160,8 @@ public class Entrada {
 
     private void entradaAssociarLloc(Scanner nomFitxer) {
         
-        String llocSecundari = nomFitxer.nextLine();
-        String llocPrimari = nomFitxer.nextLine();
+        String secundari = nomFitxer.nextLine();
+        String primari = nomFitxer.nextLine();
         
         agencia.crearAssociarLloc(secundari,primari);
         nomFitxer.nextLine(); //Llegeix "*"
@@ -176,8 +173,8 @@ public class Entrada {
         String mitjaTransport = nomFitxer.nextLine();
         String durada = nomFitxer.nextLine();
         
-        String _preu = nextLine();
-        double preu = double.parseDouble(_preu);
+        String _preu = nomFitxer.nextLine();
+        float preu = Float.parseFloat(_preu);
         
         agencia.crearAssociarTransport(lloc,mitjaTransport,durada,preu);
         nomFitxer.nextLine(); //Llegeix "*"
@@ -189,8 +186,8 @@ public class Entrada {
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
         String durada = nomFitxer.nextLine(); 
-        String _preu = nextLine();
-        double preu = double.parseDouble(_preu);
+        String _preu = nomFitxer.nextLine();
+        float preu = Float.parseFloat(_preu);
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
         nomFitxer.nextLine(); //Llegeix "*"
@@ -224,8 +221,8 @@ public class Entrada {
         
         String delimitadors= "[ :-]+";
         
-        HashMap<LocalDate,list<TransportIndirecte>> transportIndirecte;
-        list<TransportIndirecte> llistaTransportIndirecte;
+        HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte = new HashMap<>();
+        ArrayList<TransportIndirecte> llistaTransportIndirecte = new ArrayList<>();
         
         TransportIndirecte nouTransport = new TransportIndirecte();
         
@@ -234,18 +231,18 @@ public class Entrada {
             String[] paraulesSeparades = horari.split(delimitadors);
             horari = nomFitxer.nextLine();
             
-            while (Integer.parseInt(paraulesSeparades[0]) > 24) or horari.equals("*")) {
+            while((Integer.parseInt(paraulesSeparades[0]) > 24) || (horari.equals("*"))){
 
                 durada = nomFitxer.nextLine();
                 preu = nomFitxer.nextLine(); 
-                
+                Integer.parseInt(preu);
                 nouTransport.afegir(horari,durada,preu);
                 llistaTransportIndirecte.add(nouTransport);
                 
                 horari = nomFitxer.nextLine();
             }
             
-            mapaTransportsIndirecte.put(dataTransport,llistaTransportIndirecte);
+            transportIndirecte.put(dataTransport,llistaTransportIndirecte);
             llistaTransportIndirecte.clear();
             nouTransport = new TransportIndirecte();
             
@@ -259,7 +256,6 @@ public class Entrada {
     }
 
     private void entradaViatge(Scanner nomFitxer) {
-        
         String dataI = nomFitxer.nextLine();
         LocalDate dataInici = passarData(dataI);
         
@@ -290,18 +286,7 @@ public class Entrada {
     } 
     
     private Agencia agencia;
+    } 
+    
+    private Agencia agencia;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

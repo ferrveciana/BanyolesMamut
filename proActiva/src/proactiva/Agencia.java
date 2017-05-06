@@ -1,6 +1,7 @@
 
 package proactiva;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -54,13 +55,13 @@ public class Agencia {
     }
 
 
-    public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,int _categoria) {
+    public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, ArrayList<String> _caract,String _categoria) {
         
         Allotjament nouAllotjament = new Allotjament(_nom,_coordenada,_zonaHoraria,_preu,_caract,_categoria);
         llistaPInteres.put(_nom,nouAllotjament);
     }
 
-    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,List<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
+    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, ArrayList<String> _caract, ArrayList<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
         
         Visitable nouVisitable = new Visitable(_nom,_coordenada,_zonaHoraria,_preu, _caract,_horariVisites, _tempsVisita,_excepcions);
         llistaPInteres.put(_nom,nouVisitable);

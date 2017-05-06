@@ -39,7 +39,7 @@ public class Horari {
         diaIni= Integer.parseInt(paraulesSeparades[1]);
     }
 
-    private Horari() {
+    public Horari() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
