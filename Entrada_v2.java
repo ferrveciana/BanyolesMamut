@@ -262,9 +262,57 @@ public class Entrada {
     }
 
     private void entradaViatge(Scanner nomFitxer) {
-
+        
+        String dataI = nomFitxer.nextLine();
+        LocalDate dataInici = passarData(dataI);
+        
+        String horaInici = nomFitxer.nextLine();
+        int nombreDies = Integer.parseInt(nomFitxer.nextLine());
+        double preuMaxim = Double.parseDouble(nomFitxer.nextLine());
+        String categoria = nomFitxer.nextLine();
+        
+        ArrayList<String> clients;
+        String client = nomFitxer.nextLine();
+        
+        while (!client.equal("*")) {
+            
+            clients.add(client);
+            client = nomFitxer.nextLine();
+        }
+        
+        ArrayList<String> rutes;
+        String ruta = nomFitxer.nextLine();
+        
+        while (!ruta.equal("*")) {
+            
+            rutes.add(ruta);
+            ruta = nomFitxer.nextLine();
+        }
+        
+        agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
     } 
     
     private Agencia agencia;
 }
+    
+    private Agencia agencia;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
