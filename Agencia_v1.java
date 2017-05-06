@@ -114,8 +114,10 @@ public class Entrada {
         
     }
 
-    public void crearViatge(Scanner nomFitxer) {
+    public void crearEntradaViatge(Scanner nomFitxer) {
 
+       /////////////////////////GUARDAR DADES DEL VIATGE PER FER - GUARDAR-LES EN AQUESTA MATEIXA CLASSE? GUARDAR EN CLASSE VIATGE? CAL? 
+       /////////////////////////PER ACABAR!!!!
     } 
     
   
