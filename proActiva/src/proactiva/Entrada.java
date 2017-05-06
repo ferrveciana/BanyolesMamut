@@ -108,6 +108,12 @@ public class Entrada {
         return  h;
     }
     
+    private LocalTime passarHora(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
+    }
+    
     
     private void entradaVisitable(Scanner nomFitxer) {
 
@@ -171,7 +177,8 @@ public class Entrada {
 
         String lloc = nomFitxer.nextLine();
         String mitjaTransport = nomFitxer.nextLine();
-        String durada = nomFitxer.nextLine();
+        String _durada = nomFitxer.nextLine();
+        int durada=Integer.parseInt(_durada);
         
         String _preu = nomFitxer.nextLine();
         float preu = Float.parseFloat(_preu);
@@ -214,8 +221,8 @@ public class Entrada {
         String tempsFinsDesti = nomFitxer.nextLine(); 
         
         String data = nomFitxer.nextLine(); 
-        String dataTransport = passarData(data);
-        String horari;
+        LocalDate dataTransport = passarData(data);
+        String horari = new Horari();
         String durada; 
         String preu;
         
@@ -259,24 +266,25 @@ public class Entrada {
         String dataI = nomFitxer.nextLine();
         LocalDate dataInici = passarData(dataI);
         
-        String horaInici = nomFitxer.nextLine();
+        String _horaInici = nomFitxer.nextLine();
+        LocalTime horaInici = passarHora(_horaInici);
         int nombreDies = Integer.parseInt(nomFitxer.nextLine());
-        double preuMaxim = Double.parseDouble(nomFitxer.nextLine());
+        float preuMaxim = Float.parseFloat(nomFitxer.nextLine());
         String categoria = nomFitxer.nextLine();
         
-        ArrayList<String> clients;
+        ArrayList<String> clients = new ArrayList<>();
         String client = nomFitxer.nextLine();
         
-        while (!client.equal("*")) {
+        while (!client.equals("*")) {
             
             clients.add(client);
             client = nomFitxer.nextLine();
         }
         
-        ArrayList<String> rutes;
+        ArrayList<String> rutes = new ArrayList<>();
         String ruta = nomFitxer.nextLine();
         
-        while (!ruta.equal("*")) {
+        while (!ruta.equals("*")) {
             
             rutes.add(ruta);
             ruta = nomFitxer.nextLine();

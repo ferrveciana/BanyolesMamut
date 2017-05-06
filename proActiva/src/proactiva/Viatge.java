@@ -1,18 +1,21 @@
 package proactiva;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class Viatge {
 
-  private List<String> clients;
-  private List<String> rutes;
-  private 
+  private ArrayList<String> clients;
+  private ArrayList<String> rutes;
+  private LocalDate dataInici;
+  private LocalTime horaInici;
+  private int nombreDies;
+  private float preuMaxim;
+  private String categoria;
   
-  public Viatge (LocalDate _dataInici, String _horaInici, int _nombreDies, double _preuMaxim, String _categoria, List<String> _clients, List<String> _rutes) {
+  
+  public Viatge (LocalDate _dataInici, LocalTime _horaInici, int _nombreDies, float _preuMaxim, String _categoria, ArrayList<String> _clients, ArrayList<String> _rutes) {
         
       dataInici = _dataInici;
       horaInici = _horaInici;

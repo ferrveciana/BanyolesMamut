@@ -1,6 +1,8 @@
 
 package proactiva;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +17,7 @@ public class Agencia {
     private HashMap<String,Client> llistaClients;
     private List<Allotjament> llistaAllotjaments;
     private List<Visitable> llistaVisitables;
-    private List<Viatge> llistaViatges;
+    private Viatge llistaViatges;
 
     
      /**
@@ -86,9 +88,9 @@ public class Agencia {
         }
     }
 
-    public void crearAssociarTransport(String _lloc,TransportUrba nomurba,String durada,double preu) {
+    public void crearAssociarTransport(String _lloc,String mitja,int durada,float preu) {
          
-       TransportUrba turba = new TransportUrba(nomurba,durada,preu);
+       TransportUrba turba = new TransportUrba(_lloc,mitja,durada,preu);
        Ciutat _ciutat = (Ciutat) (llistaLlocs.get(_lloc));
        _ciutat.afegirTransport(turba); 
     }
@@ -108,10 +110,9 @@ public class Agencia {
         
     }
 
-    public void crearViatge(Scanner nomFitxer) {
+    public void crearEntradaViatge(LocalDate dataInici, LocalTime horaInici,int nombreDies,float preuMaxim, String categoria, ArrayList<String> clients, ArrayList<String> rutes) {
 
         Viatge viatge = new Viatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
-        llistaViatges.add(viatge); //NO SE SI S'HA DE FER AIXI, REALMENT CAL GUARDAR UNA TAULA? FAREM MÉS D'UN VIATGE???? 
     } 
     
   
