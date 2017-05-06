@@ -284,9 +284,15 @@ public class Entrada {
         
         agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
     } 
-    
-    private Agencia agencia;
-    } 
+   
     
     private Agencia agencia;
 }
+
+
+
+
+
+
+
+
