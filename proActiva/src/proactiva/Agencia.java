@@ -102,7 +102,7 @@ public class Agencia {
 
     }
 
-    public void crearTransportIndirecte(String origen, String desti, String mitja, String tempsFinsOrigen, String tempsFinsDesti, HashMap<String,List<TransportIndirecte>> transportIndirecte) {
+    public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
 
         Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
         llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);

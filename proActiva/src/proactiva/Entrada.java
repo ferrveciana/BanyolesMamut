@@ -115,6 +115,13 @@ public class Entrada {
     }
     
     
+    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }
+    
+    
     private void entradaVisitable(Scanner nomFitxer) {
 
         String nomLloc = nomFitxer.nextLine();
@@ -217,12 +224,14 @@ public class Entrada {
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
-        String tempsFinsOrigen = nomFitxer.nextLine(); 
-        String tempsFinsDesti = nomFitxer.nextLine(); 
+        String _tempsFinsOrigen = nomFitxer.nextLine(); 
+        int tempsFinsOrigen = passarInt(_tempsFinsOrigen);
+        String _tempsFinsDesti = nomFitxer.nextLine(); 
+        int tempsFinsDesti = passarInt(_tempsFinsDesti);
         
         String data = nomFitxer.nextLine(); 
         LocalDate dataTransport = passarData(data);
-        String horari = new Horari();
+        String horari;
         String durada; 
         String preu;
         
@@ -235,8 +244,8 @@ public class Entrada {
         
         while (data.equals("*")){
 
-            String[] paraulesSeparades = horari.split(delimitadors);
             horari = nomFitxer.nextLine();
+            String[] paraulesSeparades = horari.split(delimitadors);
             
             while((Integer.parseInt(paraulesSeparades[0]) > 24) || (horari.equals("*"))){
 
