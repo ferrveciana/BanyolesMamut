@@ -22,5 +22,9 @@ public class Viatge {
       clients = _clients;
       rutes = _rutes;
   }
-  
 }
+
+
+
+
+
