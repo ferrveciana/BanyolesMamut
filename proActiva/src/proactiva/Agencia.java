@@ -78,13 +78,17 @@ public class Agencia {
         
         Lloc _lloc = llistaLlocs.get(primari);
         PuntInteres pi = llistaPInteres.get(secundari);
-        if (_lloc instanceof Ciutat){
-            ((Ciutat) _lloc).afegirPuntInteres(pi);
+       
+        Ciutat ciutat;
+        if (_lloc instanceof Ciutat){ //previement convertit a ciutat 
+            ciutat = (Ciutat) _lloc;
         }
-        else{
-           Ciutat _ciutat = _lloc.ferCiutat(pi);
-           llistaLlocs.put(primari,_ciutat);
+        else {
+            ciutat = _lloc.ferCiutat(pi);
+            llistaLlocs.put(primari,ciutat); //substituir Lloc -> ciutat
         }
+        ciutat.afegirPuntInteres(pi);
+        pi.setCiutat(ciutat);
     }
 
     public void crearAssociarTransport(String _lloc,String mitja,int durada,float preu) {
