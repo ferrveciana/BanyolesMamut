@@ -1,6 +1,7 @@
 package proactiva;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.TimeZone;
 
 /**
@@ -9,16 +10,17 @@ import java.util.TimeZone;
  */
 public class Ciutat extends Lloc {
     
-   private ArrayList<TransportUrba> llistaUrbans;
-   private ArrayList<PuntInteres> llistaPinteres;
-   private ArrayList<Hub> llistaHubs;
-
+   private LinkedList<TransportUrba> llistaUrbans;
+   private LinkedList<PuntInteres> llistaPinteres;
+   private List<Hub> llistaHubs;
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
+        llistaPinteres = new LinkedList<PuntInteres>();
+        llistaUrbans = new LinkedList<TransportUrba>();
     }
    
-    public ArrayList<TransportUrba> obtenirTransports(){ 
+    public List<TransportUrba> obtenirTransports(){ 
         return llistaUrbans;
     }
     
@@ -30,8 +32,8 @@ public class Ciutat extends Lloc {
         llistaPinteres.add(_pinteres);
     }
     
-    public PuntInteres getPI(int i){
-        return llistaPinteres.get(i);
+    public LinkedList<PuntInteres> obtenirPuntInteres(){
+        return llistaPinteres;
     }
     
     public void afegirHub(Hub _hub){
