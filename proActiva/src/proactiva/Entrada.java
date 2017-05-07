@@ -74,8 +74,8 @@ public class Entrada {
     
         String nomLloc = nomFitxer.nextLine(); 
         String coordenades = nomFitxer.nextLine();
-        TimeZone franjaHoraria = nomFitxer.nextLine();
-        TimeZone
+        String _franjaHoraria = nomFitxer.nextLine();
+        TimeZone franjaHoraria = TimeZone.getTimeZone(_franjaHoraria);
         agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
     }
 
@@ -83,7 +83,8 @@ public class Entrada {
     
         String nomAllotjament = nomFitxer.nextLine();
         String coordenades = nomFitxer.nextLine();
-        String zonaHoraria = nomFitxer.nextLine();
+        String _zonaHoraria = nomFitxer.nextLine();
+        TimeZone zonaHoraria = TimeZone.getTimeZone(_zonaHoraria);
         String categoria = nomFitxer.nextLine();
         
         String _preu = nomFitxer.nextLine();
@@ -199,7 +200,7 @@ public class Entrada {
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
-        String durada = nomFitxer.nextLine(); 
+        int durada = Integer.parseInt(nomFitxer.nextLine()); 
         String _preu = nomFitxer.nextLine();
         float preu = Float.parseFloat(_preu);
 

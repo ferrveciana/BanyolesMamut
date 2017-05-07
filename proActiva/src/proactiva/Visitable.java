@@ -5,9 +5,9 @@
  */
 package proactiva;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.SortedMap;
 import java.util.TimeZone;
 
 /**
@@ -22,10 +22,11 @@ public class Visitable extends PuntInteres {
     private HashMap<String,DuesHores> excepcions;
 
 
-    public Visitable(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,List<Horari> _horariVisites, int _tempsVisita) {
+    public Visitable(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract, ArrayList<Horari> _horariVisites, int _tempsVisita, HashMap<String,DuesHores> _excepcions) {
         super(_nom, _coordenada, _zonaHoraria, _preu, _caract);
         horariVisites=_horariVisites;
         tempsVisita=_tempsVisita;
+        excepcions=_excepcions;
         
     }
     

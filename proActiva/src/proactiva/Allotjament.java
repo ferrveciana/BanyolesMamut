@@ -9,9 +9,9 @@ import java.util.TimeZone;
  */
 public class Allotjament extends PuntInteres{
   
-    private final int categoria;
+    private final String categoria;
 
-    public Allotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,int _categoria){
+    public Allotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,String _categoria){
         
         super(_nom, _coordenada, _zonaHoraria, _preu, _caract);
         categoria = _categoria;

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 public class Agencia {
    
@@ -50,21 +51,20 @@ public class Agencia {
         llistaClients.add(client);
     }
     
-    public void crearLloc(String nomLloc, String coordenades, String franjaHoraria) {
+    public void crearLloc(String nomLloc, String coordenades, TimeZone franjaHoraria) {
         
        Lloc nouLloc = new Lloc(nomLloc,coordenades,franjaHoraria);
        llistaLlocs.put(nomLloc,nouLloc);
-        
     }
 
 
-    public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, ArrayList<String> _caract,String _categoria) {
+    public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract,String _categoria) {
         
         Allotjament nouAllotjament = new Allotjament(_nom,_coordenada,_zonaHoraria,_preu,_caract,_categoria);
         llistaPInteres.put(_nom,nouAllotjament);
     }
 
-    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, ArrayList<String> _caract, ArrayList<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
+    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract, ArrayList<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
         
         Visitable nouVisitable = new Visitable(_nom,_coordenada,_zonaHoraria,_preu, _caract,_horariVisites, _tempsVisita,_excepcions);
         llistaPInteres.put(_nom,nouVisitable);
@@ -95,7 +95,7 @@ public class Agencia {
        _ciutat.afegirTransport(turba); 
     }
 
-    public void crearTransportDirecte(String origen, String desti, String mitja, String durada, double preu) {
+    public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
 
         TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
         llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
