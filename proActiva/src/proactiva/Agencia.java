@@ -97,14 +97,14 @@ public class Agencia {
     public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
 
         TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
-        llistaLlocs.get(origen).afegirMitjaTransportDirecte(tdirecte);
+        llistaLlocs.get(origen).afegirTransportDirecte(tdirecte);
 
     }
 
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
 
         Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
-        llistaLlocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
+        llistaLlocs.get(origen).afegirHub(hub);
 
         
     }
