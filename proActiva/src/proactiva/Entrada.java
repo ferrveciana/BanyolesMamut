@@ -127,8 +127,9 @@ public class Entrada {
 
         String nomLloc = nomFitxer.nextLine();
         String coordenades = nomFitxer.nextLine();
-        String zonaHoraria = nomFitxer.nextLine();
-        String tempsVisitaRecomanat = nomFitxer.nextLine();
+        String _zonaHoraria = nomFitxer.nextLine();
+        TimeZone zonaHoraria = TimeZone.getTimeZone(_zonaHoraria);
+        int tempsVisitaRecomanat = Integer.parseInt(nomFitxer.nextLine());
         
         String _preu = nomFitxer.nextLine();
         float preu = Float.parseFloat(_preu);
@@ -166,7 +167,7 @@ public class Entrada {
         
         String nomClient = nomFitxer.nextLine();
         String llocVisitat = nomFitxer.nextLine();
-        String data = nomFitxer.nextLine();
+        LocalDate data = passarData(nomFitxer.nextLine());
         
         agencia.crearVisita(nomClient,llocVisitat,data);
         nomFitxer.nextLine(); //Llegeix "*"

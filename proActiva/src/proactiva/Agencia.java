@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.TimeZone;
@@ -16,8 +15,8 @@ public class Agencia {
     private HashMap<String,PuntInteres> llistaPInteres;
    
     private HashMap<String,Client> llistaClients;
-    private List<Allotjament> llistaAllotjaments;
-    private List<Visitable> llistaVisitables;
+    private ArrayList<Allotjament> llistaAllotjaments;
+    private ArrayList<Visitable> llistaVisitables;
     private Viatge llistaViatges;
 
     
@@ -45,10 +44,10 @@ public class Agencia {
         return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
     }
 
-    public void crearClient(String nomClient, List<String> llistaPreferencies) {
+    public void crearClient(String nomClient, ArrayList<String> llistaPreferencies) {
     
         Client client = new Client(nomClient,llistaPreferencies);
-        llistaClients.add(client);
+        llistaClients.put(nomClient,client);
     }
     
     public void crearLloc(String nomLloc, String coordenades, TimeZone franjaHoraria) {
@@ -64,13 +63,13 @@ public class Agencia {
         llistaPInteres.put(_nom,nouAllotjament);
     }
 
-    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract, ArrayList<Horari> _horariVisites, int _tempsVisita,HashMap<String,DuesHores> _excepcions) {
+    public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract, int _tempsVisita, ArrayList<Horari> _horariVisites, HashMap<String,DuesHores> _excepcions) {
         
         Visitable nouVisitable = new Visitable(_nom,_coordenada,_zonaHoraria,_preu, _caract,_horariVisites, _tempsVisita,_excepcions);
         llistaPInteres.put(_nom,nouVisitable);
     }
 
-    public void crearVisita(Scanner nomFitxer) {
+    public void crearVisita(String nomClient,String llocVisitat,LocalDate data) {
 
         llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
     }
@@ -105,7 +104,7 @@ public class Agencia {
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
 
         Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
-        llistaLLocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
+        llistaLlocs.get(origen).afegirMitjaTransportIndirecte(tindirecte);
 
         
     }

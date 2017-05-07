@@ -1,6 +1,6 @@
 package proactiva;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.TimeZone;
 
 /**
@@ -9,16 +9,16 @@ import java.util.TimeZone;
  */
 public class Ciutat extends Lloc {
     
-   private List<TransportUrba> llistaUrbans;
-   private List<PuntInteres> llistaPinteres;
-   private List<Hub> llistaHubs;
+   private ArrayList<TransportUrba> llistaUrbans;
+   private ArrayList<PuntInteres> llistaPinteres;
+   private ArrayList<Hub> llistaHubs;
 
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
     }
    
-    public List<TransportUrba> obtenirTransports(){ 
+    public ArrayList<TransportUrba> obtenirTransports(){ 
         return llistaUrbans;
     }
     
