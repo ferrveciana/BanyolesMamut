@@ -1,0 +1,293 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package proactiva;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.TimeZone;
+
+
+public class Entrada {
+
+    public Entrada(Scanner nomFitxer) {
+        
+        nomFitxer.useLocale(Locale.US);
+        String codiOperacio;
+
+        while (nomFitxer.hasNext()) {
+            codiOperacio = nomFitxer.nextLine();
+            System.out.println("CODI D'OPERACIO LLEGIT: " + codiOperacio);
+            
+            if (codiOperacio.equals("client"))
+                entradaClient(nomFitxer);
+            
+            else if (codiOperacio.equals("lloc"))
+                entradaLloc(nomFitxer);
+            
+            else if (codiOperacio.equals("allotjament"))
+                entradaAllotjament(nomFitxer);
+            
+            else if (codiOperacio.equals("lloc visitable"))
+                entradaVisitable(nomFitxer);
+            
+            else if (codiOperacio.equals("visita"))
+                entradaVisita(nomFitxer);
+            
+            else if (codiOperacio.equals("associar lloc"))
+                entradaAssociarLloc(nomFitxer);
+            
+            else if (codiOperacio.equals("associar transport"))
+                entradaAssociarTransport(nomFitxer);
+            
+            else if (codiOperacio.equals("transport directe"))
+                entradaTransportDirecte(nomFitxer);
+            
+            else if (codiOperacio.equals("transport indirecte"))
+                entradaTransportIndirecte(nomFitxer);
+            
+            else if (codiOperacio.equals("viatge"))
+                entradaViatge(nomFitxer);
+        }
+    }
+
+    private void entradaClient(Scanner nomFitxer) {
+
+        String nomClient = nomFitxer.nextLine();
+        System.out.println("CLIENT: " + nomClient);
+        
+        ArrayList<String> llistaPreferencies = new ArrayList<>();
+        
+        String preferencia = nomFitxer.nextLine();
+        
+        while (!preferencia.equals("*")) {
+            System.out.println("PREFERENCIA: " + preferencia);
+            llistaPreferencies.add(preferencia);
+            preferencia = nomFitxer.nextLine();
+        }
+        //agencia.crearClient(nomClient,llistaPreferencies);
+    }
+
+    private void entradaLloc(Scanner nomFitxer) {
+    
+        String nomLloc = nomFitxer.nextLine(); 
+        System.out.println("LLOC: " + nomLloc);
+        String coordenades = nomFitxer.nextLine();
+        System.out.println("COORDENADES: " + coordenades);
+        String _franjaHoraria = nomFitxer.nextLine();
+        
+        TimeZone franjaHoraria = TimeZone.getTimeZone(_franjaHoraria);
+        System.out.println("FRANJA: " + franjaHoraria);
+        
+        //agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
+    }
+
+    private void entradaAllotjament(Scanner nomFitxer) {
+    
+        String nomAllotjament = nomFitxer.nextLine();
+        System.out.println("ALLOTJAMENT: " + nomAllotjament);
+        String coordenades = nomFitxer.nextLine();
+        System.out.println("COORDENADES: " + coordenades);
+        String _zonaHoraria = nomFitxer.nextLine();
+        System.out.println("FRANJA: " + _zonaHoraria);
+        TimeZone zonaHoraria = TimeZone.getTimeZone(_zonaHoraria);
+        String categoria = nomFitxer.nextLine();
+        System.out.println("CATEGORIA: " + categoria);
+        
+        String _preu = nomFitxer.nextLine();
+        float preu = Float.parseFloat(_preu);
+        
+        String caracteristica = nomFitxer.nextLine();
+        ArrayList<String> llistaCaracteristiques = new ArrayList<>();
+        
+        while (!caracteristica.equals("*")) {
+            System.out.println("CARACTERISTICA: " + caracteristica);
+            llistaCaracteristiques.add(caracteristica);
+            caracteristica = nomFitxer.nextLine();
+        }
+        agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,preu,llistaCaracteristiques,categoria);
+    }
+
+    private Horari string2Horari(String _horari){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = _horari.split(delimitadors);
+        Horari h= new Horari(paraulesSeparades[0], Integer.parseInt(paraulesSeparades[1]), paraulesSeparades[2], Integer.parseInt(paraulesSeparades[3]), LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])), LocalTime.of(Integer.parseInt(paraulesSeparades[6]),Integer.parseInt(paraulesSeparades[7])));
+        
+        return  h;
+    }
+    
+    private LocalTime passarHora(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
+    }
+    
+    
+    private int passarInt(String hora){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
+    }
+    
+    
+    private void entradaVisitable(Scanner nomFitxer) {
+
+     
+    }
+
+    private void entradaVisita(Scanner nomFitxer) {
+        
+        String nomClient = nomFitxer.nextLine();
+        System.out.println("CLIENT: " + nomClient);
+        String llocVisitat = nomFitxer.nextLine();
+        System.out.println("VISITAT: " + llocVisitat);
+        LocalDate data = passarData(nomFitxer.nextLine());
+        System.out.println("DATA: " + data);
+        
+        agencia.crearVisita(nomClient,llocVisitat,data);
+    }
+
+    private void entradaAssociarLloc(Scanner nomFitxer) {
+        
+        String secundari = nomFitxer.nextLine();
+        System.out.println("SECUNDARI: " + secundari);
+        String primari = nomFitxer.nextLine();
+        System.out.println("PRIMARI: " + primari);
+        
+        agencia.crearAssociarLloc(secundari,primari);
+    }
+
+    private void entradaAssociarTransport(Scanner nomFitxer) {
+
+        String lloc = nomFitxer.nextLine();
+        System.out.println("LLOC: " + lloc);
+        String mitjaTransport = nomFitxer.nextLine();
+        System.out.println("MITJA DE TRANSPORT: " + mitjaTransport);
+        int durada = Integer.parseInt(nomFitxer.nextLine());
+        System.out.println("DURADA: " + durada);
+        float preu = Float.parseFloat(nomFitxer.nextLine());
+        System.out.println("PREU: " + preu);
+        
+        agencia.crearAssociarTransport(lloc,mitjaTransport,durada,preu);
+    }
+
+    private void entradaTransportDirecte(Scanner nomFitxer) {
+
+        String origen = nomFitxer.nextLine(); 
+        System.out.println("ORIGEN: " + origen);
+        String desti = nomFitxer.nextLine(); 
+        System.out.println("DESTI: " + desti);
+        String mitja = nomFitxer.nextLine();
+        System.out.println("MITJA: " + mitja);
+        int durada = Integer.parseInt(nomFitxer.nextLine()); 
+        System.out.println("DURADA: " + durada);
+        float preu = Float.parseFloat(nomFitxer.nextLine());
+        System.out.println("PREU: " + preu);;
+
+        agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
+    }
+    
+    /**
+     *
+     * @param data
+     * @pre l'string data es una data valida
+     * @return retorna la data obtinguda a partir de l'string 'data' en format LocalDate
+     */
+    private LocalDate passarData(String data){
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = data.split(delimitadors);
+        return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
+    }
+
+    private void entradaTransportIndirecte(Scanner nomFitxer) {
+
+        String origen = nomFitxer.nextLine(); 
+        String desti = nomFitxer.nextLine(); 
+        String mitja = nomFitxer.nextLine(); 
+        String _tempsFinsOrigen = nomFitxer.nextLine(); 
+        int tempsFinsOrigen = passarInt(_tempsFinsOrigen);
+        String _tempsFinsDesti = nomFitxer.nextLine(); 
+        int tempsFinsDesti = passarInt(_tempsFinsDesti);
+        
+        String data = nomFitxer.nextLine(); 
+        LocalDate dataTransport = passarData(data);
+        String horari;
+        String durada; 
+        String preu;
+        
+        String delimitadors= "[ :-]+";
+        
+        HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte = new HashMap<>();
+        ArrayList<TransportIndirecte> llistaTransportIndirecte = new ArrayList<>();
+        
+        TransportIndirecte nouTransport = new TransportIndirecte();
+        
+        while (data.equals("*")){
+
+            horari = nomFitxer.nextLine();
+            String[] paraulesSeparades = horari.split(delimitadors);
+            
+            while((Integer.parseInt(paraulesSeparades[0]) > 24) || (horari.equals("*"))){
+
+                durada = nomFitxer.nextLine();
+                preu = nomFitxer.nextLine(); 
+                Integer.parseInt(preu);
+                nouTransport.afegir(horari,durada,preu);
+                llistaTransportIndirecte.add(nouTransport);
+                
+                horari = nomFitxer.nextLine();
+            }
+            
+            transportIndirecte.put(dataTransport,llistaTransportIndirecte);
+            llistaTransportIndirecte.clear();
+            nouTransport = new TransportIndirecte();
+            
+            if (horari.equals("*"))
+                break;    
+            else 
+                dataTransport = passarData(horari);
+        }
+
+        agencia.crearTransportIndirecte(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
+    }
+
+    private void entradaViatge(Scanner nomFitxer) {
+        String dataI = nomFitxer.nextLine();
+        LocalDate dataInici = passarData(dataI);
+        
+        String _horaInici = nomFitxer.nextLine();
+        LocalTime horaInici = passarHora(_horaInici);
+        int nombreDies = Integer.parseInt(nomFitxer.nextLine());
+        float preuMaxim = Float.parseFloat(nomFitxer.nextLine());
+        String categoria = nomFitxer.nextLine();
+        
+        ArrayList<String> clients = new ArrayList<>();
+        String client = nomFitxer.nextLine();
+        
+        while (!client.equals("*")) {
+            
+            clients.add(client);
+            client = nomFitxer.nextLine();
+        }
+        
+        ArrayList<String> rutes = new ArrayList<>();
+        String ruta = nomFitxer.nextLine();
+        
+        while (!ruta.equals("*")) {
+            
+            rutes.add(ruta);
+            ruta = nomFitxer.nextLine();
+        }
+        
+        agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
+    } 
+   
+    
+    private Agencia agencia;
+}
