@@ -13,123 +13,161 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.TimeZone;
 
-
+/*
+ * @class Entrada
+ * @brief Classe que realitza totes les operacions d'entrada necessàries per tal que el programa funcioni
+ */
 public class Entrada {
 
+    /**
+     * @param nomFitxer
+     * @brief acció principal de la classe que delega feina a les classes privades segons el fitxer d'entrada
+     * @pre cert
+     * @post s'han realitzat les operacions d'entrada correctament
+     */
     public Entrada(Scanner nomFitxer) {
         
         nomFitxer.useLocale(Locale.US);
         String codiOperacio;
 
-        while (nomFitxer.hasNext()) {
+        while (nomFitxer.hasNext()) { 
             codiOperacio = nomFitxer.nextLine();
             
-            if (codiOperacio.equals("client"))
-                entradaClient(nomFitxer);
-            
-            else if (codiOperacio.equals("lloc"))
-                entradaLloc(nomFitxer);
-            
-            else if (codiOperacio.equals("allotjament"))
-                entradaAllotjament(nomFitxer);
-            
-            else if (codiOperacio.equals("lloc visitable"))
-                entradaVisitable(nomFitxer);
-            
-            else if (codiOperacio.equals("visita"))
-                entradaVisita(nomFitxer);
-            
-            else if (codiOperacio.equals("associar lloc"))
-                entradaAssociarLloc(nomFitxer);
-            
-            else if (codiOperacio.equals("associar transport"))
-                entradaAssociarTransport(nomFitxer);
-            
-            else if (codiOperacio.equals("transport directe"))
-                entradaTransportDirecte(nomFitxer);
-            
-            else if (codiOperacio.equals("transport indirecte"))
-                entradaTransportIndirecte(nomFitxer);
-            
-            else if (codiOperacio.equals("viatge"))
-                entradaViatge(nomFitxer);
+            switch (codiOperacio) {
+                case "client":
+                    entradaClient(nomFitxer);
+                    break;
+                case "lloc":
+                    entradaLloc(nomFitxer);
+                    break;
+                case "allotjament":
+                    entradaAllotjament(nomFitxer);
+                    break;
+                case "lloc visitable":
+                    entradaVisitable(nomFitxer);
+                    break;
+                case "visita":
+                    entradaVisita(nomFitxer);
+                    break;
+                case "associar lloc":
+                    entradaAssociarLloc(nomFitxer);
+                    break;
+                case "associar transport":
+                    entradaAssociarTransport(nomFitxer);
+                    break;
+                case "transport directe":
+                    entradaTransportDirecte(nomFitxer);
+                    break;
+                case "transport indirecte":
+                    entradaTransportIndirecte(nomFitxer);
+                    break;
+                case "viatge":
+                    entradaViatge(nomFitxer);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un client
+     * @pre cert
+     * @post dades del client guardades 
+     */
     private void entradaClient(Scanner nomFitxer) {
 
         String nomClient = nomFitxer.nextLine();
+        
+        ArrayList<String> llistaPreferencies = new ArrayList<>();
         String preferencia = nomFitxer.nextLine();
-        ArrayList<String> llistaPreferencies;
-        llistaPreferencies = new ArrayList<>();
         
         while (!preferencia.equals("*")) {
             llistaPreferencies.add(preferencia);
             preferencia = nomFitxer.nextLine();
         }
-        agencia.crearClient(nomClient,llistaPreferencies);
+        //agencia.crearClient(nomClient,llistaPreferencies);
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un lloc
+     * @pre cert
+     * @post dades del lloc guardades
+     */
     private void entradaLloc(Scanner nomFitxer) {
     
         String nomLloc = nomFitxer.nextLine(); 
         String coordenades = nomFitxer.nextLine();
         String _franjaHoraria = nomFitxer.nextLine();
+        
         TimeZone franjaHoraria = TimeZone.getTimeZone(_franjaHoraria);
-        agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
+        
+        //agencia.crearLloc(nomLloc,coordenades,franjaHoraria);
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un allotjament
+     * @pre cert
+     * @post dades de l'allotjament guardades
+     */
     private void entradaAllotjament(Scanner nomFitxer) {
     
         String nomAllotjament = nomFitxer.nextLine();
         String coordenades = nomFitxer.nextLine();
         String _zonaHoraria = nomFitxer.nextLine();
         TimeZone zonaHoraria = TimeZone.getTimeZone(_zonaHoraria);
-        String categoria = nomFitxer.nextLine();
         
-        String _preu = nomFitxer.nextLine();
-        float preu = Float.parseFloat(_preu);
+        String categoria = nomFitxer.nextLine();
+        float preu = Float.parseFloat(nomFitxer.nextLine());
         
         String caracteristica = nomFitxer.nextLine();
         ArrayList<String> llistaCaracteristiques = new ArrayList<>();
         
-        while (!caracteristica.equals("*")) {
+        while (!caracteristica.equals("*")) { //bucle en el que es llegeixen les característiques
+
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
         agencia.crearAllotjament(nomAllotjament,coordenades,zonaHoraria,preu,llistaCaracteristiques,categoria);
-        nomFitxer.nextLine(); //Llegeix "*"
     }
 
+    /**
+     * @brief a partir d'un string crea una classe Horari i la retorna
+     * @pre _horari conté informació vàlida
+     * @post retorna una classe Horari 
+     */
     private Horari string2Horari(String _horari){
+        
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = _horari.split(delimitadors);
         Horari h= new Horari(paraulesSeparades[0], Integer.parseInt(paraulesSeparades[1]), paraulesSeparades[2], Integer.parseInt(paraulesSeparades[3]), LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])), LocalTime.of(Integer.parseInt(paraulesSeparades[6]),Integer.parseInt(paraulesSeparades[7])));
-        
         return  h;
     }
     
-    private LocalTime passarHora(String hora){
-        String delimitadors= "[ :-]+";
-        String[] paraulesSeparades = hora.split(delimitadors);
-        return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
-    }
-    
-    
+    /**
+     * @brief a partir d'un string que conté una hora determinada retorna un enter amb el seu equivalent en minuts
+     * @pre hora conté dos enters amb ':' entre mig d'ambdós nombres
+     * @post retorna un enter equivalent al nombre de minuts
+     */
     private int passarInt(String hora){
+        
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = hora.split(delimitadors);
         return (Integer.parseInt(paraulesSeparades[0])*60+Integer.parseInt(paraulesSeparades[1]));        
     }
     
-    
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un lloc visitable
+     * @pre cert
+     * @post dades del lloc visitable guardades
+     */
     private void entradaVisitable(Scanner nomFitxer) {
 
         String nomLloc = nomFitxer.nextLine();
         String coordenades = nomFitxer.nextLine();
         String _zonaHoraria = nomFitxer.nextLine();
         TimeZone zonaHoraria = TimeZone.getTimeZone(_zonaHoraria);
-        int tempsVisitaRecomanat = Integer.parseInt(nomFitxer.nextLine());
+        int tempsVisitaRecomanat = passarInt(nomFitxer.nextLine());
         
         String _preu = nomFitxer.nextLine();
         float preu = Float.parseFloat(_preu);
@@ -137,23 +175,27 @@ public class Entrada {
         String caracteristica = nomFitxer.nextLine();
         ArrayList<String> llistaCaracteristiques= new ArrayList<>();
         
-        while (!caracteristica.equals("*")) {
+        while (!caracteristica.equals("*")) { //bucle que llegeix característiques
             llistaCaracteristiques.add(caracteristica);
             caracteristica = nomFitxer.nextLine();
         }
+        
         ArrayList<Horari> llistaHoraris = new ArrayList<>();
         HashMap<String,DuesHores> llistaExcepcions = new HashMap<>();
         
         String horariRegular = nomFitxer.nextLine();
-        String delimitadors= "[ :-]+";
-        String[] paraulesSeparades = horariRegular.split(delimitadors);
+        String delimitadors= "[ :-]+"; //separarem string per ':' i '-'
+        String[] paraulesSeparades; //string que usarem per llegir cada línia d'horaris i excepcions
         
         
-        while (!horariRegular.equals("*")) {
-            if(paraulesSeparades[2].length()>2){ //no es excepcio
-                llistaHoraris.add(string2Horari(horariRegular)); //passem la string a Horari i l'afegim a la llista
+        while (!horariRegular.equals("*")) { //bucle que llegeix horaris i excepcions
+            
+            paraulesSeparades = horariRegular.split(delimitadors); //separem string per tal de tractar si es horari vàlid o excepció
+            
+            if (paraulesSeparades[2].length()>2){ //es tracta d'un horari vàlid
+                llistaHoraris.add(string2Horari(horariRegular)); 
             }
-            else{ //excepcio
+            else { //es tracta d'una excepció
                 DuesHores dH = new DuesHores(LocalTime.of(Integer.parseInt(paraulesSeparades[2]),Integer.parseInt(paraulesSeparades[3])),LocalTime.of(Integer.parseInt(paraulesSeparades[4]),Integer.parseInt(paraulesSeparades[5])));
                 llistaExcepcions.put(paraulesSeparades[0]+" "+paraulesSeparades[1],dH);
             }
@@ -162,7 +204,24 @@ public class Entrada {
         
         agencia.crearVisitable(nomLloc,coordenades,zonaHoraria,preu,llistaCaracteristiques,tempsVisitaRecomanat, llistaHoraris, llistaExcepcions);
     }
+    
+    /**
+     * @brief converteix l'string que entra en una LocalDate i la retorna
+     * @pre data conté una data vàlida
+     * @post retorna una LocalDate
+     */
+    private LocalDate passarData(String data) {
+        
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = data.split(delimitadors);
+        return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
+    }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix una visita
+     * @pre cert
+     * @post dades de la visita guardades
+     */
     private void entradaVisita(Scanner nomFitxer) {
         
         String nomClient = nomFitxer.nextLine();
@@ -170,66 +229,68 @@ public class Entrada {
         LocalDate data = passarData(nomFitxer.nextLine());
         
         agencia.crearVisita(nomClient,llocVisitat,data);
-        nomFitxer.nextLine(); //Llegeix "*"
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix una associació entre llocs
+     * @pre cert
+     * @post dades dels llocs que associar guardades
+     */
     private void entradaAssociarLloc(Scanner nomFitxer) {
         
         String secundari = nomFitxer.nextLine();
         String primari = nomFitxer.nextLine();
         
         agencia.crearAssociarLloc(secundari,primari);
-        nomFitxer.nextLine(); //Llegeix "*"
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix una associació de transport
+     * @pre cert
+     * @post dades de l'associació de transport guardades 
+     */
     private void entradaAssociarTransport(Scanner nomFitxer) {
 
         String lloc = nomFitxer.nextLine();
         String mitjaTransport = nomFitxer.nextLine();
-        String _durada = nomFitxer.nextLine();
-        int durada=Integer.parseInt(_durada);
-        
-        String _preu = nomFitxer.nextLine();
-        float preu = Float.parseFloat(_preu);
+        int durada = Integer.parseInt(nomFitxer.nextLine());
+        float preu = Float.parseFloat(nomFitxer.nextLine());
         
         agencia.crearAssociarTransport(lloc,mitjaTransport,durada,preu);
-        nomFitxer.nextLine(); //Llegeix "*"
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un transport directe
+     * @pre cert
+     * @post dades del transport directe guardades
+     */
     private void entradaTransportDirecte(Scanner nomFitxer) {
 
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
-        String mitja = nomFitxer.nextLine(); 
+        String mitja = nomFitxer.nextLine();
         int durada = Integer.parseInt(nomFitxer.nextLine()); 
-        String _preu = nomFitxer.nextLine();
-        float preu = Float.parseFloat(_preu);
+        float preu = Float.parseFloat(nomFitxer.nextLine());
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
-        nomFitxer.nextLine(); //Llegeix "*"
-    }
-    
-    /**
-     *
-     * @param data
-     * @pre l'string data es una data valida
-     * @return retorna la data obtinguda a partir de l'string 'data' en format LocalDate
-     */
-    private LocalDate passarData(String data){
-        String delimitadors= "[ :-]+";
-        String[] paraulesSeparades = data.split(delimitadors);
-        return (LocalDate.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1]), Integer.parseInt(paraulesSeparades[2])));
     }
 
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un transport indirecte
+     * @pre cert
+     * @post dades del transport indirecte guardades
+     */
     private void entradaTransportIndirecte(Scanner nomFitxer) {
 
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine(); 
+        
         String _tempsFinsOrigen = nomFitxer.nextLine(); 
-        int tempsFinsOrigen = passarInt(_tempsFinsOrigen);
+        int tempsFinsOrigen = passarInt(_tempsFinsOrigen); // passem del format 'x:y' a un enter resultat de '60*x + y'
+        
         String _tempsFinsDesti = nomFitxer.nextLine(); 
-        int tempsFinsDesti = passarInt(_tempsFinsDesti);
+        int tempsFinsDesti = passarInt(_tempsFinsDesti); // passem del format 'x:y' a un enter resultat de '60*x + y'
         
         String data = nomFitxer.nextLine(); 
         LocalDate dataTransport = passarData(data);
@@ -237,48 +298,67 @@ public class Entrada {
         String durada; 
         String preu;
         
-        String delimitadors= "[ :-]+";
+        String delimitadors= "[ :-]+"; //separarem string per ':' i '-'
         
-        HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte = new HashMap<>();
+        HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte = new HashMap<>(); //mapa amb clau primaria = data | clau secundària = ArrayList<TransportIndirecte>
         ArrayList<TransportIndirecte> llistaTransportIndirecte = new ArrayList<>();
         
         TransportIndirecte nouTransport = new TransportIndirecte();
         
-        while (data.equals("*")){
+        while (!data.equals("*")){ //sortirem amb el break
 
             horari = nomFitxer.nextLine();
             String[] paraulesSeparades = horari.split(delimitadors);
             
-            while((Integer.parseInt(paraulesSeparades[0]) > 24) || (horari.equals("*"))){
+            while((Integer.parseInt(paraulesSeparades[0]) > 24) || !horari.equals("*")){ //entrarem si es tracta d'una data de transport indirecte
 
                 durada = nomFitxer.nextLine();
                 preu = nomFitxer.nextLine(); 
-                Integer.parseInt(preu);
-                nouTransport.afegir(horari,durada,preu);
+ 
+                nouTransport.afegir(horari,durada,Float.parseFloat(preu));
                 llistaTransportIndirecte.add(nouTransport);
                 
                 horari = nomFitxer.nextLine();
             }
             
-            transportIndirecte.put(dataTransport,llistaTransportIndirecte);
-            llistaTransportIndirecte.clear();
+            transportIndirecte.put(dataTransport,llistaTransportIndirecte); //guardem un transport indirecte i la seva informacio
+            llistaTransportIndirecte.clear(); 
             nouTransport = new TransportIndirecte();
             
-            if (horari.equals("*"))
+            if (horari.equals("*")) //hem acabat de llegir transports indirectes
                 break;    
-            else 
+            else //seguim llegint transports indirectes
                 dataTransport = passarData(horari);
         }
 
         agencia.crearTransportIndirecte(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
     }
 
+    /**
+     * @brief converteix un string que conte una hora en un objecte LocalTime i el retorna
+     * @pre hora conté un string vàlid
+     * @post retorna un objecte LocalTime
+     */
+    private LocalTime passarHora(String hora){
+        
+        String delimitadors= "[ :-]+";
+        String[] paraulesSeparades = hora.split(delimitadors);
+        return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
+    }
+    
+    /**
+     * @brief realitza les operacions d'entrada del fitxer quan s'introdueix un viatge
+     * @pre cert
+     * @post dades del viatge guardades
+     */
     private void entradaViatge(Scanner nomFitxer) {
+        
         String dataI = nomFitxer.nextLine();
         LocalDate dataInici = passarData(dataI);
         
         String _horaInici = nomFitxer.nextLine();
         LocalTime horaInici = passarHora(_horaInici);
+        
         int nombreDies = Integer.parseInt(nomFitxer.nextLine());
         float preuMaxim = Float.parseFloat(nomFitxer.nextLine());
         String categoria = nomFitxer.nextLine();
@@ -286,7 +366,7 @@ public class Entrada {
         ArrayList<String> clients = new ArrayList<>();
         String client = nomFitxer.nextLine();
         
-        while (!client.equals("*")) {
+        while (!client.equals("*")) { //llegim la llista de clients que participen al viatge
             
             clients.add(client);
             client = nomFitxer.nextLine();
@@ -295,7 +375,7 @@ public class Entrada {
         ArrayList<String> rutes = new ArrayList<>();
         String ruta = nomFitxer.nextLine();
         
-        while (!ruta.equals("*")) {
+        while (!ruta.equals("*")) { //llegim els algoritmes rutes que es volen realitzar
             
             rutes.add(ruta);
             ruta = nomFitxer.nextLine();
@@ -303,15 +383,6 @@ public class Entrada {
         
         agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
     } 
-   
-    
-    private Agencia agencia;
+  
+    private Agencia agencia; ///< classe que comunica l'entrada amb l'agencia, quelcom conté totes les dades del programa
 }
-
-
-
-
-
-
-
-
