@@ -61,9 +61,9 @@ public final class Prova extends Application {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(15, 12, 15, 12));
         hbox.setSpacing(10);
-        hbox.setStyle("-fx-background-color: #336699;");
+        hbox.setStyle("-fx-background-color: #52afaf;");
         
-        Text title = new Text("SELECCIONA RECORREGUT");
+        Text title = new Text("SELECCIONA EL RECORREGUT");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         hbox.getChildren().add(title);
 
