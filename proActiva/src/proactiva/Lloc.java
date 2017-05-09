@@ -27,4 +27,13 @@ public class Lloc {
        return city;
    }
     
+   Lloc(String _nom, String _coordenada, TimeZone _zonaHoraria){
+       
+        nom=_nom;
+        coordenada=_coordenada;
+        zonaHoraria=_zonaHoraria;
+        
+   }
+   
+    
 }
