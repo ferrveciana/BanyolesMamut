@@ -154,3 +154,76 @@ public class Solucio {
     }
     
 }
+///////
+public class Candidat {
+    
+    private int index; //Indica la posicio del candidat actual
+    private List<PuntInteres> llistaCandidats; //conte la llista amb tots els candidats
+    
+    Candidat(PuntInteres _pi){
+        
+        llistaCandidats = new ArrayList<PuntInteres>();
+        PuntInteres esp = new PuntInteres("Esperar", "", null, 0,null);
+        llistaCandidats.add(_pi);
+        //llistaCandidats.add veins i destinacions hub 
+        llistaCandidats.add(esp);
+        index = 0;
+        //llistaCandidats = _pi.veins(); 
+    }
+
+    PuntInteres actual() {
+        
+        //if (esFi()) throw("No hi ha mes candidats");
+        return llistaCandidats.get(index);
+    }
+
+    boolean esFi() {
+        
+        return (llistaCandidats.size() == index);
+    }
+    
+    void seguent(){
+        
+        //if (esFi()) throw("No hi ha mes candidats");
+        index++;
+    }
+    
+}
+
+/// */
+public class Solucionador {
+    
+    private Solucio optima;
+
+    
+    public void executarBkg(Solucio solucio,PuntInteres pi,LocalDateTime hora){
+         
+        Candidat candidats = solucio.inicialitzarCandidats(pi);
+        
+	while (! candidats.esFi()){
+
+		if (solucio.acceptable(candidats) && solucio.potSerMillor(optima,"s",candidats)){
+			solucio.anotar(candidats);
+	
+			if (! solucio.completa()){
+				executarBkg(solucio,candidats.actual(),solucio.hora()); //seguent candidat
+			}
+			else{//Solucio completa
+				if (solucio.esMillor(optima,"s")){
+					optima = solucio;
+				}
+			} 
+			solucio.desanotar(candidats);
+
+		}
+		candidats.seguent();
+	}
+    }
+    
+    public Solucio obtenirSolucioOptima(){
+        
+        return optima;
+    }
+    
+ 
+}
