@@ -16,9 +16,8 @@ public class DuesHores {
         horaFi=hF;
     }
     
-    public boolean estaEntreMig(LocalTime h){
+    public boolean estaEntreMig(LocalTime h ){
         return (h.isAfter(horaIni) && h.isBefore(horaFi));
     }
-    
     
 }

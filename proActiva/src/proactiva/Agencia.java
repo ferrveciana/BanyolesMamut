@@ -1,25 +1,29 @@
-
 package proactiva;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Scanner;
 import java.util.TimeZone;
 
 public class Agencia {
    
-    private HashMap<String,Lloc> llistaLlocs;  
-    private HashMap<String,PuntInteres> llistaPInteres;
+    private final HashMap<String,Lloc> llistaLlocs;  
+    private final HashMap<String,PuntInteres> llistaPInteres;
    
-    private HashMap<String,Client> llistaClients;
-    private ArrayList<Allotjament> llistaAllotjaments;
-    private ArrayList<Visitable> llistaVisitables;
+    private final HashMap<String,Client> llistaClients;
+    private final ArrayList<Allotjament> llistaAllotjaments;
+    private final ArrayList<Visitable> llistaVisitables;
     private Viatge llistaViatges;
 
-    
+    public Agencia() {
+        this.llistaLlocs = new HashMap<>();
+        this.llistaPInteres = new HashMap<>();
+        this.llistaClients = new HashMap<>();
+        this.llistaAllotjaments = new ArrayList<>();
+        this.llistaVisitables = new ArrayList<>();
+    }
+
      /**
      *
      * @param data
@@ -78,9 +82,9 @@ public class Agencia {
         
         Lloc _lloc = llistaLlocs.get(primari);
         PuntInteres pi = llistaPInteres.get(secundari);
-       
+        System.out.println("AQUET " + secundari);
         Ciutat ciutat;
-        if (_lloc instanceof Ciutat){ //previement convertit a ciutat 
+        if (_lloc instanceof Ciutat){ //prèviament convertit a ciutat 
             ciutat = (Ciutat) _lloc;
         }
         else {
