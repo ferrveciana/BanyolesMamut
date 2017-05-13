@@ -16,8 +16,13 @@ public class DuesHores {
         horaFi=hF;
     }
     
-    public boolean estaEntreMig(LocalTime h ){
-        return (h.isAfter(horaIni) && h.isBefore(horaFi));
+    /*
+    * @pre
+    * @post retorna cert si encara hi podrà anar aquell dia
+    * @breif
+    */
+    public boolean estaAbans(LocalTime h){
+        return (h.isBefore(horaFi));
     }
     
 }

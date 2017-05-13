@@ -1,6 +1,9 @@
 package proactiva;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 
 public class Horari {
     private String mesIni;
@@ -30,13 +33,59 @@ public class Horari {
             mesIni=paraulesSeparades[0];
             diaIni= Integer.parseInt(paraulesSeparades[1]);
         }
-        catch(Exception e){
+        catch(NumberFormatException e){
             System.out.println("ERROR, FORMAT DE DADES INCORRECTE");
         }
     }
     
-    public boolean estaDins(LocalDateTime hora){
-        boolean
+    public boolean estaDins(LocalDateTime hora,int durada){
+        boolean _estaDins = false;
+        LocalDate _data = hora.toLocalDate();
+
+        mesFin=mesFin.toUpperCase();
+        mesIni=mesIni.toUpperCase();
+        
+        int mesAuxIni = Month.valueOf(mesIni).getValue(); //Ex: January == 1 , October == 10
+        int mesAuxFin = Month.valueOf(mesFin).getValue();
+        
+        int mesAct = _data.getMonthValue();
+        int diaAct = _data.getDayOfMonth();
+        
+
+        LocalTime horaActual = hora.toLocalTime();
+
+        if(mesAuxFin<mesAuxIni){ //invertits
+            if(mesAuxIni==mesAct){
+                if(diaAct>=diaIni) _estaDins = true;
+            }
+            else if(mesAuxFin==mesAct){
+                if(diaAct<=diaFin) _estaDins = true;
+            }
+            else if((mesAuxFin>mesAct && mesAuxIni>mesAct) || (mesAuxFin<mesAct && mesAuxIni<mesAct)) _estaDins = true;
+        }
+        else if(mesAuxFin>mesAuxIni){ //normal
+            
+            if(mesAuxIni==mesAct){
+                if(diaAct>=diaIni) _estaDins = true;
+            }
+            else if(mesAuxFin==mesAct){
+                if(diaAct<=diaFin) _estaDins = true;
+            }        
+            if(mesAuxIni<mesAct && mesAuxFin<mesAct) _estaDins = true;
+        }
+        else{ //mateix mes
+            System.out.println("hello");
+            if(diaFin>diaIni){ //dies normals
+                if(diaIni<diaAct && diaFin>diaAct) _estaDins = true;
+            }
+        }
+        
+        //comprovem hora
+        if(_estaDins){
+            _estaDins=interval.estaAbans(horaActual);
+        }
+        
+        return _estaDins;
     }
     
 }
