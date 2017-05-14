@@ -1,5 +1,4 @@
-package prop;
-
+package proactiva;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ public class TransportIndirecte{
     private final List<Float> preu;
     
     public TransportIndirecte(){
+        
         horaris= new ArrayList();
         durada= new ArrayList();
         preu= new ArrayList();
@@ -29,10 +29,10 @@ public class TransportIndirecte{
         return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
     }
     
-    public void afegir(String hora,String temps,String pr){
+    public void afegir(String hora,String temps,float pr){
         horaris.add(passarHora(hora));
         durada.add(passarInt(temps));
-        preu.add(Float.parseFloat(pr));
+        preu.add(pr);
     }
     /*
     public void afegirHorari(LocalTime h,){
