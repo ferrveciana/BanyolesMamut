@@ -1,3 +1,4 @@
+
 package proactiva;
 
 import java.time.LocalDate;
@@ -85,7 +86,7 @@ public class Agencia {
         System.out.println("AQUET " + secundari);
         Ciutat ciutat;
         if (_lloc instanceof Ciutat){ //prèviament convertit a ciutat 
-            ciutat = (Ciutat) _lloc;
+            ciutat = new Ciutat(_lloc.nom, _lloc.getCoordenada(),_lloc.getZonaHoraria());
         }
         else {
             ciutat = _lloc.ferCiutat(pi);
