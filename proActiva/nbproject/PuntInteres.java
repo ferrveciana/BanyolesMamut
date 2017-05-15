@@ -19,7 +19,8 @@ public abstract class PuntInteres extends Lloc {
     public PuntInteres(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract) {
         super(_nom, _coordenada, _zonaHoraria);
          preu = _preu;
-        caracteristiques=_caract;
+         caracteristiques=_caract;
+         llistaTransportsDirectes = new ArrayList<TransportDirecte>();
         
         
     }
