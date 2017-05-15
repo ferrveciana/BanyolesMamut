@@ -26,13 +26,6 @@ public class Visitable extends PuntInteres {
         
     }
     
-    @Override
-    public String tipus() {
-        String t = "Visitable";
-        if (horariVisites.isEmpty()) t = "Pas";
-        return t;
-    }
-    
     public Boolean esPotVisitar(LocalDateTime hora){
         
         hora = hora.plusMinutes(tempsVisita); //sumem el temps de visita a l'hora actual
