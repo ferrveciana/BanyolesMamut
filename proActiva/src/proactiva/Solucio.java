@@ -28,7 +28,7 @@ public class Solucio {
     
     private List<String> preferenciesClients;
     
-    private int categoriaHotel; //categoria demanada
+    private String categoriaHotel; //categoria demanada
     
     private LinkedList<PuntInteres> circuit;
     private LinkedList<Activitat> llistaActivitats;
@@ -180,7 +180,7 @@ public class Solucio {
                 else if (a instanceof EstadaH){
                     
                     EstadaH estada = (EstadaH) a;
-                    acceptable = categoriaHotel>=estada.getCategoria();
+                    acceptable = categoriaHotel.equals(estada.getCategoria());
             
                 }
                 else if (a instanceof Desplaçament){
@@ -244,4 +244,3 @@ public class Solucio {
  
   
 }
-    

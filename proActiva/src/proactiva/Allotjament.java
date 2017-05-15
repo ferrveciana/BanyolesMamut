@@ -11,16 +11,14 @@ public class Allotjament extends PuntInteres{
   
     private final String categoria;
 
-    public Allotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract,String _categoria){
+    public Allotjament(String _nom, String coordenada, TimeZone zonaHoraria, double preu, List<String> caract,String _categoria){
         
-        super(_nom, _coordenada, _zonaHoraria, _preu, _caract);
+        super(_nom, coordenada, zonaHoraria, preu, caract);
         categoria = _categoria;
         
     }
-
-    @Override
-    public String tipus() {
-        return ("Allotjament");
-    }
     
+    public String getCategoria(){
+        return categoria;
+    }
 }
