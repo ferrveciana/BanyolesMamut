@@ -75,4 +75,13 @@ public abstract class PuntInteres extends Lloc {
     //Post: Retorna el tipus de punt d'interes del que es parla
     public abstract String tipus();
     
+     @Override
+    public boolean equals(Object o){
+        
+        if (o instanceof PuntInteres){
+            return ((PuntInteres) o).nom.equals(nom);
+        }
+        else return false;
+    }
+    
 }
