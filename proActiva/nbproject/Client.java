@@ -20,6 +20,7 @@ public class Client {
     public Client(String _nom, ArrayList<String> _prefList){
         nom=_nom;
         prefList=_prefList;
+        visites = new Map<String,LocalDate>();
     }
     
     ///@pre: ---
