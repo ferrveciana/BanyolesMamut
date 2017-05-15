@@ -1,4 +1,3 @@
-
 package proactiva;
 
 import java.time.LocalTime;
@@ -12,6 +11,7 @@ public class TransportIndirecte{
     private final List<Float> preu;
     
     public TransportIndirecte(){
+        
         horaris= new ArrayList();
         durada= new ArrayList();
         preu= new ArrayList();

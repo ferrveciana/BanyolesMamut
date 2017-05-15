@@ -1,4 +1,3 @@
-
 package proactiva;
 
 import java.util.ArrayList;
@@ -19,10 +18,9 @@ public abstract class PuntInteres extends Lloc {
 
     public PuntInteres(String _nom, String _coordenada, TimeZone _zonaHoraria, double _preu, List<String> _caract) {
         super(_nom, _coordenada, _zonaHoraria);
-         preu = _preu;
-        caracteristiques=_caract;
-        
-        
+        preu = _preu;
+        caracteristiques=_caract;    
+        llistaTransportsDirectes = new ArrayList<TransportDirecte>();
     }
 
     //Pre: ---
@@ -63,7 +61,7 @@ public abstract class PuntInteres extends Lloc {
     //Pre: --
     //Post:S' associat *this a _ciutat
     public void setCiutat(Ciutat _ciutat){
-        ciutat = _ciutat;
+        ciutat = new Ciutat(_ciutat);
     }
     
     //Pre: *this te una ciutat associada

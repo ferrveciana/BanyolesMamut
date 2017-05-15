@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/proActiva/src/proactiva/TransportIndirecte.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/proActiva/src/proactiva/TransportUrba.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/proActiva/src/proactiva/Entrada.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/proActiva/src/proactiva/Hub.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Hub.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/1.txt</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/ProActiva.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Client.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Viatge.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/TransportDirecte.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Lloc.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/TransportIndirecte.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Horari.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Ciutat.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Agencia.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Entrada.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Allotjament.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/PuntInteres.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/DuesHores.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/Visitable.java</file>
+            <file>file:/C:/Users/FLAMES/Documents/NetBeansProjects/proActiva/src/proactiva/TransportUrba.java</file>
         </group>
     </open-files>
 </project-private>

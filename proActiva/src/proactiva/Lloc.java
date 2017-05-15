@@ -19,12 +19,27 @@ public class Lloc {
         
    }
    
+   Lloc() {
+       nom = "";
+       coordenada = "";
+       zonaHoraria = TimeZone.getDefault();
+       
+   }
+   
+   public String getCoordenada() {
+       return coordenada;
+   }
+   
+   public TimeZone getZonaHoraria() {
+       return zonaHoraria;
+   }
+   
    Ciutat ferCiutat(PuntInteres secundari){
        
        Ciutat city = new Ciutat(nom,coordenada,zonaHoraria);
        city.afegirPuntInteres(secundari);
        
        return city;
-   }   
+   }
     
 }

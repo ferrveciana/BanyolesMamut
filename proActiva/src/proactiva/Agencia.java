@@ -76,7 +76,8 @@ public class Agencia {
 
     public void crearVisita(String nomClient,String llocVisitat,LocalDate data) {
 
-        llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
+        if (llistaClients.get(nomClient) != null)
+            llistaClients.get(nomClient).afegirVisita(llocVisitat,data);
     }
 
     public void crearAssociarLloc(String secundari,String primari) {
@@ -99,25 +100,37 @@ public class Agencia {
     public void crearAssociarTransport(String _lloc,String mitja,int durada,float preu) {
          
        TransportUrba turba = new TransportUrba(_lloc,mitja,durada,preu);
-       Ciutat _ciutat = (Ciutat) (llistaLlocs.get(_lloc));
-       _ciutat.afegirTransport(turba); 
+
+       if (llistaLlocs.get(_lloc) instanceof Ciutat){ //prèviament convertit a ciutat 
+            Ciutat ciutat = (Ciutat) llistaLlocs.get(_lloc);
+            ciutat.afegirTransport(turba);
+        }
+        else {
+            System.out.println("Volem associar un transport a " + _lloc + " que no és una ciutat");
+        }
     }
 
     public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
 
         TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
-        PuntInteres pi = (PuntInteres) llistaPInteres.get(origen);
-        pi.afegirTransportDirecte(tdirecte);
+        PuntInteres pi = llistaPInteres.get(origen);
+        if (pi != null)
+            pi.afegirTransportDirecte(tdirecte);
 
     }
 
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
 
         Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
-        Ciutat ciutat = (Ciutat) llistaLlocs.get(origen);
-        ciutat.afegirHub(hub);
-
-        
+        Ciutat ciutat;
+            
+        if (llistaLlocs.get(origen) instanceof Ciutat){ //prèviament convertit a ciutat 
+            ciutat = (Ciutat) llistaLlocs.get(origen);
+            ciutat.afegirHub(hub);
+        }
+        else {
+            System.out.println("Volem afegir un hub a " + origen + " que no és una ciutat");
+        }
     }
 
     public void crearEntradaViatge(LocalDate dataInici, LocalTime horaInici,int nombreDies,float preuMaxim, String categoria, ArrayList<String> clients, ArrayList<String> rutes) {

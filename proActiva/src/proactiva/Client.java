@@ -5,10 +5,9 @@
  */
 package proactiva;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Client {
@@ -22,6 +21,7 @@ public class Client {
     public Client(String _nom, ArrayList<String> _prefList){
         nom=_nom;
         prefList=_prefList;
+        visites = new HashMap<String,LocalDate>();
     }
     
     ///@pre: ---

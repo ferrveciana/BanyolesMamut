@@ -254,7 +254,7 @@ public class Entrada {
 
         String lloc = nomFitxer.nextLine();
         String mitjaTransport = nomFitxer.nextLine();
-        int durada = Integer.parseInt(nomFitxer.nextLine());
+        int durada = passarInt(nomFitxer.nextLine());
         float preu = Float.parseFloat(nomFitxer.nextLine());
         
         agencia.crearAssociarTransport(lloc,mitjaTransport,durada,preu);
@@ -270,7 +270,7 @@ public class Entrada {
         String origen = nomFitxer.nextLine(); 
         String desti = nomFitxer.nextLine(); 
         String mitja = nomFitxer.nextLine();
-        int durada = Integer.parseInt(nomFitxer.nextLine()); 
+        int durada = passarInt(nomFitxer.nextLine()); 
         float preu = Float.parseFloat(nomFitxer.nextLine());
 
         agencia.crearTransportDirecte(origen,desti,mitja,durada,preu);
@@ -305,21 +305,21 @@ public class Entrada {
         ArrayList<TransportIndirecte> llistaTransportIndirecte = new ArrayList<>();
         
         TransportIndirecte nouTransport = new TransportIndirecte();
+        String[] paraulesSeparades;
         
         while (!data.equals("*")){ //sortirem amb el break
 
             horari = nomFitxer.nextLine();
-            String[] paraulesSeparades = horari.split(delimitadors);
+            paraulesSeparades = horari.split(delimitadors);
             
-            while((Integer.parseInt(paraulesSeparades[0]) > 24) || !horari.equals("*")){ //entrarem si es tracta d'una data de transport indirecte
-
+            while(!horari.equals("*") && (Integer.parseInt(paraulesSeparades[0]) < 24)){ //entrarem si no es tracta d'una data de transport indirecte
                 durada = nomFitxer.nextLine();
                 preu = nomFitxer.nextLine(); 
- 
                 nouTransport.afegir(horari,durada,Float.parseFloat(preu));
                 llistaTransportIndirecte.add(nouTransport);
                 
                 horari = nomFitxer.nextLine();
+                paraulesSeparades = horari.split(delimitadors);
             }
             
             transportIndirecte.put(dataTransport,llistaTransportIndirecte); //guardem un transport indirecte i la seva informacio

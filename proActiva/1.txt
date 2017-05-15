@@ -1,0 +1,332 @@
+client
+Pere de la cullera
+platja
+piscina
+mar
+gambes
+muntanya
+*
+client
+Marc Sánchez pifarré
+vaixell
+mercats
+platja
+munTanya
+piscina
+*
+client
+Francesc Xavier Bullich
+Estany
+estany
+Piscina
+*
+lloc
+Vilamaniscle
+42.3773743,3.0726468000000295
+Europe/Madrid
+*
+lloc
+Peralada
+42.3083523,3.009440400000017
+Europe/Madrid
+*
+lloc
+Banyoles
+42.1181833,2.76514880000002
+Europe/Madrid
+*
+lloc
+Denpasar
+-8.6726769,115.1542227
+Asia/Makassar
+*
+lloc
+Melbourne
+-37.9722342,144.7729565
+Australia/Melbourne
+*
+lloc
+Barcelona
+41.3947688,2.0787284
+Europe/Madrid
+*
+lloc visitable
+Lamington National Park
+-28.1949198,153.18920809999997
+Australia/Brisbane
+04:00
+32.99
+Muntanya
+Naturalesa
+Religió
+Rius
+Alpinisme
+Kayac
+*
+April 1 - September 30: 09:00-20:00
+October 1 - October 31: 09:00-19:00
+March 1 - March 31: 09:00-19:00
+November 1 - February 29: 09:00-18:00
+December 25: 09:00-14:00
+December 26: 09:00-14:00
+January 1: 09:00-14:00
+January 6: 09:00-14:00
+*
+lloc visitable
+Southwest National Park
+-42.5680599,146.5747502
+Australia/Tasmania
+03:30
+59.90
+Muntanya
+Naturalesa
+Diable de Tasmània
+Platja
+Rius
+*
+April 1 - September 30: 09:00-20:00
+October 1 - October 31: 09:00-19:00
+March 1 - March 31: 09:00-19:00
+November 1 - February 29: 09:00-18:00
+December 25: 09:00-14:00
+December 26: 09:00-14:00
+January 1: 09:00-14:00
+January 6: 09:00-14:00
+*
+lloc visitable
+Jells Park
+-37.8974354,145.1887014
+Australia/Melbourne
+00:30
+0
+Picnic
+Estany
+Barca
+Restaurants
+Sol
+Cometes
+Pollastres
+*
+*
+lloc vistable
+Castell de Peralada
+42.3072473,3.0103203
+Europe/Madrid
+02:00
+15
+Vi
+Casino
+Museu del vidre
+Jardins
+Concerts
+Església
+Biblioteca
+*
+January 1 - December 31: 11:00-06:00
+*
+lloc vistable
+Sagrada Família
+41.4036299,2.1721671
+Europe/Madrid
+01:00
+22
+Església
+Art
+Arquitectura
+Penjats que van pintant parets
+Gaudí
+Escultura
+*
+January 1 - December 31: 10:00-18:00
+*
+allotjament
+Fontana Hotel Bali
+-8.704276,115.17734199999995
+Asia/Makassar
+quatre estrelles
+33
+platja
+sol
+budista
+mar
+kytesurf
+windsurf
+*
+allotjament
+W Bali - Seminyak
+-8.6772567,115.14916560000006
+Asia/Makassar
+cinc estrelles
+350
+platja
+sol
+mar
+kytesurf
+windsurf
+gastronomia
+piscina
+*
+allotjament
+Mas Vivient
+42.3763789,3.0679086
+Europe/madrid
+quatre estrelles
+150
+vi
+vinya
+tranquilitat
+banyeres
+platja
+muntanya
+*
+associar lloc
+Fontana Hotel Bali
+Denpasar
+*
+associar lloc
+W Bali - Seminyak
+Denpasar
+*
+transport indirecte
+Vilamaniscle
+Peralada
+Ampurdán bus
+00:13
+00:20
+2017-04-11
+12:46
+01:16
+10.50
+13:46
+01:20
+10.50
+2017-04-12
+10:16
+01:19
+10.50
+*
+tansport indirecte
+Denpasar
+Melbourne
+avió
+01:00
+00:30
+2017-05-13
+10:00
+04:00
+105.90
+22:00
+04:00
+150.00
+2017-05-14
+10:16
+04:00
+190.90
+*
+tansport indirecte
+Barcelona
+Denpasar
+avió
+01:00
+00:30
+2017-05-12
+10:00
+12:00
+670
+12:00
+11:30
+685
+*
+tansport indirecte
+Melbourne
+Barcelona
+avió
+00:55
+00:30
+2017-05-15
+05:00
+10:22
+567
+12:00
+11:30
+566
+*
+transport indirecte
+Barcelona
+Vilamaniscle
+Teisa
+00:45
+00:05
+2017-04-15
+12:46
+01:16
+10.50
+13:46
+01:20
+10.50
+2017-04-16
+10:16
+01:19
+10.50
+*
+transport directe
+Mas Vivent
+Castell de Peralada
+Microbusus barceló
+00:26
+2.5
+*
+transport directe
+Mas Vivent
+Castell de Peralada
+Marcel de la tita llarga
+00:15
+5
+*
+transport directe
+Castell de Peralada
+Sagrada Família
+Microbusus barceló
+01:45
+23.00
+*
+associar transport
+Denpasar
+Wawa
+00:10
+0.10
+*
+associar transport
+Vilamaniscle
+carretó
+00:01
+12.00
+*
+associar transport
+Melbourne
+underground
+00:05
+2.0
+*
+associar transport
+Melbourne
+Cangur
+00:04
+3.0
+*
+associar transport
+Barcelona
+metro
+00:10
+1.90
+*
+visita
+Pere de la cullera
+Lamington National Park
+2015-04-11
+*
+visita
+Marc Sánchez Pifarré
+Fontana Hotel Bali
+2014-04-11
+*

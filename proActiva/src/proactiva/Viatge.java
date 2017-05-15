@@ -13,6 +13,8 @@ public class Viatge {
   private int nombreDies;
   private float preuMaxim;
   private String categoria;
+  private String origen;
+  private String desti;
   
   
   public Viatge (LocalDate _dataInici, LocalTime _horaInici, int _nombreDies, float _preuMaxim, String _categoria, ArrayList<String> _clients, ArrayList<String> _rutes) {
@@ -24,10 +26,11 @@ public class Viatge {
       categoria = _categoria;
       clients = _clients;
       rutes = _rutes;
+      origen = _clients.get(0);
+      desti = _clients.get(clients.size()-1);
+      System.out.println("ORIGEN " + origen);
+      System.out.println("DESTI " + desti);
   }
 }
-
-
-
 
 

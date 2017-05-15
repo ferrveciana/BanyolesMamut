@@ -14,15 +14,10 @@ public class DuesHores {
     public DuesHores(LocalTime hI, LocalTime hF){
         horaIni=hI;
         horaFi=hF;
+        System.out.println("HA ENTRAT UNA EXCEPCIO");
     }
     
-    /*
-    * @pre
-    * @post retorna cert si encara hi podrà anar aquell dia
-    * @breif
-    */
-    public boolean estaAbans(LocalTime h){
-        return (h.isBefore(horaFi));
-    }
-    
+    public boolean estaEntreMig(LocalTime h){
+        return (h.isAfter(horaIni) && h.isBefore(horaFi));
+    }    
 }

@@ -18,8 +18,16 @@ public class Ciutat extends Lloc {
         super(_nom, _coordenada, _zonaHoraria);
         llistaPinteres = new LinkedList<PuntInteres>();
         llistaUrbans = new LinkedList<TransportUrba>();
+        llistaHubs = new LinkedList<Hub>();
     }
-   
+
+    Ciutat(Ciutat _ciutat) {
+        super(_ciutat.nom,_ciutat.getCoordenada(), _ciutat.getZonaHoraria());
+        llistaPinteres = new LinkedList<PuntInteres>();
+        llistaUrbans = new LinkedList<TransportUrba>();
+    }
+    
+    
     public List<TransportUrba> obtenirTransports(){ 
         return llistaUrbans;
     }
