@@ -304,7 +304,7 @@ public class Entrada {
         HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte = new HashMap<>(); //mapa amb clau primaria = data | clau secundària = ArrayList<TransportIndirecte>
         ArrayList<TransportIndirecte> llistaTransportIndirecte = new ArrayList<>();
         
-        TransportIndirecte nouTransport = new TransportIndirecte();
+        TransportIndirecte nouTransport;// = new TransportIndirecte();
         String[] paraulesSeparades;
         
         while (!data.equals("*")){ //sortirem amb el break
@@ -315,7 +315,7 @@ public class Entrada {
             while(!horari.equals("*") && (Integer.parseInt(paraulesSeparades[0]) < 24)){ //entrarem si no es tracta d'una data de transport indirecte
                 durada = nomFitxer.nextLine();
                 preu = nomFitxer.nextLine(); 
-                nouTransport.afegir(horari,durada,Float.parseFloat(preu));
+                nouTransport = new TransportIndirecte(horari,durada,Float.parseFloat(preu));
                 llistaTransportIndirecte.add(nouTransport);
                 
                 horari = nomFitxer.nextLine();
@@ -324,7 +324,7 @@ public class Entrada {
             
             transportIndirecte.put(dataTransport,llistaTransportIndirecte); //guardem un transport indirecte i la seva informacio
             llistaTransportIndirecte.clear(); 
-            nouTransport = new TransportIndirecte();
+            //nouTransport = new TransportIndirecte(horari,durada,Float.parseFloat(preu));
             
             if (horari.equals("*")) //hem acabat de llegir transports indirectes
                 break;    
