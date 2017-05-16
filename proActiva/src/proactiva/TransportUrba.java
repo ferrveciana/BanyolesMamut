@@ -13,5 +13,11 @@ public class TransportUrba {
         preu=_preu;
     }
     
+    public String obtenirDurada() {
+        return durada;   
+    }
     
+    public float obtenirPreu() {
+        return preu;   
+    }
 }
