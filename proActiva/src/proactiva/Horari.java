@@ -14,9 +14,9 @@ public class Horari {
     
     
     public Horari(String _mesIni, int _diaIni, String _mesFin, int _diaFin, LocalTime _horaIni, LocalTime _horaFi){
-        mesIni = _mesIni;
+        mesIni = _mesIni.toUpperCase();
         diaIni = _diaIni;
-        mesFin = _mesFin;
+        mesFin = _mesFin.toUpperCase();
         diaFin = _diaFin;
         interval = new DuesHores(_horaIni,_horaFi);
     }
@@ -48,8 +48,8 @@ public class Horari {
         boolean _estaDins = false;
         LocalDate _data = hora.toLocalDate();
 
-        mesFin=mesFin.toUpperCase();
-        mesIni=mesIni.toUpperCase();
+        //mesFin=mesFin.toUpperCase();
+        //mesIni=mesIni.toUpperCase();
         
         int mesAuxIni = Month.valueOf(mesIni).getValue(); //Ex: January == 1 , October == 10
         int mesAuxFin = Month.valueOf(mesFin).getValue();
