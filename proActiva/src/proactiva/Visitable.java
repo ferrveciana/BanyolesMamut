@@ -61,7 +61,7 @@ public class Visitable extends PuntInteres {
     * @post retorna la hora en la que es pot visitar el visitable
     * @brief 
     */
-    public LocalTime hPropera(LocalDateTime hora){
+    public LocalDateTime hPropera(LocalDateTime hora){
         
         LocalTime sol = hora.toLocalTime();
         LocalDate _dia = hora.toLocalDate(); //tinc la data
@@ -82,7 +82,8 @@ public class Visitable extends PuntInteres {
             }
         }
         if(sol.isBefore(hora.toLocalTime())) sol = hora.toLocalTime();
-        return sol;
+        LocalDateTime res = LocalDateTime.of(_dia, sol);
+        return res;
     }
     
     

@@ -13,7 +13,7 @@ public class TransportUrba {
         preu=_preu;
     }
     
-    public String obtenirDurada() {
+    public int obtenirDurada() {
         return durada;   
     }
     
