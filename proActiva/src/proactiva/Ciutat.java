@@ -48,4 +48,8 @@ public class Ciutat extends Lloc {
         llistaHubs.add(_hub);
     }
     
+    public LinkedList<Hub> obtenirHub() {
+        return llistaHubs;   
+    }
+    
 }
