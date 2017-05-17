@@ -247,7 +247,7 @@ public class Solucio {
                millor = true;       
        }
        else if (param.equals("t")){//temps
-           if (tempsAct < optima.tempsAct) //*sumar dist de candidat
+           if ((tempsAct+a.durada() < optima.tempsAct) //*sumar dist de candidat
                millor = true;       
        }
        else millor=true; //satisfaccio no te poda
