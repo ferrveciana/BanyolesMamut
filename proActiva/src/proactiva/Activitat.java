@@ -43,11 +43,19 @@ public abstract class Activitat {
         hfinal=_final;
     }
     
+    public LocalDateTime getFinal(){
+        return hfinal;
+    }
+    
     abstract public PuntInteres piActual();
         
     abstract int satisfaccio(List<String> preferenciesClients);
     
     abstract LocalDateTime hPropera(LocalDateTime hora);
+    
+    public abstract void mostraProva();
+        
+        
     
  
 }
