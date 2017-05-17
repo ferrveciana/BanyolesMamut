@@ -37,8 +37,7 @@ public class Hub {
      */
     public void afegirHoraris(LocalDate data,ArrayList<TransportIndirecte> transports){
         horaris.put(data,transports);
-    }
-    
+    }    
     
     /**
     * @pre hora valida
@@ -70,10 +69,11 @@ public class Hub {
     */
     public boolean sHiPotAnar(LocalDateTime hora){
         
+        hora.plusMinutes(tempsOrigen2Tnsp); //sumem el temps que tarda a anar al hub per saber si podra agafar el transport o no
         LocalDate data = hora.toLocalDate();
         LocalTime horaAct = hora.toLocalTime();
         ArrayList<TransportIndirecte> transports = horaris.get(data);
-        int i = transports.size()-1;
+        int i = transports.size()-1; //mires l'ultima hora del dia
         
         return (horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora()));
     }
