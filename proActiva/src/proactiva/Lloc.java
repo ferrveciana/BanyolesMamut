@@ -41,5 +41,10 @@ public class Lloc {
        
        return city;
    }
+   
+    public String getNom(){
+        
+        return nom;
+    }
     
 }

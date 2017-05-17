@@ -12,7 +12,7 @@ public class Ciutat extends Lloc {
     
    private LinkedList<TransportUrba> llistaUrbans;
    private LinkedList<PuntInteres> llistaPinteres;
-   private List<Hub> llistaHubs;
+   private LinkedList<Hub> llistaHubs;
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);

@@ -230,7 +230,7 @@ public class Solucio {
                millor = true;       
        }
        if (param.equals("d")){//distancia
-           if (tempsAct< optima.tempsMax)
+           if (tempsAct< optima.tempsAct)
                millor = true;       
        }
        
@@ -238,7 +238,7 @@ public class Solucio {
       
     }
     
-   public boolean potSerMillor(Solucio optima,String param,Activitat a){
+    public boolean potSerMillor(Solucio optima,String param,Activitat a){
        
        boolean millor = false;
       
@@ -264,6 +264,3 @@ public class Solucio {
   
 }
  
-  
-}
-    

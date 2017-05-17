@@ -54,4 +54,9 @@ class Visita extends Activitat {
     LocalDateTime hPropera(LocalDateTime hora) {
         return visitable.hPropera(hora);
     }
+
+    @Override
+    public void mostraProva() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
