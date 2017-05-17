@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package proactiva;
 
 import java.time.LocalDateTime;
@@ -12,8 +16,8 @@ public class EstadaH extends Activitat{ // no te durada fixada
     
     private Allotjament hotel;
     
-    public EstadaH(int _durada, float _preu,Allotjament _hotel) {
-        super(_durada,_preu);
+    public EstadaH(int _durada, float _preu,Allotjament _hotel) { 
+        super(0,_preu); //La durada no es sap
         hotel = _hotel;
     }
     
@@ -41,6 +45,9 @@ public class EstadaH extends Activitat{ // no te durada fixada
     @Override
     LocalDateTime hPropera(LocalDateTime hora) {
         return hora;
+    }
+    public void mostraProva() {
+       System.out.println(hotel.getNom());
     }
     
 }
