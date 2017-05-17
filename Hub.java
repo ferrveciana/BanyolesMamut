@@ -1,6 +1,9 @@
-package prop;
+package proactiva;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,15 +18,30 @@ public class Hub {
     private final int tempsOrigen2Tnsp;
     private final int tempsTnsp2Desti;
     
-    private HashMap<LocalDate,List<TransportIndirecte>> horaris;
+    private final HashMap<LocalDate,ArrayList<TransportIndirecte>> horaris;
     
     
-    public Hub(String o,String d,String m,int tO2T,int tT2D){
+    public Hub(String o,String d,String m,int tO2T,int tT2D, HashMap<LocalDate,ArrayList<TransportIndirecte>> tI){
         origen=o;
         desti=d;
         mitja=m;
         tempsOrigen2Tnsp=tO2T;
         tempsTnsp2Desti=tT2D;
+        horaris=tI;
+    }
+    
+    public List<TransportIndirecte> totsElsTransports(LocalDateTime hora){
+        
+        LocalDate data= hora.toLocalDate();
+        return horaris.get(data);
+    }
+    
+    public String getDesti(){
+        return desti;
+    }
+    
+    public String getTipus(){
+        return mitja;
     }
     
     /**
@@ -32,8 +50,47 @@ public class Hub {
      * @pre: data existent
      * @post: ha afegit un dia amb tots els seus transports al map
      */
-    public void afegirHoraris(LocalDate data,List<TransportIndirecte> transports){
+    public void afegirHoraris(LocalDate data,ArrayList<TransportIndirecte> transports){
         horaris.put(data,transports);
+    }    
+    
+    /**
+    * @pre hora valida
+    * @post retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
+    * @brief retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
+    */
+    public LocalDateTime hPropera(LocalDateTime hora){
+        
+        LocalDate data = hora.toLocalDate();
+        LocalTime horaAct = hora.toLocalTime();
+        ArrayList<TransportIndirecte> transports = horaris.get(data);
+        
+        boolean trobat = false;
+        int i=0;
+        while(i<transports.size() && !trobat){
+            if(horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora())){ //el primer k trobi que l'horaAct sigui
+                trobat = true;
+            }
+            else i++;
+        }
+        LocalDateTime sol = LocalDateTime.of(data,transports.get(i).getHora());
+        return sol;
+    }
+    
+    /**
+    * @pre hora valida
+    * @post retorna cert si podra anar en aquest transport durant dia actual, fals altrament
+    * @brief retorna cert si pot anar en aquest transport durant el dia actual
+    */
+    public boolean sHiPotAnar(LocalDateTime hora){
+        
+        hora.plusMinutes(tempsOrigen2Tnsp); //sumem el temps que tarda a anar al hub per saber si podra agafar el transport o no
+        LocalDate data = hora.toLocalDate();
+        LocalTime horaAct = hora.toLocalTime();
+        ArrayList<TransportIndirecte> transports = horaris.get(data);
+        int i = transports.size()-1; //mires l'ultima hora del dia
+        
+        return (horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora()));
     }
     
 }

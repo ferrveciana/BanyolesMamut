@@ -6,15 +6,16 @@ import java.util.List;
 
 public class TransportIndirecte{
     
-    private final List<LocalTime> horaris;
-    private final List<Integer> durada;
-    private final List<Float> preu;
+    private final LocalTime horaris;
+    private final int durada;
+    private final float preu;
     
-    public TransportIndirecte(){
+    
+    public TransportIndirecte(String _horaris, String _durada, float _preu){
         
-        horaris= new ArrayList();
-        durada= new ArrayList();
-        preu= new ArrayList();
+        horaris= passarHora(_horaris);
+        durada= passarInt(_durada);
+        preu= _preu;
     }
     
     private int passarInt(String hora){
@@ -29,11 +30,15 @@ public class TransportIndirecte{
         return (LocalTime.of(Integer.parseInt(paraulesSeparades[0]),Integer.parseInt(paraulesSeparades[1])));
     }
     
-    public void afegir(String hora,String temps,float pr){
-        horaris.add(passarHora(hora));
-        durada.add(passarInt(temps));
-        preu.add(pr);
+    public LocalTime getHora(){
+        return horaris;
     }
+    
+//    public void afegir(String hora,String temps,float pr){
+//        horaris.add(passarHora(hora));
+//        durada.add(passarInt(temps));
+//        preu.add(pr);
+//    }
     /*
     public void afegirHorari(LocalTime h,){
         horaris.add(h);
