@@ -49,14 +49,16 @@ public class Desplaçament extends Activitat{
         return suma;
     }
     
-    @Override
+   @Override
     LocalDateTime hPropera(LocalDateTime hora) {
         if (origen.getCiutat().equals(desti.getCiutat())){//si es urba
             return hora;
         }
-        else return hora; //per implementar no urbans (pasar tot ) 
+        origen.getCiutat().primeraHoraDisponible(origen,desti,tipusTransport);
+        else return hora; //per implementar no urbans
         
     }
+
     
     public void mostraProva() {
        System.out.println(origen.getNom()+" ->" +desti.getNom());
@@ -70,5 +72,6 @@ public class Desplaçament extends Activitat{
     public boolean esPotDesplaçar(){
         return true; //per implementar
     }
+    
 
 }
