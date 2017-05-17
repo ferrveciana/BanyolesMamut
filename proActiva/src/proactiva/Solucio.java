@@ -28,7 +28,7 @@ public class Solucio {
     
     private List<String> preferenciesClients;
     
-    private int categoriaHotel; //categoria demanada
+    private String categoriaHotel; //categoria demanada
     
     private LinkedList<PuntInteres> circuit;
     private LinkedList<Activitat> llistaActivitats;
@@ -49,7 +49,6 @@ public class Solucio {
     
     PuntInteres anterior;
     LocalDateTime hora;
-    LocalDateTime hora_anterior;
     
     Solucio(List<PuntInteres> _llistaPi,PuntInteres _origen, PuntInteres _desti,int _satisfaccio,float _preuMax,HashMap<PuntInteres,Boolean> _desitjos,List<String> _preferenciesClients){
         desitjosVisitats =0;
@@ -91,10 +90,7 @@ public class Solucio {
         //SUMES
         preuAct+=a.preu();
         satAct+=a.satisfaccio(preferenciesClients);
-        
-        //Inici d'activitat
-        hora_anterior=hora;
-        
+                
         
         if (a instanceof EstadaH){ //Estada a hotel
             
@@ -146,7 +142,14 @@ public class Solucio {
         llistaActivitats.remove(ultim);
         circuit.remove(pi);
         
-        hora = hora_anterior;
+        hora = llistaActivitats.get(llistaActivitats.size()-1).getFinal();
+        
+        int penultim = llistaActivitats.size()-2;
+        Activitat a_anterior = llistaActivitats.get(penultim);
+        if (a_anterior instanceof EstadaH){
+             a_anterior.setFinal(hora);
+        }
+       
                
     }
     
@@ -180,7 +183,7 @@ public class Solucio {
                 else if (a instanceof EstadaH){
                     
                     EstadaH estada = (EstadaH) a;
-                    acceptable = categoriaHotel>=estada.getCategoria();
+                    acceptable = categoriaHotel.equals(estada.getCategoria());
             
                 }
                 else if (a instanceof Desplaçament){
@@ -220,18 +223,16 @@ public class Solucio {
     public boolean potSerMillor(Solucio optima,String param,Activitat a){
        
        boolean millor = false;
-       if (param.equals("s")){ //satisfactoria
-           if (satisfaccio > optima.satisfaccio) //*sumar satisfaccio de candidat
-               millor = true;       
-       }
+      
        if (param.equals("b")){//barata
            if ((preuAct+a.preu()) < optima.preuAct)
                millor = true;       
        }
-       if (param.equals("t")){//temps
+       else if (param.equals("t")){//temps
            if (tempsAct < optima.tempsMax) //*sumar dist de candidat
                millor = true;       
        }
+       else millor=true; //satisfaccio no te poda
        
        return millor;
         
@@ -244,3 +245,4 @@ public class Solucio {
  
   
 }
+    
