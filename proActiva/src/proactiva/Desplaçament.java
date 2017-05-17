@@ -39,14 +39,7 @@ public class Desplaçament extends Activitat{
 
     @Override
     int satisfaccio(List<String> preferenciesClients) {
-        
-       int suma = 0;
-        List<String> llistaCaracteristiques = desti.obtenirCaracteristiques();
-        for (String c:llistaCaracteristiques){
-            if (preferenciesClients.contains(c)) suma++;
-        }
-        
-        return suma;
+         return 0; //desp no aporta satisfaccio
     }
     
    @Override
