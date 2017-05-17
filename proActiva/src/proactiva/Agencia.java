@@ -25,7 +25,7 @@ public class Agencia {
      *
      * @brief constructor de l'agencia que inicialitza les llistes
      * @pre cert
-     * @return llistes inicialitzades
+     * @post llistes inicialitzades
      */
     public Agencia() {
         this.llistaLlocs = new HashMap<>();
@@ -39,7 +39,7 @@ public class Agencia {
      *
      * @brief converteix una string data a una LocalDate i la retorna
      * @pre l'string data es una data valida
-     * @return retorna la data obtinguda a partir de l'string 'data' en format LocalDate
+     * @post retorna la data obtinguda a partir de l'string 'data' en format LocalDate
      */
     public LocalDate passarData(String data){
         String delimitadors= "[ :-]+";
@@ -51,7 +51,7 @@ public class Agencia {
      *
      * @brief converteix una string hora a un enter equivalent en minuts i el retorna
      * @pre l'string hora es una hora valida
-     * @return retorna els minuts 
+     * @post retorna els minuts 
      */
     private int passarTemps(String hora){
         String delimitadors= "[ :-]+";
@@ -63,7 +63,7 @@ public class Agencia {
      *
      * @brief crea una llista de clients amb les dades que li ha passat la entrada i les guarda a la pròpia classe
      * @pre cert
-     * @return llistaClients actualitzada
+     * @post llistaClients actualitzada
      */
     public void crearClient(String nomClient, ArrayList<String> llistaPreferencies) {
     
@@ -75,7 +75,7 @@ public class Agencia {
      *
      * @brief crea una llista de Llocs amb les dades que li ha passat la entrada i les guarda a la pròpia classe
      * @pre cert
-     * @return llistaLlocs actualitzada
+     * @post llistaLlocs actualitzada
      */
     public void crearLloc(String nomLloc, String coordenades, TimeZone franjaHoraria) {
         
@@ -87,7 +87,7 @@ public class Agencia {
      *
      * @brief crea una llista de punts d'Interes amb les dades que li ha passat la entrada i les guarda a la pròpia classe
      * @pre cert
-     * @return llistaPInteres actualitzada amb els Allotjaments entrats
+     * @post llistaPInteres actualitzada amb els Allotjaments entrats
      */
     public void crearAllotjament(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract,String _categoria) {
         
@@ -99,7 +99,7 @@ public class Agencia {
      *
      * @brief crea una llista de punts d'Interes amb les dades que li ha passat la entrada i les guarda a la pròpia classe
      * @pre cert
-     * @return llistaPInteres actualitzada amb els Visitables entrats
+     * @post llistaPInteres actualitzada amb els Visitables entrats
      */
     public void crearVisitable(String _nom, String _coordenada, TimeZone _zonaHoraria, float _preu, ArrayList<String> _caract, int _tempsVisita, ArrayList<Horari> _horariVisites, HashMap<String,DuesHores> _excepcions) {
         
@@ -111,7 +111,7 @@ public class Agencia {
      *
      * @brief actualitza la llista de clients amb les dades que li ha passat la entrada
      * @pre cert
-     * @return llistaClients actualitzada depenent les visites que han realitzat els clients prèviament
+     * @post llistaClients actualitzada depenent les visites que han realitzat els clients prèviament
      */
     public void crearVisita(String nomClient,String llocVisitat,LocalDate data) {
 
@@ -123,7 +123,7 @@ public class Agencia {
      *
      * @brief associa un Visitable o Allotjament a un Lloc de la llista de Llocs 
      * @pre cert
-     * @return llistaLlocs actualitzada
+     * @post llistaLlocs actualitzada
      */
     public void crearAssociarLloc(String secundari,String primari) {
         
@@ -146,7 +146,7 @@ public class Agencia {
      *
      * @brief afegeix un transportUrba a la llista de transports d'una ciutat de la nostra llistaLlocs
      * @pre cert
-     * @return transportsUrbans d'una ciutat actualitzats
+     * @post transportsUrbans d'una ciutat actualitzats
      */
     public void crearAssociarTransport(String _lloc,String mitja,int durada,float preu) {
          
@@ -165,7 +165,7 @@ public class Agencia {
      *
      * @brief afegeix un transport directe al punt d'Interes que ens passa la entrada
      * @pre cert
-     * @return  transport directe afegit
+     * @post  transport directe afegit
      */
     public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
 
@@ -180,7 +180,7 @@ public class Agencia {
      *
      * @brief afegeix un transport indirecte a la ciutat que ens passa la entrada
      * @pre cert
-     * @return transport indirecte afegit
+     * @post transport indirecte afegit
      */
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
 
@@ -200,7 +200,7 @@ public class Agencia {
      *
      * @brief crea un objecte Viatge amb la informació del viatge que volen fer els clients
      * @pre cert
-     * @return viatge creat
+     * @post viatge creat
      */
     public void crearEntradaViatge(LocalDate dataInici, LocalTime horaInici,int nombreDies,float preuMaxim, String categoria, ArrayList<String> clients, ArrayList<String> rutes) {
 
