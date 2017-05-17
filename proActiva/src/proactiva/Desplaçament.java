@@ -16,12 +16,14 @@ public class Desplaçament extends Activitat{
     
     private PuntInteres origen;
     private PuntInteres desti;
+    private String tipusTransport;
     
-    public Desplaçament(int _durada,PuntInteres _origen,PuntInteres _desti,float _preu) {
+    public Desplaçament(int _durada,PuntInteres _origen,PuntInteres _desti,float _preu,String  _tipusTransport) {
         super(_durada,_preu);
         
         origen = _origen;
         desti = _desti;
+        tipusTransport = _tipusTransport;
     }
 
     @Override
@@ -50,7 +52,12 @@ public class Desplaçament extends Activitat{
         if (origen.getCiutat().equals(desti.getCiutat())){//si es urba
             return hora;
         }
-        else return hora; //per implementar no urbans
+        else return hora; //per implementar no urbans (pasar tot ) 
         
     }
+    
+    public void mostraProva() {
+       System.out.println(origen.getNom()+" ->" +desti.getNom());
+    }
 }
+
