@@ -19,6 +19,36 @@ public class Lloc {
         
    }
    
+   Lloc() {
+       nom = "";
+       coordenada = "";
+       zonaHoraria = TimeZone.getDefault();
+       
+   }
+   
+   /**
+    * @pre --
+    * @post Retorna les coordenades de lloc
+    * @brief Retorna les coordenades de lloc
+    */
+   public String getCoordenada() {
+       return coordenada;
+   }
+   
+   /**
+    * @pre --
+    * @post Retorna la zona horaria de lloc
+    * @brief Retorna la zona horaria de lloc
+    */
+   public TimeZone getZonaHoraria() {
+       return zonaHoraria;
+   }
+   
+   /**
+    * @pre --
+    * @post Retorna una Ciutat creada a partir de secundari
+    * @brief Retorna una Ciutat creada a partir de secundari
+    */
    Ciutat ferCiutat(PuntInteres secundari){
        
        Ciutat city = new Ciutat(nom,coordenada,zonaHoraria);
@@ -26,5 +56,15 @@ public class Lloc {
        
        return city;
    }
+   
+    /**
+    * @pre --
+    * @post Retorna el nom de Ciutat
+    * @brief Retorna el nom de Ciutat
+    */
+   public String getNom(){
+        
+        return nom;
+    }
     
 }
