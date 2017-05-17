@@ -238,7 +238,7 @@ public class Solucio {
       
     }
     
-    public boolean potSerMillor(Solucio optima,String param,Activitat a){
+   public boolean potSerMillor(Solucio optima,String param,Activitat a){
        
        boolean millor = false;
       
