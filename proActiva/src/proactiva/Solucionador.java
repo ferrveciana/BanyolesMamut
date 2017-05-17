@@ -16,19 +16,25 @@ import java.util.List;
 public class Solucionador {
     
     private Solucio optima;
+    private String tipusRuta;
+    
+    public Solucionador(String _tipusRuta){
+        tipusRuta = _tipusRuta;
+        optima = new Solucio();
+    }
     
     public void executarNouBkg(Solucio solucio,PuntInteres pi,LocalDateTime hora){
         
          Candidats candidats = solucio.inicialitzarCandidats(pi);
          for (Activitat candidat:candidats){
              
-              if (solucio.acceptable(candidat) && solucio.potSerMillor(optima,"s",candidat)){
+              if (solucio.acceptable(candidat) && solucio.potSerMillor(optima,tipusRuta,candidat)){
                   solucio.anotar(candidat);
                   if (! solucio.completa()){
 				executarNouBkg(solucio,candidat.piActual(),solucio.hora()); //seguent candidat
 			}
                   else{//Solucio completa
-				if (solucio.esMillor(optima,"s")){
+				if (solucio.esMillor(optima,tipusRuta)){
 					optima = solucio;
 				}
 			} 
@@ -38,4 +44,9 @@ public class Solucionador {
         
     }
     
+    public Solucio obtOptima(){
+        return optima;
+    }
+    
+ 
 }
