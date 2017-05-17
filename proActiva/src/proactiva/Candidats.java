@@ -15,10 +15,10 @@ import java.util.function.Consumer;
 
 public class Candidats implements Iterable<Activitat>{ 
     
-    private int index; //Indica la posicio del candidat actual
+    private int index; ///<Indica la posicio del candidat actual
     private List<Activitat> llistaActivitats; 
     
-   	Candidats (PuntInteres _pi){
+   	Candidats (PuntInteres _pi, LocalDateTime hora){
         
 		llistaActivitats = new ArrayList();
 		
@@ -26,7 +26,7 @@ public class Candidats implements Iterable<Activitat>{
 		List<TransportDirecte> llistaTransportsDirectes = _pi.obtenirTransportsDirectes();
 
 		for (int i = 0; i < llistaTransportsDirectes.size(); i++) {
-			Desplaçament desplaçamentDirecte = new Desplaçament(llistaTransportsDirectes[i].obtenirDurada(),_pi,llistaTransportsDirectes[i].obtenirDesti(),llistaTransportsDirectes[i].obtenirPreu(),"transport Directe");
+			Desplaçament desplaçamentDirecte = new Desplaçament(llistaTransportsDirectes[i].obtenirDurada(),_pi,llistaTransportsDirectes[i].obtenirDesti(),llistaTransportsDirectes[i].obtenirPreu(),"directe",0);
 			llistaActivitats.add(desplaçamentDirecte); //falta afegir un string per saber quin tipus de transport es tracta
 		}
 		
@@ -38,7 +38,7 @@ public class Candidats implements Iterable<Activitat>{
 		for (int i = 0; i < transportsUrbans.size(); i++) { //per cada transport urba de la ciutat
 			for (int j = 0; j < puntsInteres.size(); j++) { //per cada punt d'interes de la ciutat
 				//Afegir transports urbans del punt d'Interes actual a la resta de punts d'Interes de la ciutat del _pi
-				Desplaçament desplaçamentUrba = new Desplaçament(transportsUrbans[i].obtenirDurada(),_pi,puntsInteres[j],transportsUrbans[i].obtenirPreu(),"transport Urba");
+				Desplaçament desplaçamentUrba = new Desplaçament(transportsUrbans[i].obtenirDurada(),_pi,puntsInteres[j],transportsUrbans[i].obtenirPreu(),"urba",0);
 				llistaActivitats.add(desplaçamentUrba);
 			}
 		}
@@ -55,6 +55,7 @@ public class Candidats implements Iterable<Activitat>{
 
        //Crear totes les activitats
     }
+
 
     @Override
     public Iterator<Activitat> iterator() {
