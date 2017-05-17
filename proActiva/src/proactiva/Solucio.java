@@ -15,10 +15,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+
 /**
  *
  * @author narcisbustins
  */
+
+
+
 public class Solucio {
     
     private HashMap<PuntInteres,Boolean> desitjos; //llista de llocs que es volen visitar
@@ -40,15 +44,22 @@ public class Solucio {
     int satAct;
     
     float preuMax;
-    float preuAct;
+    float preuAct;   
     
-    int tempsMax;
     int tempsAct;
     
     int tempsVisites;
     
     PuntInteres anterior;
     LocalDateTime hora;
+    
+    
+    public Solucio() {
+       
+        satisfaccio = 0;
+        tempsAct = Integer.MAX_VALUE;
+        preuAct = Integer.MAX_VALUE;
+    }
     
     Solucio(List<PuntInteres> _llistaPi,PuntInteres _origen, PuntInteres _desti,int _satisfaccio,float _preuMax,HashMap<PuntInteres,Boolean> _desitjos,List<String> _preferenciesClients){
         desitjosVisitats =0;
@@ -68,6 +79,8 @@ public class Solucio {
         llistaActivitats = new LinkedList<Activitat>();
 
     }
+
+    
     
     public Candidats inicialitzarCandidats(PuntInteres _pi) {
         
@@ -78,14 +91,14 @@ public class Solucio {
         
         PuntInteres pi = a.piActual();
         
-        if (desitjos.containsKey(pi) && desitjos.get(pi)==false){//treure de desitjos
+        if ((a instanceof Visita) && desitjos.containsKey(pi) && desitjos.get(pi)==false){//afegir desitjos visitats
             
             desitjos.put(pi,true);
             desitjosVisitats++;
         }
         
-        //Afegir Llocs visitats
-        visitats.add(pi);
+        //Afegir Llocs visitats si es visita
+        if (a instanceof Visita) visitats.add(pi);
         
         //SUMES
         preuAct+=a.preu();
@@ -124,13 +137,13 @@ public class Solucio {
         
         PuntInteres pi = a.piActual();
         
-        if (desitjos.containsKey(pi) && desitjos.get(pi)==true){//Treure de desitjos
+        if ((a instanceof Visita) && desitjos.containsKey(pi) && desitjos.get(pi)==true){//Treure de desitjos
             
             desitjos.put(pi,false);
             desitjosVisitats--;
         }
         //Llocs visitats
-        visitats.remove(pi);
+         if (a instanceof Visita) visitats.remove(pi);
         
         //RESTES
         preuAct-=a.preu();
@@ -172,7 +185,7 @@ public class Solucio {
         if (hora.isBefore(_h14) && hora.isAfter(_h12))//si no es hora de dinar  a.satisfaccio(preferenciesClients)>0
         */   
        
-        if ( a.preu()+preuAct<=preuMax && tempsAct+a.durada()<=tempsMax && !visitats.contains(pi)){ //si no es supera preuMax && aprota satisfaccio && es pot fer avui
+        if ( a.preu()+preuAct<=preuMax && !visitats.contains(pi)){ //si no es supera preuMax && aprota satisfaccio && es pot fer avui
                 
                 if (a instanceof Visita){
                 
@@ -187,8 +200,13 @@ public class Solucio {
             
                 }
                 else if (a instanceof Desplaçament){
-                
-                    acceptable = true;
+                    
+                    Desplaçament d = (Desplaçament) a;
+                    if (d.esIndirecte() && !(d.esPotDesplaçar())) 
+                        acceptable = false;
+                    else 
+                        acceptable = true;
+                    
                 }
             }
         
@@ -229,7 +247,7 @@ public class Solucio {
                millor = true;       
        }
        else if (param.equals("t")){//temps
-           if (tempsAct < optima.tempsMax) //*sumar dist de candidat
+           if (tempsAct < optima.tempsAct) //*sumar dist de candidat
                millor = true;       
        }
        else millor=true; //satisfaccio no te poda
@@ -242,6 +260,9 @@ public class Solucio {
         
         return hora;
     }
+ 
+  
+}
  
   
 }
