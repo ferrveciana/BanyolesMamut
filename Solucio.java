@@ -84,7 +84,7 @@ public class Solucio {
     
     public Candidats inicialitzarCandidats(PuntInteres _pi) {
         
-          return new Candidats(_pi);
+          return new Candidats(_pi,hora);
     }
     
     public void anotar(Activitat a){
@@ -191,6 +191,7 @@ public class Solucio {
                 
                     Visita visita = (Visita) a;
                     acceptable =  visita.realitzarAvui(hora);
+                    //aportar satisfaccio
                 
                 }
                 else if (a instanceof EstadaH){
@@ -200,6 +201,8 @@ public class Solucio {
             
                 }
                 else if (a instanceof Desplaçament){
+                    
+                    //Per poder es pot veure 
                     
                     Desplaçament d = (Desplaçament) a;
                     if (d.esIndirecte() && !(d.esPotDesplaçar())) 
@@ -247,7 +250,7 @@ public class Solucio {
                millor = true;       
        }
        else if (param.equals("t")){//temps
-           if (tempsAct+a.durada() < optima.tempsAct) //*sumar dist de candidat
+           if ((tempsAct+a.durada() < optima.tempsAct)) //*sumar dist de candidat
                millor = true;       
        }
        else millor=true; //satisfaccio no te poda
