@@ -1,5 +1,6 @@
 package proactiva;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
@@ -10,9 +11,9 @@ import java.util.TimeZone;
  */
 public class Ciutat extends Lloc {
     
-   private LinkedList<TransportUrba> llistaUrbans;
-   private LinkedList<PuntInteres> llistaPinteres;
-   private LinkedList<Hub> llistaHubs;
+   private List<TransportUrba> llistaUrbans;
+   private List<PuntInteres> llistaPinteres;
+   private List<Hub> llistaHubs;
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
@@ -26,7 +27,6 @@ public class Ciutat extends Lloc {
         llistaPinteres = new LinkedList<PuntInteres>();
         llistaUrbans = new LinkedList<TransportUrba>();
     }
-    
     
     public List<TransportUrba> obtenirTransports(){ 
         return llistaUrbans;
@@ -48,8 +48,19 @@ public class Ciutat extends Lloc {
         llistaHubs.add(_hub);
     }
     
-    public LinkedList<Hub> obtenirHub() {
+    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport){
+        boolean trobat = false;
+        
+        while(!troban && )
+        
+        
+        return ;
+    }
+    
+    public List<Hub> obtenirHub() {
         return llistaHubs;   
     }
+    
+    
     
 }

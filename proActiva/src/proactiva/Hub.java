@@ -40,6 +40,18 @@ public class Hub {
     }    
     
     /**
+     * @pre cert
+     * @post retorna la suma de temps origen fins a hub + hub fins desti 
+     */
+    public int obtenirDurada(){
+        return (tempsOrigen2Tnsp+tempsTnsp2Desti);
+    }
+    
+   public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
+       return horaris.get(hora.toLocalDate());
+   }
+    
+    /**
     * @pre hora valida
     * @post retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
     * @brief retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
