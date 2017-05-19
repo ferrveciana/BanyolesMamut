@@ -80,4 +80,5 @@ public abstract class PuntInteres extends Lloc {
         else return false;
     }
     
+    public abstract Activitat crearActivitat();
 }

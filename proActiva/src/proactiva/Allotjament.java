@@ -21,4 +21,10 @@ public class Allotjament extends PuntInteres{
     public String getCategoria(){
         return categoria;
     }
+
+    @Override
+    public Activitat crearActivitat() {
+        EstadaH a = new EstadaH(0, (float) this.obtenirPreu(),this); //treure cast
+        return a;
+    }
 }

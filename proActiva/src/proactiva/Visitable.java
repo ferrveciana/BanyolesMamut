@@ -142,4 +142,19 @@ public class Visitable extends PuntInteres {
         return sol;
     }
     
+     /*
+    * @pre cert
+    * @post retorna el temps que es tarda a realitzar la visita
+    * @brief retorna el temps que es tarda a realitzar la visita
+    */
+    public int obtenirDurada(){
+        return tempsVisita;
+    }
+
+    @Override
+    public Activitat crearActivitat() {
+        Visita v = new Visita(this.obtenirDurada(), (float) this.obtenirPreu(),this);
+        return v;
+    }
+    
 }
