@@ -84,7 +84,7 @@ public class Solucio {
     
     public Candidats inicialitzarCandidats(PuntInteres _pi) {
         
-          return new Candidats(_pi);
+          return new Candidats(_pi,hora);
     }
     
     public void anotar(Activitat a){
