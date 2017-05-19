@@ -1,6 +1,8 @@
 package proactiva;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
@@ -13,13 +15,13 @@ public class Ciutat extends Lloc {
     
    private List<TransportUrba> llistaUrbans;
    private List<PuntInteres> llistaPinteres;
-   private List<Hub> llistaHubs;
+   private ArrayList<Hub> llistaHubs;
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
-        llistaPinteres = new LinkedList<PuntInteres>();
-        llistaUrbans = new LinkedList<TransportUrba>();
-        llistaHubs = new LinkedList<Hub>();
+        llistaPinteres = new LinkedList<>();
+        llistaUrbans = new LinkedList<>();
+        llistaHubs = new ArrayList<>();
     }
 
     Ciutat(Ciutat _ciutat) {
@@ -40,7 +42,7 @@ public class Ciutat extends Lloc {
         llistaPinteres.add(_pinteres);
     }
     
-    public LinkedList<PuntInteres> obtenirPuntInteres(){
+    public List<PuntInteres> obtenirPuntInteres(){
         return llistaPinteres;
     }
     
@@ -48,13 +50,14 @@ public class Ciutat extends Lloc {
         llistaHubs.add(_hub);
     }
     
-    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport){
+    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport,LocalDateTime hora){
         boolean trobat = false;
+        int i=0;
         
-        while(!troban && )
-        
-        
-        return ;
+        while (!trobat && i<llistaHubs.size()) {
+            if(llistaHubs.get(i).esIgual(origen, desti, tipusTransport)) trobat=true;
+        }
+        return llistaHubs.get(i).hPropera(hora);
     }
     
     public List<Hub> obtenirHub() {

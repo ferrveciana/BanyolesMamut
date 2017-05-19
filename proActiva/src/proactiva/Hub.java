@@ -47,6 +47,15 @@ public class Hub {
         return (tempsOrigen2Tnsp+tempsTnsp2Desti);
     }
     
+    /**
+     * @pre cert
+     * @post retorna cert si l'origen, desti i mitja de transport coincideixen amb el hub actual
+     * @brief 
+     */
+    public boolean esIgual(String o,String d,String tipus){
+        return (origen.equals(o) && desti.equals(d) && mitja.equals(tipus) );
+    }
+    
    public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
        return horaris.get(hora.toLocalDate());
    }
@@ -56,7 +65,7 @@ public class Hub {
     * @post retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
     * @brief retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
     */
-    public LocalTime hPropera(LocalDateTime hora){
+    public LocalDateTime hPropera(LocalDateTime hora){
         
         LocalDate data = hora.toLocalDate();
         LocalTime horaAct = hora.toLocalTime();
@@ -70,8 +79,8 @@ public class Hub {
             }
             else i++;
         }
-        
-        return transports.get(i).getHora();
+        LocalDateTime sol = LocalDateTime.of(data,transports.get(i).getHora());
+        return sol;
     }
     
     /**
