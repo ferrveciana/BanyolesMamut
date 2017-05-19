@@ -40,7 +40,7 @@ public class Desplaçament extends Activitat{
     LocalDateTime hPropera(LocalDateTime hora) {
         
         if (esIndirecte()){
-            return origen.getCiutat().primeraHoraDisponible(origen,desti,tipusTransport);
+            return origen.getCiutat().primeraHoraDisponible(origen.nom,desti.nom,tipusTransport,hora);
         }
         else
             return hora; //per implementar no urbans
@@ -58,7 +58,10 @@ public class Desplaçament extends Activitat{
     }
     
     public boolean esPotDesplaçar(){
-        return true; //per implementar
+        if (esIndirecte()){
+            return origen.getCiutat().esPotMoure(origen.nom,desti.nom,tipusTransport,hora);
+        }
+        else return true;
     }
     
 

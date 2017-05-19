@@ -50,14 +50,40 @@ public class Ciutat extends Lloc {
         llistaHubs.add(_hub);
     }
     
-    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport,LocalDateTime hora){
+    /**
+     * @pre cert
+     * @post busca el hub a la llistaHubs que te com a origen==0, desti==d i mija==tipusM
+     * @brief busca un hub a la llistaHubs
+     */
+    public int buscarHub(String o,String d,String tipusM){
         boolean trobat = false;
         int i=0;
         
         while (!trobat && i<llistaHubs.size()) {
-            if(llistaHubs.get(i).esIgual(origen, desti, tipusTransport)) trobat=true;
+            if(llistaHubs.get(i).esIgual(o, d, tipusM)) trobat=true;
+            else i++;
         }
+        return i;
+    }
+    
+    /**
+     * @pre hora valida
+     * @post crida una funcio que retorna l'hora de sortida (del transport) mes pròxima
+     * @brief retorna l'hora de sortida mes pròxima
+     */
+    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport,LocalDateTime hora){
+        int i=buscarHub(origen, desti, tipusTransport);
         return llistaHubs.get(i).hPropera(hora);
+    }
+    
+    /**
+     * @pre hora valida
+     * @post crida una funcio que retorna cert si es podrà desplaçar durant el dia actual
+     * @brief retorna cert si es podrà desplaçar durant el dia actual
+     */
+    public boolean esPotMoure(String origen,String desti,String tipusTransport,LocalDateTime hora){
+        int i=buscarHub(origen, desti, tipusTransport);
+        return llistaHubs.get(i).sHiPotAnar(hora);
     }
     
     public List<Hub> obtenirHub() {
