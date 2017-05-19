@@ -68,6 +68,7 @@ public class Candidats implements Iterable<Activitat>{
 			Visitable visitable = (Visitable) _pi;
 			Visita visita = new Visita(visitable.obtenirDurada(),visitable.obtenirPreu(),visitable);
 		}
+		//allotjament
 		
     }
 
@@ -75,34 +76,8 @@ public class Candidats implements Iterable<Activitat>{
     @Override
     public Iterator<Activitat> iterator() {
         
-        return new ActivitatIterator();
+        return new llistaActivitats.iterator();
     }
     
-    private class ActivitatIterator implements Iterator<Activitat>{
-        
-        private int posicio;
-        
-        public ActivitatIterator(){
-            posicio = 0;
-        }
-
-        @Override
-        public boolean hasNext() {
-            
-            boolean hasnext;
-            
-            if (posicio < llistaActivitats.size())  
-                hasnext = true; 
-            else
-                hasnext = false; 
-            
-            return hasnext;
-        }
-
-        @Override
-        public Activitat next() {
-            posicio++;
-            return llistaActivitats.get(posicio-1);
-        }
-    }   
+ 
 }
