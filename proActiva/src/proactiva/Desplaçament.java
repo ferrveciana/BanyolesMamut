@@ -17,16 +17,13 @@ public class Desplaçament extends Activitat{
     private PuntInteres origen;
     private PuntInteres desti;
     private String tipusTransport; //<fer al constructor
-    private int tempsFinsTransport; //fer al constructor
-  
-    
+ 
     public Desplaçament(int _durada,PuntInteres _origen,PuntInteres _desti,float _preu,String  _tipusTransport,int _tempsFinsHub) {
         super(_durada,_preu);
         
         origen = _origen;
         desti = _desti;
         tipusTransport = _tipusTransport;
-        tempsFinsTransport=_tempsFinsHub;
     }
 
     @Override
