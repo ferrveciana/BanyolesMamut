@@ -18,7 +18,7 @@ public class Desplaçament extends Activitat{
     private PuntInteres desti;
     private String tipusTransport; //<fer al constructor
  
-    public Desplaçament(int _durada,PuntInteres _origen,PuntInteres _desti,float _preu,String  _tipusTransport,int _tempsFinsHub) {
+    public Desplaçament(int _durada,PuntInteres _origen,PuntInteres _desti,float _preu,String  _tipusTransport) {
         super(_durada,_preu);
         
         origen = _origen;
@@ -38,11 +38,11 @@ public class Desplaçament extends Activitat{
     
    @Override
     LocalDateTime hPropera(LocalDateTime hora) {
-        if (origen.getCiutat().equals(desti.getCiutat())){//si es urba
-            return hora;
+        
+        if (esIndirecte()){
+            return origen.getCiutat().primeraHoraDisponible(origen,desti,tipusTransport);
         }
-        origen.getCiutat().primeraHoraDisponible(origen,desti,tipusTransport);
-        else 
+        else
             return hora; //per implementar no urbans
         
     }
