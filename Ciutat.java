@@ -1,7 +1,6 @@
 package proactiva;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
@@ -12,15 +11,15 @@ import java.util.TimeZone;
  */
 public class Ciutat extends Lloc {
     
-   private LinkedList<TransportUrba> llistaUrbans;
-   private LinkedList<PuntInteres> llistaPinteres;
-   private ArrayList<Hub> llistaHubs;
+   private List<TransportUrba> llistaUrbans;
+   private List<PuntInteres> llistaPinteres;
+   private List<Hub> llistaHubs;
 
     public Ciutat(String _nom, String _coordenada, TimeZone _zonaHoraria) {
         super(_nom, _coordenada, _zonaHoraria);
         llistaPinteres = new LinkedList<PuntInteres>();
         llistaUrbans = new LinkedList<TransportUrba>();
-        llistaHubs = new ArrayList<Hub>();
+        llistaHubs = new LinkedList<Hub>();
     }
 
     Ciutat(Ciutat _ciutat) {
@@ -28,19 +27,6 @@ public class Ciutat extends Lloc {
         llistaPinteres = new LinkedList<PuntInteres>();
         llistaUrbans = new LinkedList<TransportUrba>();
     }
-    
-    public LocalDateTime primeraHoraDisponible(LocalDateTime hora, Ciutat desti, String tipusTransport){
-        int i = 0;
-        boolean trobat = false;
-        while(i<llistaHubs.size() && !trobat){
-            if(desti.getNom().equals(llistaHubs.get(i).getDesti()) && tipusTransport.equals(llistaHubs.get(i).getTipus())){
-                trobat = true;
-            }
-            else i++;
-        }
-        return llistaHubs.get(i).hPropera(hora);
-    }
-    
     
     public List<TransportUrba> obtenirTransports(){ 
         return llistaUrbans;
@@ -62,8 +48,19 @@ public class Ciutat extends Lloc {
         llistaHubs.add(_hub);
     }
     
-    public LinkedList<Hub> obtenirHub() {
+    public LocalDateTime primeraHoraDisponible(String origen,String desti,String tipusTransport){
+        boolean trobat = false;
+        
+        while(!troban && )
+        
+        
+        return ;
+    }
+    
+    public List<Hub> obtenirHub() {
         return llistaHubs;   
     }
+    
+    
     
 }

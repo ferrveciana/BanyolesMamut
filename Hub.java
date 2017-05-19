@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
@@ -22,26 +21,12 @@ public class Hub {
     
     
     public Hub(String o,String d,String m,int tO2T,int tT2D, HashMap<LocalDate,ArrayList<TransportIndirecte>> tI){
-        origen=o;
+        origen=o; //sha de treure ?!
         desti=d;
         mitja=m;
         tempsOrigen2Tnsp=tO2T;
         tempsTnsp2Desti=tT2D;
         horaris=tI;
-    }
-    
-    public List<TransportIndirecte> totsElsTransports(LocalDateTime hora){
-        
-        LocalDate data= hora.toLocalDate();
-        return horaris.get(data);
-    }
-    
-    public String getDesti(){
-        return desti;
-    }
-    
-    public String getTipus(){
-        return mitja;
     }
     
     /**
@@ -55,11 +40,23 @@ public class Hub {
     }    
     
     /**
+     * @pre cert
+     * @post retorna la suma de temps origen fins a hub + hub fins desti 
+     */
+    public int obtenirDurada(){
+        return (tempsOrigen2Tnsp+tempsTnsp2Desti);
+    }
+    
+   public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
+       return horaris.get(hora.toLocalDate());
+   }
+    
+    /**
     * @pre hora valida
     * @post retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
     * @brief retorna l'hora de sortida (del transport) mes pròxima a partir de l'hora actual
     */
-    public LocalDateTime hPropera(LocalDateTime hora){
+    public LocalTime hPropera(LocalDateTime hora){
         
         LocalDate data = hora.toLocalDate();
         LocalTime horaAct = hora.toLocalTime();
@@ -73,8 +70,8 @@ public class Hub {
             }
             else i++;
         }
-        LocalDateTime sol = LocalDateTime.of(data,transports.get(i).getHora());
-        return sol;
+        
+        return transports.get(i).getHora();
     }
     
     /**
