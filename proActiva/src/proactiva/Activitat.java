@@ -77,6 +77,10 @@ public abstract class Activitat {
         return hfinal;
     }
     
+    public void mostrarHores(){
+        System.out.println(hinici.toString()+ hfinal.toString());
+    }
+    
     abstract public PuntInteres piActual();
         
     abstract int satisfaccio(List<String> preferenciesClients);
