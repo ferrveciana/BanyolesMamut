@@ -8,11 +8,12 @@ import java.util.HashMap;
 
 /**
  *
- * @author FV
+ * @author Ferran Veciana
  */
+
 public class Hub {
-    private final String origen;
-    private final String desti;
+    private final Ciutat origen;
+    private final Ciutat desti;
     private final String mitja;
     private final int tempsOrigen2Tnsp;
     private final int tempsTnsp2Desti;
@@ -20,7 +21,7 @@ public class Hub {
     private final HashMap<LocalDate,ArrayList<TransportIndirecte>> horaris;
     
     
-    public Hub(String o,String d,String m,int tO2T,int tT2D, HashMap<LocalDate,ArrayList<TransportIndirecte>> tI){
+    public Hub(Ciutat o,Ciutat d,String m,int tO2T,int tT2D, HashMap<LocalDate,ArrayList<TransportIndirecte>> tI){
         origen=o;
         desti=d;
         mitja=m;
@@ -30,8 +31,6 @@ public class Hub {
     }
     
     /**
-     * @param data
-     * @param transports
      * @pre: data existent
      * @post: ha afegit un dia amb tots els seus transports al map
      */
@@ -53,10 +52,15 @@ public class Hub {
      * @brief 
      */
     public boolean esIgual(String o,String d,String tipus){
-        return (origen.equals(o) && desti.equals(d) && mitja.equals(tipus) );
+        return (origen.getNom().equals(o) && desti.getNom().equals(d) && mitja.equals(tipus) );
     }
     
-   public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
+   /**
+    * 
+    * @pre hora valida
+    * @post retorna una ArrayList amb els transportsIndirectes disponibles d'aquell dia
+    */
+    public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
        return horaris.get(hora.toLocalDate());
    }
     
@@ -97,14 +101,6 @@ public class Hub {
         int i = transports.size()-1; //mires l'ultima hora del dia
         
         return (horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora()));
-    }
-
-    Ciutat getCiutat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    PuntInteres obtenirDestiPi() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
