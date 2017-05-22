@@ -169,7 +169,7 @@ public class Agencia {
      */
     public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
 
-        TransportDirecte tdirecte = new TransportDirecte(origen,desti,mitja,durada,preu);
+        TransportDirecte tdirecte = new TransportDirecte(llistaPInteres.get(origen),llistaPInteres.get(desti),mitja,durada,preu);
         PuntInteres pi = llistaPInteres.get(origen);
         if (pi != null)
             pi.afegirTransportDirecte(tdirecte);

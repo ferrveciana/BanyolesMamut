@@ -4,11 +4,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Ferran Veciana
- */
-
 public class TransportIndirecte{
     
     private final LocalTime horaris;
@@ -78,5 +73,16 @@ public class TransportIndirecte{
 //        durada.add(passarInt(temps));
 //        preu.add(pr);
 //    }
-
+    /*
+    public void afegirHorari(LocalTime h,){
+        horaris.add(h);
+    }
+    
+    public void afegirDurada(int temps){
+        durada.add(temps);
+    }
+    
+    public void afegirPreu(float _pr){
+        preu.add(_pr);
+    }*/
 }

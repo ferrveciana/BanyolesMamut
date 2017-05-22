@@ -8,9 +8,8 @@ import java.util.HashMap;
 
 /**
  *
- * @author Ferran Veciana
+ * @author FV
  */
-
 public class Hub {
     private final String origen;
     private final String desti;
@@ -57,12 +56,7 @@ public class Hub {
         return (origen.equals(o) && desti.equals(d) && mitja.equals(tipus) );
     }
     
-   /**
-    * 
-    * @pre hora valida
-    * @post retorna una ArrayList amb els transportsIndirectes disponibles d'aquell dia
-    */
-    public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
+   public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
        return horaris.get(hora.toLocalDate());
    }
     
@@ -103,6 +97,14 @@ public class Hub {
         int i = transports.size()-1; //mires l'ultima hora del dia
         
         return (horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora()));
+    }
+
+    Ciutat getCiutat() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    PuntInteres obtenirDestiPi() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
