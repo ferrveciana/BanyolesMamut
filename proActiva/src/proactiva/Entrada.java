@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.TimeZone;
@@ -21,6 +22,7 @@ public class Entrada {
 
     /**
      * @param nomFitxer
+     * @param _agencia
      * @brief acció principal de la classe que delega feina a les classes privades segons el fitxer d'entrada
      * @pre cert
      * @post s'han realitzat les operacions d'entrada correctament
@@ -373,6 +375,14 @@ public class Entrada {
             client = nomFitxer.nextLine();
         }
         
+        LinkedList<String> destinacions = new LinkedList<>();
+        String destinacio = nomFitxer.nextLine();
+        
+        while (!destinacio.equals("*")) { //llegim la llista de destinacions que es volen visitar al viatge
+            
+            destinacions.add(destinacio);
+            destinacio = nomFitxer.nextLine();
+        }
         ArrayList<String> rutes = new ArrayList<>();
         String ruta = nomFitxer.nextLine();
         
@@ -382,8 +392,15 @@ public class Entrada {
             ruta = nomFitxer.nextLine();
         }
         
-        agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
+        agencia.crearEntradaViatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,destinacions,rutes);
+        agencia.getInfo();
+        
     } 
+    
+    public Agencia obtenirAgencia() {
+        
+        return agencia;
+    }
   
     private Agencia agencia; ///< classe que comunica l'entrada amb l'agencia, quelcom conté totes les dades del programa
 }

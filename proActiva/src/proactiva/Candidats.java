@@ -26,7 +26,7 @@ public class Candidats implements Iterable<Activitat>{
 		//Crear candidats amb transports directes
 		List<TransportDirecte> llistaTransportsDirectes = _pi.obtenirTransportsDirectes();
 
-		for (int i = 0; i < llistaTransportsDirectes.size(); i++) {
+		for (int i = 0; i < llistaTransportsDirectes.size()-1; i++) {
                          
 			Desplaçament desplaçamentDirecte = new Desplaçament(llistaTransportsDirectes.get(i).obtenirDurada(),_pi,llistaTransportsDirectes.get(i).obtenirDesti(), (float) llistaTransportsDirectes.get(i).obtenirPreu(),"directe");
 			llistaActivitats.add(desplaçamentDirecte); //falta afegir un string per saber quin tipus de transport es tracta
@@ -37,8 +37,8 @@ public class Candidats implements Iterable<Activitat>{
 		List<TransportUrba> transportsUrbans = ciutat.obtenirTransports();
 		List<PuntInteres> puntsInteres = _pi.getCiutat().obtenirPuntInteres();
 		
-		for (int i = 0; i < transportsUrbans.size(); i++) { //per cada transport urba de la ciutat
-			for (int j = 0; j < puntsInteres.size(); j++) { //per cada punt d'interes de la ciutat
+		for (int i = 0; i < transportsUrbans.size()-1; i++) { //per cada transport urba de la ciutat
+			for (int j = 0; j < puntsInteres.size()-1; j++) { //per cada punt d'interes de la ciutat
 				//Afegir transports urbans del punt d'Interes actual a la resta de punts d'Interes de la ciutat del _pi
 				Desplaçament desplaçamentUrba = new Desplaçament(transportsUrbans.get(i).obtenirDurada(),_pi, puntsInteres.get(j),transportsUrbans.get(i).obtenirPreu(),"urba");
 				llistaActivitats.add(desplaçamentUrba);
@@ -47,19 +47,23 @@ public class Candidats implements Iterable<Activitat>{
 		
 		List<Hub> hubs = ciutat.obtenirHub();
 		
-		for (int i = 0; i < hubs.size(); i++) {
+		for (int i = 0; i < hubs.size()-1; i++) {
 			int tempsHub = hubs.get(i).obtenirDurada(); //durada per anar de punt Interes origen fins a hub + hub desti fins a punt Interes desti 
 
-			Ciutat city = hubs.get(i).getCiutat();
-			int duradaHubDesti = hubs.get(i).obtenirDurada();
-			
+			Ciutat city = hubs.get(i).getCiutatd();
+                        
+	                List<PuntInteres> desti_puntsInteres = city.obtenirPuntInteres();		
 			List<TransportIndirecte> transportsIndirectes = hubs.get(i).obtenirTransportIndirecte(hora);
-			for (int j = 0; j < hubs.size(); j++) { 
+                        
+			for (int j = 0; j < hubs.size()-1; j++) { 
 				int duradaTransport = transportsIndirectes.get(j).obtenirDurada();
 				int duradaTotal = tempsHub + duradaTransport;
 				
-				Desplaçament desplaçamentIndirecte = new Desplaçament(duradaTotal,_pi,hubs.get(i).obtenirDestiPi(),transportsIndirectes.get(j).obtenirPreu(),"indirecte");
-				llistaActivitats.add(desplaçamentIndirecte);
+                                for (int k = 0; k < desti_puntsInteres.size()-1; k++) {
+                                    
+                                    Desplaçament desplaçamentIndirecte = new Desplaçament(duradaTotal,_pi, desti_puntsInteres.get(k),transportsIndirectes.get(j).obtenirPreu(),"indirecte");
+                                    llistaActivitats.add(desplaçamentIndirecte);
+                                }
 			}			
 		}
                 
@@ -76,4 +80,3 @@ public class Candidats implements Iterable<Activitat>{
     
  
 }
-

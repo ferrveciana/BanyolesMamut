@@ -55,7 +55,6 @@ public class EstadaH extends Activitat{ // no te durada fixada
     @Override
     public void mostrar() {
          System.out.println(hotel.getNom());
-         super.mostrarHores();
     }
     
     

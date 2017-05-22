@@ -1,10 +1,10 @@
-
 package proactiva;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.TimeZone;
 
 /*
@@ -69,6 +69,8 @@ public class Agencia {
     
         Client client = new Client(nomClient,llistaPreferencies);
         llistaClients.put(nomClient,client);
+        
+        System.out.println("MIDA " + llistaClients.size());
     }
    
    /**
@@ -184,9 +186,6 @@ public class Agencia {
      */
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
         
-        
-        
-            
         if (llistaLlocs.get(origen) instanceof Ciutat){ //prèviament convertit a ciutat 
             Ciutat ciutato;
             ciutato = (Ciutat) llistaLlocs.get(origen);
@@ -205,10 +204,36 @@ public class Agencia {
      * @pre cert
      * @post viatge creat
      */
-    public void crearEntradaViatge(LocalDate dataInici, LocalTime horaInici,int nombreDies,float preuMaxim, String categoria, ArrayList<String> clients, ArrayList<String> rutes) {
+    public void crearEntradaViatge(LocalDate dataInici, LocalTime horaInici,int nombreDies,float preuMaxim, String categoria, ArrayList<String> _clients, LinkedList<String> _destinacions, ArrayList<String> rutes) {
 
-        viatge = new Viatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,rutes);
+        LinkedList<PuntInteres> destinacions = new LinkedList<>();
+        ArrayList<Client> clients = new ArrayList<>();
+        
+        for (int i = 0; i < _destinacions.size()-1; i++) {
+            PuntInteres PI = llistaPInteres.get(_destinacions.get(i));
+            destinacions.add(PI);
+        }
+        for (int j = 0; j < _clients.size()-1; j++) {
+            Client client = llistaClients.get(_clients.get(j));
+            clients.add(client);
+        }
+        viatge = new Viatge(dataInici,horaInici,nombreDies,preuMaxim,categoria,clients,destinacions,rutes);
     } 
     
+   /**
+     *
+     * @brief retorna el Viatge de l'Agencia
+     * @pre cert
+     * @post return Viatge
+     */
+    public Viatge getViatge() {
+        
+        return viatge;
+    }
+
+    void getInfo() {
+        System.out.println("E " + llistaAllotjaments.size());
+        System.out.println("LA TEVA PUTA MARE" + viatge.preuMax());
+    }
   
 }

@@ -151,7 +151,6 @@ public class Visitable extends PuntInteres {
         return tempsVisita;
     }
 
-    @Override
     public Activitat crearActivitat() {
         Visita v = new Visita(this.obtenirDurada(), (float) this.obtenirPreu(),this);
         return v;

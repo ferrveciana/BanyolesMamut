@@ -63,6 +63,5 @@ class Visita extends Activitat {
     @Override
     public void mostrar() {
         System.out.println(visitable.getNom());
-        super.mostrarHores();
     }
 }

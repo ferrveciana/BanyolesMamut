@@ -59,9 +59,15 @@ public class Desplaçament extends Activitat{
     
     public boolean esPotDesplaçar(LocalDateTime hora){
         if (esIndirecte()){
-            return origen.getCiutat().esPotMoure(origen.getCiutat().getNom(),desti.getCiutat().getNom(),tipusTransport,hora);
+            return origen.getCiutat().esPotMoure(origen.nom,desti.nom,tipusTransport,hora);
         }
         else return true;
+    }
+
+    @Override
+    public void mostrar() {
+       System.out.println(origen.getNom()+" "+desti.getNom()+" ");
+       super.mostrarHores();
     }
     
 

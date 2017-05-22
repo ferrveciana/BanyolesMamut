@@ -57,4 +57,12 @@ public class Client {
     public void afegirVisita(String nomlloc,LocalDate data){
         visites.put(nomlloc, data);
     }
+    
+    public void mostrar() {
+        
+        System.out.println("LA TEVA PUTA MARE");
+        for (int i = 0; i < prefList.size()-1; i++)
+            System.out.println("-> " + prefList.get(i));
+            
+    }
 }

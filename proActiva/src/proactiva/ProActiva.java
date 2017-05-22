@@ -7,6 +7,7 @@ package proactiva;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 
@@ -27,6 +28,15 @@ public class ProActiva {
         Scanner nomFitxer = new Scanner(new File(teclat.nextLine()));
         
         Entrada entrada = new Entrada(nomFitxer);
-    }
-    
+        Agencia agencia = entrada.obtenirAgencia();
+//        agencia.getInfo();
+        
+        Solucio solucio = new Solucio(agencia.getViatge().origen(),agencia.getViatge().desti(),agencia.getViatge().preuMax(),agencia.getViatge().destinacions(),agencia.getViatge().preferencies());
+        Solucionador solucionador = new Solucionador("s");
+        solucionador.executarNouBkg(solucio,agencia.getViatge().origen(), LocalDateTime.MIN);
+        
+        Solucio sol = solucionador.obtOptima();
+        sol.mostrar();
+
+    }  
 }

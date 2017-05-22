@@ -2,7 +2,6 @@ package proactiva;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
@@ -94,7 +93,7 @@ public class Ciutat extends Lloc {
         boolean trobat = false;
         int i=0;
         
-        while (!trobat && i<llistaHubs.size()) {
+        while (!trobat && i<llistaHubs.size()-1) {
             if(llistaHubs.get(i).esIgual(o, d, tipusM)) trobat=true;
             else i++;
         }
