@@ -59,4 +59,9 @@ class Visita extends Activitat {
     public void mostraProva() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void mostrar() {
+        System.out.println(visitable.getNom());
+    }
 }

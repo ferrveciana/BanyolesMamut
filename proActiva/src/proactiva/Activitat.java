@@ -84,6 +84,10 @@ public abstract class Activitat {
     abstract LocalDateTime hPropera(LocalDateTime hora);
     
     public abstract void mostraProva();
+
+    public abstract void mostrar();
+       
+    
         
         
     

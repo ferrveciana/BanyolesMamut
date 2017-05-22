@@ -46,8 +46,16 @@ public class EstadaH extends Activitat{ // no te durada fixada
     LocalDateTime hPropera(LocalDateTime hora) {
         return hora;
     }
+
+    @Override
     public void mostraProva() {
-       System.out.println(hotel.getNom());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void mostrar() {
+         System.out.println(hotel.getNom());
+    }
+    
     
 }

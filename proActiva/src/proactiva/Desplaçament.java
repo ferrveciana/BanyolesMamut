@@ -63,6 +63,11 @@ public class Desplaçament extends Activitat{
         }
         else return true;
     }
+
+    @Override
+    public void mostrar() {
+       System.out.println(origen.getNom()+" "+desti.getNom()+" ");
+    }
     
 
 }

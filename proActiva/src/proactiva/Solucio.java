@@ -258,6 +258,13 @@ public class Solucio {
         
         return hora;
     }
+    
+    public void mostrar(){
+        
+        for(Activitat a:llistaActivitats){
+            a.mostrar();
+        }
+    }
  
   
 }
