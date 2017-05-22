@@ -202,7 +202,7 @@ public class Solucio {
                 else if (a instanceof Desplaçament){
                     
                     Desplaçament d = (Desplaçament) a;
-                    if (d.esIndirecte() && !(d.esPotDesplaçar())) 
+                    if (d.esIndirecte() && !(d.esPotDesplaçar(hora))) 
                         acceptable = false;
                     else 
                         acceptable = true;
@@ -247,7 +247,7 @@ public class Solucio {
                millor = true;       
        }
        else if (param.equals("t")){//temps
-           if ((tempsAct+a.durada() < optima.tempsAct) //*sumar dist de candidat
+           if ((tempsAct+a.durada() < optima.tempsAct)) //*sumar dist de candidat
                millor = true;       
        }
        else millor=true; //satisfaccio no te poda
