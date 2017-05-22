@@ -10,6 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ *
+ * @author Ferran Veciana
+ */
+
 public class Visitable extends PuntInteres {
     
    
@@ -26,6 +31,11 @@ public class Visitable extends PuntInteres {
         
     }
     
+    /**
+     * @pre hora vàlida
+     * @post retorna cert si es pot vistar el visitable aquell dia fals altrement
+     * @brief retorna cert si es pot vistar el visitable aquell dia
+     */
     public Boolean esPotVisitar(LocalDateTime hora){
         
         hora = hora.plusMinutes(tempsVisita); //sumem el temps de visita a l'hora actual
@@ -58,8 +68,8 @@ public class Visitable extends PuntInteres {
     
     /*
     * @pre sera possible visitar el visitable aquest dia
-    * @post retorna la hora en la que es pot visitar el visitable
-    * @brief 
+    * @post retorna la hora mes propera en la que es pot visitar el visitable
+    * @brief retorna la hora mes propera en la que es pot visitar el visitable
     */
     public LocalDateTime hPropera(LocalDateTime hora){
         
@@ -140,21 +150,6 @@ public class Visitable extends PuntInteres {
         
         sol=sol+" "+mesNum;
         return sol;
-    }
-    
-     /*
-    * @pre cert
-    * @post retorna el temps que es tarda a realitzar la visita
-    * @brief retorna el temps que es tarda a realitzar la visita
-    */
-    public int obtenirDurada(){
-        return tempsVisita;
-    }
-
-    @Override
-    public Activitat crearActivitat() {
-        Visita v = new Visita(this.obtenirDurada(), (float) this.obtenirPreu(),this);
-        return v;
     }
     
 }

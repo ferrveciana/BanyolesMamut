@@ -8,8 +8,9 @@ import java.util.HashMap;
 
 /**
  *
- * @author FV
+ * @author Ferran Veciana
  */
+
 public class Hub {
     private final String origen;
     private final String desti;
@@ -56,7 +57,12 @@ public class Hub {
         return (origen.equals(o) && desti.equals(d) && mitja.equals(tipus) );
     }
     
-   public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
+   /**
+    * 
+    * @pre hora valida
+    * @post retorna una ArrayList amb els transportsIndirectes disponibles d'aquell dia
+    */
+    public ArrayList<TransportIndirecte> obtenirTransportIndirecte (LocalDateTime hora){
        return horaris.get(hora.toLocalDate());
    }
     

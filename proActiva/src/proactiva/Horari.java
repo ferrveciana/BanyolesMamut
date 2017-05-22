@@ -5,12 +5,17 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 
+/**
+ *
+ * @author Ferran Veciana
+ */
+
 public class Horari {
-    private String mesIni;
-    private int diaIni;
-    private String mesFin;
-    private int diaFin;
-    private DuesHores interval;
+    private final String mesIni;
+    private final int diaIni;
+    private final String mesFin;
+    private final int diaFin;
+    private final DuesHores interval;
     
     
     public Horari(String _mesIni, int _diaIni, String _mesFin, int _diaFin, LocalTime _horaIni, LocalTime _horaFi){
@@ -21,10 +26,8 @@ public class Horari {
         interval = new DuesHores(_horaIni,_horaFi);
     }
     
-    public LocalTime _getHoraIni(){
-        return interval.getHoraIni();
-    }
     
+/*
     public Horari(String _horari){
         String delimitadors= "[ :-]+";
         String[] paraulesSeparades = _horari.split(delimitadors);
@@ -38,11 +41,22 @@ public class Horari {
         catch(NumberFormatException e){
             System.out.println("ERROR, FORMAT DE DADES INCORRECTE");
         }
+    }*/
+    
+    /**
+     * @pre cert
+     * @post retorna la hora d'inici de l'interval
+     * @brief retorna la hora d'inici de l'interval 
+     */
+    public LocalTime _getHoraIni(){
+        return interval.getHoraIni();
     }
+    
+
     /*
-    * @pre 
-    * @post
-    * @brief
+    * @pre hora vàlida
+    * @post retorna 
+    * @brief 
     */
     public boolean estaDins(LocalDateTime hora){
         boolean _estaDins = false;
