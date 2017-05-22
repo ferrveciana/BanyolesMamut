@@ -103,4 +103,14 @@ public class Hub {
         return (horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora()));
     }
     
+   
+
+    public Ciutat getCiutat() {
+          return origen;
+    }
+
+    public Ciutat getCiutatd() {
+        return desti;
+    }
+    
 }
