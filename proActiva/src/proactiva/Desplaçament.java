@@ -67,6 +67,7 @@ public class Desplaçament extends Activitat{
     @Override
     public void mostrar() {
        System.out.println(origen.getNom()+" "+desti.getNom()+" ");
+       super.mostrarHores();
     }
     
 
