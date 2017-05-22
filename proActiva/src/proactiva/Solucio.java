@@ -61,7 +61,7 @@ public class Solucio {
         preuAct = Integer.MAX_VALUE;
     }
     
-    Solucio(List<PuntInteres> _llistaPi,PuntInteres _origen, PuntInteres _desti,int _satisfaccio,float _preuMax,HashMap<PuntInteres,Boolean> _desitjos,List<String> _preferenciesClients){
+    Solucio(PuntInteres _origen, PuntInteres _desti,float _preuMax,HashMap<PuntInteres,Boolean> _desitjos,List<String> _preferenciesClients){
         desitjosVisitats =0;
         preferenciesClients=_preferenciesClients;
         
@@ -71,13 +71,11 @@ public class Solucio {
         
         origen = _origen;
         desti = _desti;
-        satisfaccio = _satisfaccio;
         preuMax = _preuMax;
         
         desitjos = _desitjos;
         circuit = new LinkedList<PuntInteres>();
         llistaActivitats = new LinkedList<Activitat>();
-
     }
 
     
