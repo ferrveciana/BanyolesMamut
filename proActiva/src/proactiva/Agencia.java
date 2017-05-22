@@ -183,13 +183,16 @@ public class Agencia {
      * @post transport indirecte afegit
      */
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
-
-        Hub hub = new Hub(origen,desti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte);
-        Ciutat ciutat;
+        
+        
+        
             
         if (llistaLlocs.get(origen) instanceof Ciutat){ //prèviament convertit a ciutat 
-            ciutat = (Ciutat) llistaLlocs.get(origen);
-            ciutat.afegirHub(hub);
+            Ciutat ciutato;
+            ciutato = (Ciutat) llistaLlocs.get(origen);
+            Ciutat ciutatd = (Ciutat) llistaLlocs.get(desti);
+            Hub hub = new Hub(ciutato,ciutatd,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte); 
+            ciutato.afegirHub(hub);
         }
         else {
             System.out.println("Volem afegir un hub a " + origen + " que no és una ciutat");
