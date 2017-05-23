@@ -14,7 +14,7 @@ public class Ciutat extends Lloc {
     
    private List<TransportUrba> llistaUrbans; ///< llista de transports urbans de la Ciutat
    private List<PuntInteres> llistaPinteres; ///< llista de punts d'interes de la Ciutat
-   private ArrayList<Hub> llistaHubs; ///< llista de hubs de la Ciutat
+   private List<Hub> llistaHubs; ///< llista de hubs de la Ciutat
 
     /**
      * @brief constructor de la classe Ciutat
@@ -45,7 +45,11 @@ public class Ciutat extends Lloc {
      * @post return llistaUrbans
      */
     public List<TransportUrba> obtenirTransports(){ 
-        return llistaUrbans;
+        
+        if (llistaUrbans.isEmpty())
+            return null;
+        else 
+            return llistaUrbans;
     }
     
    /**
@@ -82,6 +86,7 @@ public class Ciutat extends Lloc {
      */
     public void afegirHub(Hub _hub){
         llistaHubs.add(_hub);
+        System.out.println("-<<<<<--------------------------------------<"  + llistaHubs.size());
     }
     
     /**
@@ -93,7 +98,7 @@ public class Ciutat extends Lloc {
         boolean trobat = false;
         int i=0;
         
-        while (!trobat && i<llistaHubs.size()-1) {
+        while (!trobat && i<llistaHubs.size()) {
             if(llistaHubs.get(i).esIgual(o, d, tipusM)) trobat=true;
             else i++;
         }

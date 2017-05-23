@@ -45,7 +45,7 @@ public class Visitable extends PuntInteres {
             int i = 0;
             Horari h;
             boolean  acaba = false;
-            while(! acaba && i<horariVisites.size()-1){
+            while(! acaba && i<horariVisites.size()){
                 h = horariVisites.get(i);
                 acaba = horariVisites.get(i).estaDins(hora);
                 i++;
@@ -74,7 +74,7 @@ public class Visitable extends PuntInteres {
             int i = 0;
             Horari h;
             boolean  acaba = false;
-            while(! acaba && i<horariVisites.size()-1){
+            while(! acaba && i<horariVisites.size()){
                 h = horariVisites.get(i);
                 acaba = horariVisites.get(i).estaDins(hora);
                 i++;

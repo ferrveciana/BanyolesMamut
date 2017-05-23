@@ -30,8 +30,10 @@ public class ProActiva {
         Entrada entrada = new Entrada(nomFitxer);
         Agencia agencia = entrada.obtenirAgencia();
 //        agencia.getInfo();
+System.out.println("____________________________________________________________________________________________");
+        agencia.getHubs();
         
-        Solucio solucio = new Solucio(agencia.getViatge().origen(),agencia.getViatge().desti(),agencia.getViatge().preuMax(),agencia.getViatge().destinacions(),agencia.getViatge().preferencies());
+        Solucio solucio = new Solucio(agencia,agencia.getViatge().origen(),agencia.getViatge().desti(),agencia.getViatge().preuMax(),agencia.getViatge().destinacions(),agencia.getViatge().preferencies());
         Solucionador solucionador = new Solucionador("s");
         solucionador.executarNouBkg(solucio,agencia.getViatge().origen(), LocalDateTime.MIN);
         

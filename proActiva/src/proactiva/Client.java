@@ -61,7 +61,7 @@ public class Client {
     public void mostrar() {
         
         System.out.println("LA TEVA PUTA MARE");
-        for (int i = 0; i < prefList.size()-1; i++)
+        for (int i = 0; i < prefList.size(); i++)
             System.out.println("-> " + prefList.get(i));
             
     }

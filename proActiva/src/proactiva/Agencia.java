@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.TimeZone;
 
 /*
@@ -70,7 +71,7 @@ public class Agencia {
         Client client = new Client(nomClient,llistaPreferencies);
         llistaClients.put(nomClient,client);
         
-        System.out.println("MIDA " + llistaClients.size());
+        System.out.println("MIDA LLISTA CLIENTS " + llistaClients.size());
     }
    
    /**
@@ -128,20 +129,33 @@ public class Agencia {
      * @post llistaLlocs actualitzada
      */
     public void crearAssociarLloc(String secundari,String primari) {
-        
+
         Lloc _lloc = llistaLlocs.get(primari);
         PuntInteres pi = llistaPInteres.get(secundari);
-        System.out.println("AQUET " + secundari);
-        Ciutat ciutat;
-        if (_lloc instanceof Ciutat){ //prèviament convertit a ciutat 
-            ciutat = new Ciutat(_lloc.nom, _lloc.getCoordenada(),_lloc.getZonaHoraria());
+        System.out.println("CIUTAT " + primari + " AFEGIR -> " + secundari);
+
+        if (_lloc != null && pi != null) { //////////////////TRY CATCH
+            Ciutat ciutat;
+            if (_lloc instanceof Ciutat){ //prèviament convertit a ciutat 
+                ciutat = new Ciutat(_lloc.nom, _lloc.getCoordenada(),_lloc.getZonaHoraria());
+            }
+            else {
+                ciutat = _lloc.ferCiutat(pi);
+                llistaLlocs.put(primari,ciutat); //substituir Lloc -> ciutat
+            }
+            System.out.println("CIUTAT LA QUE AFEGIR " + ciutat.getNom());
+            System.out.println("PUNT INTERES A ASSOCIAR " + pi.getNom());
+            System.out.println("");
+            ciutat.afegirPuntInteres(pi);
+            pi.setCiutat(ciutat);
         }
-        else {
-            ciutat = _lloc.ferCiutat(pi);
-            llistaLlocs.put(primari,ciutat); //substituir Lloc -> ciutat
+        
+        System.out.println("LLISTA DE CIUTATS ACTUALS: ");
+        for (Lloc ciutat : llistaLlocs.values()) {
+            if (ciutat instanceof Ciutat)
+                System.out.println(ciutat.getNom());
         }
-        ciutat.afegirPuntInteres(pi);
-        pi.setCiutat(ciutat);
+        System.out.println("");
     }
    
    /**
@@ -170,12 +184,20 @@ public class Agencia {
      * @post  transport directe afegit
      */
     public void crearTransportDirecte(String origen, String desti, String mitja, int durada, double preu) {
-
-        TransportDirecte tdirecte = new TransportDirecte(llistaPInteres.get(origen),llistaPInteres.get(desti),mitja,durada,preu);
-        PuntInteres pi = llistaPInteres.get(origen);
-        if (pi != null)
+        
+        //for (PuntInteres pi : llistaPInteres.values()) 
+           // System.out.println("MOSTRAR " + pi.getNom());
+        
+        if (llistaPInteres.containsKey(origen) && llistaPInteres.containsKey(desti)) { ///FER TRY CATCH!!!!!!!!!!!!!!!!!!!!!
+            
+            TransportDirecte tdirecte = new TransportDirecte(llistaPInteres.get(origen),llistaPInteres.get(desti),mitja,durada,preu);
+            PuntInteres pi = llistaPInteres.get(origen);
             pi.afegirTransportDirecte(tdirecte);
-
+            System.out.println("TRANSPORT DIRECTE DE " + pi.getNom() + " A " + desti);
+        }
+        else {
+            System.out.println("HEM DESPRECIAT AQUEST TRANSPORT DIRECTE " + origen + " -> " + desti);
+        }
     }
    
    /**
@@ -186,16 +208,28 @@ public class Agencia {
      */
     public void crearTransportIndirecte(String origen, String desti, String mitja, int tempsFinsOrigen, int tempsFinsDesti, HashMap<LocalDate,ArrayList<TransportIndirecte>> transportIndirecte) {
         
-        if (llistaLlocs.get(origen) instanceof Ciutat){ //prèviament convertit a ciutat 
-            Ciutat ciutato;
-            ciutato = (Ciutat) llistaLlocs.get(origen);
-            Ciutat ciutatd = (Ciutat) llistaLlocs.get(desti);
-            Hub hub = new Hub(ciutato,ciutatd,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte); 
-            ciutato.afegirHub(hub);
+        if (llistaLlocs.get(origen) instanceof Ciutat && llistaLlocs.get(desti) instanceof Ciutat){ //prèviament convertit a ciutat 
+            Ciutat ciutatOrigen;     //TRY CATCH
+            ciutatOrigen = (Ciutat) llistaLlocs.get(origen);
+            
+            if (ciutatOrigen != null && llistaLlocs.containsKey(origen) && llistaLlocs.containsKey(desti)) {
+                Ciutat ciutatDesti = (Ciutat) llistaLlocs.get(desti);
+
+                Hub hub = new Hub(ciutatOrigen,ciutatDesti,mitja,tempsFinsOrigen,tempsFinsDesti,transportIndirecte); 
+                ciutatOrigen.afegirHub(hub);
+                System.out.println("TRANSPORT INDIRECTE AFEGIT A LA CIUTAT " + origen + " FINS A " + desti);
+                List<Hub> hubs = ciutatOrigen.obtenirHub();
+                System.out.println("-<<<<<<<<<<<<<<<<<"  + hubs.size());
+            }
         }
-        else {
-            System.out.println("Volem afegir un hub a " + origen + " que no és una ciutat");
-        }
+        else if (!(llistaLlocs.get(origen) instanceof Ciutat) && !(llistaLlocs.get(desti) instanceof Ciutat))
+            System.out.println("Volem afegir un hub de " + origen + " -> " + desti + " i els dos no són una ciutat");  
+        
+        else if (!(llistaLlocs.get(origen) instanceof Ciutat))
+            System.out.println("Volem afegir un hub de " + origen + " -> " + desti + " i " + origen + " no és una ciutat"); 
+        
+        else if (!(llistaLlocs.get(desti) instanceof Ciutat))
+            System.out.println("Volem afegir un hub de " + origen + " -> " + desti + " i " + desti + " no és una ciutat"); 
     }
    
    /**
@@ -209,11 +243,11 @@ public class Agencia {
         LinkedList<PuntInteres> destinacions = new LinkedList<>();
         ArrayList<Client> clients = new ArrayList<>();
         
-        for (int i = 0; i < _destinacions.size()-1; i++) {
+        for (int i = 0; i < _destinacions.size(); i++) {
             PuntInteres PI = llistaPInteres.get(_destinacions.get(i));
             destinacions.add(PI);
         }
-        for (int j = 0; j < _clients.size()-1; j++) {
+        for (int j = 0; j < _clients.size(); j++) {
             Client client = llistaClients.get(_clients.get(j));
             clients.add(client);
         }
@@ -235,5 +269,15 @@ public class Agencia {
         System.out.println("E " + llistaAllotjaments.size());
         System.out.println("LA TEVA PUTA MARE" + viatge.preuMax());
     }
-  
+
+    void getHubs() {
+        for (Lloc lloc : llistaLlocs.values()) {
+            if (lloc instanceof Ciutat) {
+                Ciutat ciutat = (Ciutat) lloc;
+                List<Hub> hubs = ciutat.obtenirHub();
+                for (Hub hub : hubs) 
+                    System.out.println(hub.getCiutat().getNom() +  "->" + hub.getCiutatd().getNom());
+            }
+        }
+    }
 }

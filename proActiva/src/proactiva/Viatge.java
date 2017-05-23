@@ -43,13 +43,13 @@ private final PuntInteres desti;
         
         preferenciesViatge = new ArrayList<>();
        
-        for (int i = 0; i < clients.size()-1; i++) {
+        for (int i = 0; i < clients.size(); i++) {
             clients.get(i).mostrar();
             preferenciesViatge.addAll(clients.get(i).obtPreferencies());
         }
 
-        System.out.println("ORIGEN " + origen);
-        System.out.println("DESTI " + desti);
+        System.out.println("ORIGEN " + origen.getNom());
+        System.out.println("DESTI " + desti.getNom());
   }
   
     public PuntInteres origen() {

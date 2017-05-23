@@ -35,7 +35,6 @@ public class Entrada {
 
         while (nomFitxer.hasNext()) { 
             codiOperacio = nomFitxer.nextLine();
-            System.out.println("peta en aquet " + codiOperacio);
             switch (codiOperacio) {
                 case "client":
                     entradaClient(nomFitxer);
@@ -190,11 +189,11 @@ public class Entrada {
         String delimitadors= "[ :-]+"; //separarem string per ':' i '-'
         String[] paraulesSeparades; //string que usarem per llegir cada línia d'horaris i excepcions
         
-        System.out.println("HORARI REGULAR " + horariRegular);
+
         while (!horariRegular.equals("*")) { //bucle que llegeix horaris i excepcions
             
             paraulesSeparades = horariRegular.split(delimitadors); //separem string per tal de tractar si es horari vàlid o excepció
-            System.out.println("acabo de llegir " + paraulesSeparades[0] + " " + paraulesSeparades[1]);
+
             if (paraulesSeparades[2].length()>2){ //es tracta d'un horari vàlid
                 llistaHoraris.add(string2Horari(horariRegular)); 
             }

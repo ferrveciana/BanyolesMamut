@@ -77,7 +77,7 @@ public class Hub {
         
         boolean trobat = false;
         int i=0;
-        while(i<transports.size()-1 && !trobat){
+        while(i<transports.size() && !trobat){
             if(horaAct.isBefore(transports.get(i).getHora()) || horaAct.equals(transports.get(i).getHora())){ //el primer k trobi que l'horaAct sigui
                 trobat = true;
             }
