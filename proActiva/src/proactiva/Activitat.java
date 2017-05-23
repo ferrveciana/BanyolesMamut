@@ -76,15 +76,31 @@ public abstract class Activitat {
     public LocalDateTime getFinal(){
         return hfinal;
     }
-    
+    //provisional
     public void mostrarHores(){
         System.out.println(hinici.toString()+ hfinal.toString());
     }
     
+    /**
+    * @brief Retorna el PuntInteres on es realitza l'activitat
+    * @pre cert
+    * @post Retorna el PuntInteres on es realitza l'activitat
+    */
     abstract public PuntInteres piActual();
-        
+    
+     
+    /**
+    * @brief retorna la satisfaccio que aporta realitzar l'activitat a partir de les preferenciesClient
+    * @pre cert
+    * @post retorna la satisfaccio que aporta realitzar l'activitat a partir de les preferenciesClient
+    */
     abstract int satisfaccio(List<String> preferenciesClients);
     
+    /**
+    * @brief retorna l'hora mes propera a la que es pot realitzar l'activitat
+    * @pre cert
+    * @post retorna l'hora mes propera a la que es pot realitzar l'activitat
+    */
     abstract LocalDateTime hPropera(LocalDateTime hora);
     
     public abstract void mostraProva();
